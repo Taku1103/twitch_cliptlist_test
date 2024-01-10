@@ -1,0 +1,4 @@
+# bundle installすることでフォルダ構造やGemfileの中身が変化する
+# そのため、このGemfileを使って変化前と変化後で2回bundle installを行う
+source "https://rubygems.org"
+gem "rails", "~> 7.0.8"
