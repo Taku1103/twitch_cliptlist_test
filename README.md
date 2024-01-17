@@ -55,7 +55,7 @@ production:
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.3.0"
+ruby "3.2.2"
 
 gem "rails", "~> 7.0.8"
 gem "mysql2", "~> 0.5"
@@ -179,6 +179,22 @@ docker-compose stop front
 ```
 docker-compose exec front bash
 ```
+
+## フロントからバックエンドの情報が取得できないとき
+特に、ECONNREFUSEDというエラーが発生しているときは、localhost経由ではなく、docker network経由でアクセスする必要がある。
+
+### step1
+以下のコマンドを実行してmynetworkを生成する。
+```
+docker network cerate mynetwork
+```
+予め、rails, mysql, next.jsはすべてmynetworkがあれば接続する設定をしてあるので、生成すればok
+
+### step2
+`http://localhost:3001/api`にアクセスしてapiのデータを取得していたが、これを`http://api:3000/api`に変更
+
+### step3
+なんかRailsのミドルウェアでエラーを吐くことがあるので、config/application.rbのclass Application < Rails::Applicationの中に`config.middleware.delete ActionDispatch::HostAuthorization`を追記。
 
 ## 参考記事
 - [Dockerを使ってRails7, React18の開発環境を構築します](https://zenn.dev/925rycki/articles/655462e9c76906)
