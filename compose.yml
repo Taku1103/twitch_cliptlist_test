@@ -19,6 +19,8 @@ services:
       - db
     tty: true
     stdin_open: true
+    networks:
+      - mynetwork
   db:
     image: mysql:latest
     command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
@@ -28,7 +30,9 @@ services:
       MYSQL_ROOT_PASSWORD: password
       TZ: "Asia/Tokyo"
     ports:
-      - "3306:3306"
+      - "3310:3310"
+    networks:
+      - mynetwork
   front:
     build: ./frontend/
     tty: true
@@ -39,6 +43,12 @@ services:
     environment:
       - WATCHPACK_POLLING=true
     command: sh -c "PORT=3000 npm run dev"
+    networks:
+      - mynetwork
 
 volumes:
   db-volume:
+
+networks:
+  mynetwork:
+    external: true

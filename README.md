@@ -1,8 +1,8 @@
-# Rails+MySQL+React環境の作成
+# Rails+MySQL+Next.js環境の作成
 
 ## Dockerとは
-Dockerはカーネルだけはホストのものを利用し、それ以外はコードから生成されたミドルウェアを使うことで、手軽にOSを作ったり消したりできるようなもの。
-これによる利点は以下。
+Dockerはカーネルだけはホストのものを利用し、それ以外はコードから生成されたミドルウェアを使うことで、手軽にOSを作ったり消したりできるようなものです。
+これにより、以下の利点があります。
 - コード化されたファイルを共有することで、どこでも誰でも同じ環境が作れる。
 - 作成した環境を配布しやすい。
 - スクラップ＆ビルドが容易にできる。
@@ -11,7 +11,7 @@ Dockerはイメージファイルと呼ばれる元データから、実際の�
 今回はこのDockerとdocker-composeを使用して環境構築を行うため、この2つの準備ができていれば、後は手順通りにコマンドを打てば環境構築は完了します。
 
 ## できあがる環境
-- http://localhost:3000にアクセスするとReactのページにアクセス可能
+- http://localhost:3000にアクセスするとNext.jsのページにアクセス可能
 - http://localhost:3001にアクセスするとRailsのページにアクセス可能
 - RailsのDBはMySQLで管理する
 という状態になります。
@@ -55,7 +55,7 @@ production:
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.3.0"
+ruby "3.2.2"
 
 gem "rails", "~> 7.0.8"
 gem "mysql2", "~> 0.5"
@@ -131,6 +131,7 @@ http://localhost:3000にアクセスして、Next.jsの初期画面が表示さ�
 - docker-compose execなんちゃらでコンテナ内を直接操作しているとき、git commitはしない方が良い。コンテナ内はビルドする度に毎回別世界なので、gitの設定も毎回初期化されている。
 そのため、git add, git commit, git pushをしたいときは、exitでコンテナの外にでてから行う。
 - DBの中身はGithubを通じて共有されないので、モデルを共有して何かを試したい場合は、seed.rbとかに書いて、他の人の環境でモデルを生成できるようにしておく。
+- Rails serverは起動する際にbackend/tmp/pids/server.pidを生成する。そして、このファイルがあるときに新しくRails serverを起動することはできない。そのため、何故かRails serverが起動しないときは、このファイルがないかを確認し、あったら削除すると起動するようになる。
 
 ### すべてのコンテナを一気に起動する
 ```
@@ -164,7 +165,7 @@ docker attach twitch-cliplist-api-1
 抜けるときはCtrl+p -> Ctrl+q
 Ctrl+Cをしても良いが、それだとserverが落ちる。
 
-### reactの起動方法
+### Next.jsの起動方法
 ```
 docker-compose up -d front
 ```
@@ -174,10 +175,26 @@ docker-compose up -d front
 docker-compose stop front
 ```
 
-### container内のreactに直接変更を加える方法
+### container内のNext.jsに直接変更を加える方法
 ```
 docker-compose exec front bash
 ```
+
+## フロントからバックエンドの情報が取得できないとき
+特に、ECONNREFUSEDというエラーが発生しているときは、localhost経由ではなく、docker network経由でアクセスする必要がある。
+
+### step1
+以下のコマンドを実行してmynetworkを生成する。
+```
+docker network cerate mynetwork
+```
+予め、rails, mysql, next.jsはすべてmynetworkがあれば接続する設定をしてあるので、生成すればok
+
+### step2
+`http://localhost:3001/api`にアクセスしてapiのデータを取得していたが、これを`http://api:3000/api`に変更
+
+### step3
+なんかRailsのミドルウェアでエラーを吐くことがあるので、config/application.rbのclass Application < Rails::Applicationの中に`config.middleware.delete ActionDispatch::HostAuthorization`を追記。
 
 ## 参考記事
 - [Dockerを使ってRails7, React18の開発環境を構築します](https://zenn.dev/925rycki/articles/655462e9c76906)
