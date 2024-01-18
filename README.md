@@ -16,10 +16,19 @@ Dockerはイメージファイルと呼ばれる元データから、実際の�
 - RailsのDBはMySQLで管理する
 という状態になります。
 
+追記：mynetworkに接続する設定にしたので、Next.jsからRails APIのデータをfetchするときはhttp://api:3000にアクセスしてください。
+railsのみ、ホスト側とコンテナ内でのポート番号の対応が違うので、コンテナに直接接続するこの指定の仕方だと、ポート番号が3001ではなく3000になります。
+
 ## 環境構築の手順
 ### Rails+MySQL環境構築
 
-初めにbackendから構築していきます。まずは以下を実行してください。
+はじめに、すべてのコンテナをmynetworkという名前のネットワークに接続する設定にしたので、以下のコマンドを実行してmynetworkを生成してください。
+(これを設定していないときにNext.jsからRails APIのデータをfetchしようとしてエラー吐いたことがあったので、一応入れてます。)
+```
+docker network cerate mynetwork
+```
+
+それでは、backendから構築していきます。まずは以下を実行してください。
 ```
 docker-compose run --rm api rails new . --force --database=mysql --api
 ```
@@ -124,8 +133,6 @@ docker-compose up -d front
 http://localhost:3000にアクセスして、Next.jsの初期画面が表示されることを確認してください。
 また、page.tsxの中身を変更して、ホットリロードが発生するかも試してみてください。
 
-### Githubのセットアップ
-
 ## 使い方
 ### 注意事項
 - docker-compose execなんちゃらでコンテナ内を直接操作しているとき、git commitはしない方が良い。コンテナ内はビルドする度に毎回別世界なので、gitの設定も毎回初期化されている。
@@ -181,20 +188,16 @@ docker-compose exec front bash
 ```
 
 ## フロントからバックエンドの情報が取得できないとき
-特に、ECONNREFUSEDというエラーが発生しているときは、localhost経由ではなく、docker network経由でアクセスする必要がある。
+特に、ECONNREFUSEDというエラーが発生しているときは、localhost経由ではなく、docker network経由でアクセスする必要があります。
+一応rails, MySQL, Next.jsを接続するmynetworkという名前のdocker networkを生成してあるので、コンテナ間のアクセスはlocalhostではなくコンテナ名を指定してアクセスすることができるはずです。
 
 ### step1
-以下のコマンドを実行してmynetworkを生成する。
-```
-docker network cerate mynetwork
-```
-予め、rails, mysql, next.jsはすべてmynetworkがあれば接続する設定をしてあるので、生成すればok
-
-### step2
 `http://localhost:3001/api`にアクセスしてapiのデータを取得していたが、これを`http://api:3000/api`に変更
 
-### step3
+### step2
 なんかRailsのミドルウェアでエラーを吐くことがあるので、config/application.rbのclass Application < Rails::Applicationの中に`config.middleware.delete ActionDispatch::HostAuthorization`を追記。
+
+これでデータのfetchがうまく行くはず。
 
 ## 参考記事
 - [Dockerを使ってRails7, React18の開発環境を構築します](https://zenn.dev/925rycki/articles/655462e9c76906)
