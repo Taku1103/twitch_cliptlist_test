@@ -11,12 +11,12 @@ Dockerはイメージファイルと呼ばれる元データから、実際の�
 今回はこのDockerとdocker-composeを使用して環境構築を行うため、この2つの準備ができていれば、後は手順通りにコマンドを打てば環境構築は完了します。
 
 ## できあがる環境
-- http://localhost:3000にアクセスするとNext.jsのページにアクセス可能
-- http://localhost:3001にアクセスするとRailsのページにアクセス可能
+- [http://localhost:3000](http://localhost:3000)にアクセスするとNext.jsのページにアクセス可能
+- [http://localhost:3001](http://localhost:3001)にアクセスするとRailsのページにアクセス可能
 - RailsのDBはMySQLで管理する
 という状態になります。
 
-追記：mynetworkに接続する設定にしたので、Next.jsからRails APIのデータをfetchするときはhttp://api:3000にアクセスしてください。
+追記：mynetworkに接続する設定にしたので、Next.jsからRails APIのデータをfetchするときは[http://api:3000](http://api:3000)にアクセスしてください。
 railsのみ、ホスト側とコンテナ内でのポート番号の対応が違うので、コンテナに直接接続するこの指定の仕方だと、ポート番号が3001ではなく3000になります。
 
 ## 環境構築の手順
@@ -25,7 +25,7 @@ railsのみ、ホスト側とコンテナ内でのポート番号の対応が違
 はじめに、すべてのコンテナをmynetworkという名前のネットワークに接続する設定にしたので、以下のコマンドを実行してmynetworkを生成してください。
 (これを設定していないときにNext.jsからRails APIのデータをfetchしようとしてエラー吐いたことがあったので、一応入れてます。)
 ```
-docker network cerate mynetwork
+docker network create mynetwork
 ```
 
 それでは、backendから構築していきます。まずは以下を実行してください。
@@ -111,7 +111,7 @@ docker-compose up -d
 docker-compose exec api rails db:create
 ```
 
-http://localhost:3001にアクセスして、Railsの初期ページが表示されることを確認してください。
+[http://localhost:3001](http://localhost:3001)にアクセスして、Railsの初期ページが表示されることを確認してください。
 これでバックエンドの環境構築は終了です。
 この時点では、DockerDesktopで確認したときにfrontのコンテナが灰色になっていますが、気にしなくて大丈夫です。
 
@@ -130,7 +130,7 @@ docker-compose run --rm front sh -c 'npx create-next-app . '
 docker-compose up -d front
 ```
 
-http://localhost:3000にアクセスして、Next.jsの初期画面が表示されることを確認してください。
+[http://localhost:3000](http://localhost:3000)にアクセスして、Next.jsの初期画面が表示されることを確認してください。
 また、page.tsxの中身を変更して、ホットリロードが発生するかも試してみてください。
 
 ## 使い方
