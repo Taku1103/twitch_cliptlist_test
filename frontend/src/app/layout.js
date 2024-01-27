@@ -15,8 +15,11 @@ export default function RootLayout({ children }) {
     <html lang="ja">
       <body className={inter.className}>
         <Header />
-        <Sidebar />
-        {children}
+        <div className="clear-right"></div>
+        <div className="main-wrapper">
+          <Sidebar />
+          <div className="content-wrapper">{children}</div>
+        </div>
       </body>
     </html>
   )
