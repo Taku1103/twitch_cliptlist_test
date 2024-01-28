@@ -2,8 +2,8 @@ export default function PlaylistInClip({ listData }) {
   console.log(listData)
   return (
     <>
-      <h2>プレイリスト</h2>
-      {listData.map((clip) => (
+      <h2>{listData.id}</h2>
+      {listData.playlist.map((clip) => (
         <>
           <img src={clip.clip.thumbnail_url} />
           <p>{clip.clip.title}</p>
