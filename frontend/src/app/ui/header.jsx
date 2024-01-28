@@ -12,7 +12,6 @@ export default function Header() {
             </Link>
           </div>
         </div>
-
         <div class="search-box">
           <input type="text" placeholder="検索ワード" />
           <button type="submit">

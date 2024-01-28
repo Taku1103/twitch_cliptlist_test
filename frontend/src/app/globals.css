@@ -66,6 +66,24 @@ a:hover {
 /* ------------------------- */
 
 /* header */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--background);
+  border-bottom: 2px solid rgba(43, 44, 52, 0.1);
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  font-weight: bold;
+}
+
+.header-element {
+  margin-left: 20px;
+}
 
 /* main */
 
@@ -104,13 +122,14 @@ a:hover {
 /* 検索バー */
 .search-box {
   display: flex;
-  width: 100%;
+  width: 50%;
+  height: 75%;
 }
 
 .search-box input[type="text"] {
   flex-grow: 1;
   padding: 0.7rem 0 0.7rem 0.8rem;
-  border: 1px solid #333947;
+  border: 1px solid var(--paragraph);
   border-radius: 1.5rem 0 0 1.5rem;
 }
 
@@ -119,14 +138,15 @@ a:hover {
   padding: 0.8rem 0.9rem 0.8rem 0.8rem;
   border-radius: 0 1.5rem 1.5rem 0;
   border: none;
-  background-color: #333947;
+  background-color: var(--button);
+
   color: #fff;
   font-size: 0.75rem;
 }
 
 .search-box input:focus {
   outline: 0;
-  border: 1px solid #4ab6f6;
+  border: 1px solid var(--button);
 }
 
 .search-box button:hover {
