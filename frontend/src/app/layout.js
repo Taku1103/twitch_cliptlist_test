@@ -13,6 +13,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="ja">
+      <head>
+        <link
+          href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+          rel="stylesheet"
+        ></link>
+      </head>
       <body className={inter.className}>
         <Header />
         <div className="clear-right"></div>

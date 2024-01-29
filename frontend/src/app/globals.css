@@ -49,10 +49,10 @@ a:hover {
   color: var(--link);
 }
 
-button {
+/* button {
   background-color: var(--button);
   color: var(--button-text);
-}
+} */
 
 /* clear */
 .clear-left {
@@ -66,50 +66,23 @@ button {
 /* ------------------------- */
 
 /* header */
-.header-wrapper {
-  background-color: white;
-  border-top: 1px solid #dddddd;
-  border-bottom: 1px solid #dddddd;
-  height: 51px;
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--background);
+  border-bottom: 2px solid rgba(43, 44, 52, 0.1);
+}
 
-  .header-left {
-    float: left;
-    height: 50px;
-    padding-left: 15px;
+.header-right {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  font-weight: bold;
+}
 
-    display: flex;
-    align-items: center;
-
-    .header-element {
-      float: left;
-      margin-right: 10px;
-
-      .name a {
-        color: rgba(0, 0, 0, 0.82);
-        font-size: 14px;
-        font-weight: bold;
-      }
-    }
-  }
-
-  .header-right {
-    float: right;
-    height: 50px;
-    padding-right: 20px;
-
-    display: flex;
-    align-items: center;
-
-    .header-element {
-      float: left;
-      margin-left: 20px;
-    }
-
-    a {
-      font-size: 14px;
-      font-weight: bold;
-    }
-  }
+.header-element {
+  margin-left: 20px;
 }
 
 /* main */
@@ -144,4 +117,38 @@ button {
   .explanation {
     border-bottom: 1px solid #dddddd;
   }
+}
+
+/* 検索バー */
+.search-box {
+  display: flex;
+  width: 50%;
+  height: 75%;
+}
+
+.search-box input[type="text"] {
+  flex-grow: 1;
+  padding: 0.7rem 0 0.7rem 0.8rem;
+  border: 1px solid var(--paragraph);
+  border-radius: 1.5rem 0 0 1.5rem;
+}
+
+.search-box button {
+  cursor: pointer;
+  padding: 0.8rem 0.9rem 0.8rem 0.8rem;
+  border-radius: 0 1.5rem 1.5rem 0;
+  border: none;
+  background-color: var(--button);
+
+  color: #fff;
+  font-size: 0.75rem;
+}
+
+.search-box input:focus {
+  outline: 0;
+  border: 1px solid var(--button);
+}
+
+.search-box button:hover {
+  color: #4ab6f6;
 }

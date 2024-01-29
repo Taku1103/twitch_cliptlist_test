@@ -8,9 +8,15 @@ export default function Header() {
         <div className="header-left">
           <div className="header-element">
             <Link href="/">
-              <Image src="/logo.png" alt="" width="110" height="40" />
+              <Image src="/logo2.png" alt="" width="50" height="50" />
             </Link>
           </div>
+        </div>
+        <div class="search-box">
+          <input type="text" placeholder="検索ワード" />
+          <button type="submit">
+            <i class="fas fa-search fa-fw"></i>
+          </button>
         </div>
         <div className="header-right">
           <div className="header-element">
