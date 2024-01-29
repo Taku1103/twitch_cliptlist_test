@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_29_161915) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_29_172309) do
   create_table "clips", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "id_on_twtich"
+    t.string "id_on_twitch"
     t.string "url"
     t.string "embed_url"
     t.string "broadcaster_id"
@@ -38,6 +38,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_29_161915) do
     t.date "start_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "playlist_id"
+    t.index ["playlist_id"], name: "index_daily_highlight_playlists_on_playlist_id"
   end
 
   create_table "monthly_highlight_playlists", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -45,12 +47,18 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_29_161915) do
     t.date "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "playlist_id"
+    t.index ["playlist_id"], name: "index_monthly_highlight_playlists_on_playlist_id"
   end
 
   create_table "playlist_clips", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "order_index"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "playlist_id"
+    t.bigint "clip_id"
+    t.index ["clip_id"], name: "index_playlist_clips_on_clip_id"
+    t.index ["playlist_id"], name: "index_playlist_clips_on_playlist_id"
   end
 
   create_table "playlists", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -59,12 +67,18 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_29_161915) do
     t.boolean "published", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_playlists_on_user_id"
   end
 
   create_table "user_favorite_playlists", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "order_index"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "playlist_id"
+    t.bigint "user_id"
+    t.index ["playlist_id"], name: "index_user_favorite_playlists_on_playlist_id"
+    t.index ["user_id"], name: "index_user_favorite_playlists_on_user_id"
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -82,6 +96,16 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_29_161915) do
     t.date "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "playlist_id"
+    t.index ["playlist_id"], name: "index_weekly_highlight_playlists_on_playlist_id"
   end
 
+  add_foreign_key "daily_highlight_playlists", "playlists"
+  add_foreign_key "monthly_highlight_playlists", "playlists"
+  add_foreign_key "playlist_clips", "clips"
+  add_foreign_key "playlist_clips", "playlists"
+  add_foreign_key "playlists", "users"
+  add_foreign_key "user_favorite_playlists", "playlists"
+  add_foreign_key "user_favorite_playlists", "users"
+  add_foreign_key "weekly_highlight_playlists", "playlists"
 end
