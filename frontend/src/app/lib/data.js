@@ -72,6 +72,9 @@ export async function fetchPlaylistData({ listId }) {
           },
         ],
         id: 'MyPlaylist',
+        creatorName: 'Sakana',
+        createdAt: '2024-01-29',
+        favoritesCount: 3,
       }
 
       return response

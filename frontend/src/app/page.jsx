@@ -4,6 +4,14 @@ export default function Page() {
   return (
     <>
       <h1>Top</h1>
+      <h2>Playlist一覧</h2>
+      <ul>
+        <li>
+          <Link href="/playlists/MyPlaylist">MyPlaylist</Link>
+        </li>
+      </ul>
+
+      <h2>Clip一覧</h2>
       <ul>
         <li>
           <Link href="/watch/?clip=ShinyUgliestFerretKreygasm-PdQRHzhylDkgxmRh">
