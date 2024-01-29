@@ -39,7 +39,7 @@ export default function Clip({ clipId, clipData, listData, index }) {
         </div>
       </div>
       <div className="playlist-area">
-        {listData && <PlaylistInClip listData={listData} />}
+        {listData && <PlaylistInClip listData={listData} autoplay={autoplay} />}
       </div>
     </>
   )
