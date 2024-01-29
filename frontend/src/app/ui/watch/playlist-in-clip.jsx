@@ -2,12 +2,13 @@
 
 import { useRouter } from 'next/navigation'
 
-export default function PlaylistInClip({ listData }) {
+export default function PlaylistInClip({ listData, autoplay }) {
   const router = useRouter()
 
   function moveClip(clipId, listId) {
     // console.log(clipId, listId)
     router.push(`?clip=${clipId}&list=${listId}`)
+    autoplay.current = true
   }
 
   return (
