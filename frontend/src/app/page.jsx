@@ -7,7 +7,7 @@ export default function Page() {
       <h2>Playlist一覧</h2>
       <ul>
         <li>
-          <Link href="/playlists/MyPlaylist">MyPlaylist</Link>
+          <Link href="/users/sakana/playlists/MyPlaylist">MyPlaylist</Link>
         </li>
       </ul>
 
