@@ -37,6 +37,7 @@ export default function Clip({ clipId, clipData, listData, index }) {
             <div className={styles.viewCount}>
               視聴回数{clipData.view_count}回
             </div>
+            <div className="clear-left"></div>
           </div>
           <div className={styles.broadcaster}>
             <div className={styles.name}>{clipData.broadcaster_name}</div>
