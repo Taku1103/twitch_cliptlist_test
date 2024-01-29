@@ -14,16 +14,39 @@
       padding-right: 10px;
       float: right;
       .moveButton {
-        padding: 5px 10px 5px 10px;
+        height: 32px;
+        padding: 0px 10px 0px 10px;
         border: none;
         cursor: pointer;
         font-size: 14px;
         font-weight: bold;
         margin-right: 10px;
+        border-radius: 5px;
       }
 
       .moveButton:hover {
-        background-color: #7256fa;
+        background-color: #5236da;
+      }
+    }
+
+    .detail {
+      padding-top: 5px;
+      padding-right: 10px;
+      float: right;
+      .xShareButton {
+        height: 32px;
+        padding: 0px 10px 0px 10px;
+        border: none;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: bold;
+        margin-right: 10px;
+        border-radius: 5px;
+        color: var(--paragraph);
+        background-color: #e7e7ea;
+      }
+      .xShareButton:hover {
+        background-color: #d7d7da;
       }
     }
   }
