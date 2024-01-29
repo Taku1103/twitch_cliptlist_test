@@ -23,15 +23,11 @@ export default async function Page({ searchParams }) {
     clipData = await fetchClipData({ clipId })
   }
   return (
-    <>
-      <div className="clip">
-        <Clip
-          clipId={clipId}
-          clipData={clipData.clip}
-          listData={listData}
-          index={index}
-        />
-      </div>
-    </>
+    <Clip
+      clipId={clipId}
+      clipData={clipData.clip}
+      listData={listData}
+      index={index}
+    />
   )
 }
