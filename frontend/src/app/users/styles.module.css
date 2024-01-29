@@ -1,0 +1,36 @@
+.playlistMain {
+}
+
+.clip {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: #f7f7f8;
+  cursor: pointer;
+
+  .left {
+    padding-right: 10px;
+  }
+
+  .right {
+    padding-left: 10px;
+    .title {
+      padding: 8px 3px 3px 3px;
+      margin: 0px;
+      font-weight: bold;
+      font-size: 15px;
+      line-height: 15px;
+    }
+    .broadcaster {
+      padding: 3px;
+      margin: 0px;
+      font-size: 13px;
+      line-height: 13px;
+    }
+  }
+}
+
+.clip:hover {
+  background-color: #eee;
+}

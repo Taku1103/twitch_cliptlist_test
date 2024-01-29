@@ -1,5 +1,5 @@
 import { fetchPlaylistData } from '@/app/lib/data'
-import Link from 'next/link'
+import Playlist from '@/app/ui/playlists/playlist'
 
 export default async function Page({ params }) {
   const listData = await fetchPlaylistData({ listId: params.listId })
@@ -15,19 +15,7 @@ export default async function Page({ params }) {
         <p>削除</p>
         <p>Xで共有</p>
       </div>
-      <div className="playlist-main">
-        {listData.playlist.map((clip) => (
-          <>
-            <div className="clip">
-              <Link href={`/watch?clip=${clip.clip.tw_id}&list=${listData.id}`}>
-                <img src={clip.clip.thumbnail_url} />
-                <p>{clip.clip.title}</p>
-                <p>{clip.clip.broadcaster_name}</p>
-              </Link>
-            </div>
-          </>
-        ))}
-      </div>
+      <Playlist listData={listData} />
     </>
   )
 }
