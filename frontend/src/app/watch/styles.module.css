@@ -8,6 +8,24 @@
       width: 100%;
       aspect-ratio: 40 / 19;
     }
+
+    .operation {
+      padding-top: 5px;
+      padding-right: 10px;
+      float: right;
+      .moveButton {
+        padding: 5px 10px 5px 10px;
+        border: none;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: bold;
+        margin-right: 10px;
+      }
+
+      .moveButton:hover {
+        background-color: #7256fa;
+      }
+    }
   }
 
   .playlistArea {

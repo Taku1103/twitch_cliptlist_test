@@ -1,3 +1,4 @@
+import styles from '@/app/watch/styles.module.css'
 import { useRouter } from 'next/navigation'
 
 export default function MoveNextButton({ listData, index, autoplay }) {
@@ -9,5 +10,12 @@ export default function MoveNextButton({ listData, index, autoplay }) {
     autoplay.current = true
   }
 
-  return <button onClick={() => moveNextClip(listData, index)}>次へ</button>
+  return (
+    <button
+      className={styles.moveButton}
+      onClick={() => moveNextClip(listData, index)}
+    >
+      次へ
+    </button>
+  )
 }
