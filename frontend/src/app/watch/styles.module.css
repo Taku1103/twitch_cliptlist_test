@@ -1,0 +1,68 @@
+.clip {
+  display: flex;
+
+  .mainArea {
+    float: left;
+    width: 100%;
+    .play {
+      width: 100%;
+      aspect-ratio: 40 / 19;
+    }
+  }
+
+  .playlistArea {
+    float: right;
+    width: 550px;
+    padding: 10px;
+
+    .playlist {
+      padding: 10px;
+      background-color: var(--background);
+      border: 1px solid #eeeeee;
+      border-radius: 10px;
+
+      .h2 {
+        padding: 10px;
+        margin: 0px;
+      }
+
+      .eachClip {
+        padding: 8px;
+        cursor: pointer;
+
+        .left {
+          float: left;
+        }
+
+        .right {
+          .info {
+            display: flex;
+            flex-flow: column;
+            justify-content: space-between;
+            .title {
+              padding: 8px 3px 3px 3px;
+              margin: 0px;
+              font-weight: bold;
+              font-size: 14px;
+              line-height: 14px;
+            }
+            .broadcaster {
+              padding: 3px;
+              margin: 0px;
+              font-size: 12px;
+              line-height: 12px;
+            }
+          }
+        }
+      }
+
+      .eachClip:hover {
+        background-color: lightgrey;
+      }
+    }
+  }
+}
+
+.active {
+  background-color: lightgrey;
+}
