@@ -4,6 +4,7 @@ import MoveNextButton from '@/app/ui/watch/move-next-button'
 import MovePreviousButton from '@/app/ui/watch/move-previous-button'
 import Play from '@/app/ui/watch/play'
 import PlaylistInClip from '@/app/ui/watch/playlist-in-clip'
+import XShareButton from '@/app/ui/watch/x-share-button'
 import { useRef } from 'react'
 
 export default function Clip({ clipId, clipData, listData, index }) {
@@ -25,6 +26,9 @@ export default function Clip({ clipId, clipData, listData, index }) {
             index={index}
             autoplay={autoplay}
           />
+        </div>
+        <div className="detail">
+          <XShareButton clipData={clipData} />
         </div>
         <div className="explanation">
           <div className="title">{clipData.title}</div>
