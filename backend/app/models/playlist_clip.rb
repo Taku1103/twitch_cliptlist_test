@@ -1,0 +1,2 @@
+class PlaylistClip < ApplicationRecord
+end

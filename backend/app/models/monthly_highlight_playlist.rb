@@ -1,0 +1,2 @@
+class MonthlyHighlightPlaylist < ApplicationRecord
+end

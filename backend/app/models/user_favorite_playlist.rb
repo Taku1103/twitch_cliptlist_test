@@ -1,0 +1,2 @@
+class UserFavoritePlaylist < ApplicationRecord
+end

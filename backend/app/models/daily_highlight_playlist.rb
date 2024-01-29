@@ -1,0 +1,2 @@
+class DailyHighlightPlaylist < ApplicationRecord
+end
