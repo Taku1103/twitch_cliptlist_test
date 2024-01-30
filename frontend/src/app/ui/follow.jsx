@@ -1,4 +1,4 @@
-export default function List() {
+export default function Follow() {
   // リストアイテムのデータ配列
   const items = ['配信者1', '配信者2', '配信者3']
 
