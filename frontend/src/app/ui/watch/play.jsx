@@ -13,7 +13,6 @@ export default function Play({ clipId, autoplay }) {
         allowFullScreen
         width="100%"
         height="100%"
-        Style="border: none;"
       ></iframe>
     </>
   )

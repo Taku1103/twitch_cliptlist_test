@@ -1,6 +1,8 @@
 import Link from 'next/link'
 
 export default function Page() {
+  console.log('--------------------------------')
+
   return (
     <>
       <h1>Top</h1>

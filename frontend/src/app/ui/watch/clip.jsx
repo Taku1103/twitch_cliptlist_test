@@ -5,7 +5,7 @@ import MovePreviousButton from '@/app/ui/watch/move-previous-button'
 import Play from '@/app/ui/watch/play'
 import PlaylistInClip from '@/app/ui/watch/playlist-in-clip'
 import XShareButton from '@/app/ui/watch/x-share-button'
-import styles from '@/app/watch/styles.module.css'
+import styles from '@/app/watch/watch.module.css'
 import { useRef } from 'react'
 
 export default function Clip({ clipId, clipData, listData, index }) {
