@@ -130,3 +130,15 @@ export async function fetchWeeklyRankingData() {
     console.log(WeeklyRankingDataの取得に失敗しました)
   }
 }
+
+export async function fetchTest() {
+  try {
+    const response = await fetch('http://api:3000/api/users/1')
+    // const response = await fetch('http://localhost:3001/api/home')
+    console.log(response)
+    return response
+  } catch (error) {
+    console.log('fetchに失敗')
+    console.log(error)
+  }
+}

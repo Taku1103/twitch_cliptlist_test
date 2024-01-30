@@ -1,4 +1,4 @@
-import styles from '@/app/watch/styles.module.css'
+import styles from '@/app/watch/watch.module.css'
 import { useRouter } from 'next/navigation'
 
 export default function MovePreviousButton({ listData, index, autoplay }) {
