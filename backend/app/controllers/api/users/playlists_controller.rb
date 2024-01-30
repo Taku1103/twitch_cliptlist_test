@@ -19,7 +19,7 @@ module Api
         if @playlist.save
           render json: { status: :created, message: "Creating playlist successed", playlist: @playlist }
         else
-          render json: { message: "Creating playlist failed" }
+          render json: { status: :unprocessable_entity, message: "Creating playlist failed" }
         end
       end
 
@@ -27,7 +27,7 @@ module Api
         if @playlist.update(playlist_param)
           render json: { status: :ok, message: "Updating playlist successed", playlist: @playlist }
         else
-          render json: { message: "Updating playlist failed" }
+          render json: { status: :unprocessable_entity, message: "Updating playlist failed" }
         end
       end
 
