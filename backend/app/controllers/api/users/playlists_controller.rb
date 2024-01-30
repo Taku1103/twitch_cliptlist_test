@@ -11,7 +11,8 @@ module Api
       end
 
       def show
-        render json: { status: :ok, message: "showing success", playlist: @playlist }
+        @playlist_clips = @playlist.clips
+        render json: { status: :ok, message: "showing success", playlist: @playlist, playlist_clips: @playlist_clips }
       end
 
       def create
