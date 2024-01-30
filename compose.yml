@@ -45,7 +45,7 @@ services:
     environment:
       - WATCHPACK_POLLING=true
       - TZ=Asia/Tokyo
-    command: sh -c "npm install next && PORT=3000 npm run dev"
+    command: sh -c "npm install next && PORT=3000 npm run dev && npm install"
     networks:
       - mynetwork
 
