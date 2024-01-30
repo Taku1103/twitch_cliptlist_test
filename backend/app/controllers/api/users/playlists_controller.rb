@@ -14,7 +14,7 @@ module Api
       def create
         @playlist = Playlist.new(playlist_param)
         if @playlist.save
-          render json: { status: :ok, message: "Creating playlist successed", playlist: @playlist }
+          render json: { status: :created, message: "Creating playlist successed", playlist: @playlist }
         else
           render json: { message: "Creating playlist failed" }
         end
