@@ -1,10 +1,15 @@
+import { fetchTopPlaylistsData } from '@/app/lib/data'
+import Playlists from '@/app/ui/playlists/top/playlists'
 import Link from 'next/link'
 
-export default function Page() {
+export default async function Page() {
+  const listsData = await fetchTopPlaylistsData()
+
   return (
     <>
       <h1>Top</h1>
       <h2>Playlist一覧</h2>
+      <Playlists listsData={listsData} />
       <ul>
         <li>
           <Link href="/users/sakana/playlists/MyPlaylist">MyPlaylist</Link>
