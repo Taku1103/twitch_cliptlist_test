@@ -38,7 +38,7 @@ export default function Playlists({ listsData }) {
       {rows.map((row) => (
         <div className={styles.row} key={rows.indexOf(row)}>
           {row.map((listData) => (
-            <div key={listData.id}>
+            <div className={styles.playlist} key={listData.id}>
               <Playlist listData={listData} />
             </div>
           ))}
