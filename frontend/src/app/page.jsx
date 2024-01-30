@@ -7,7 +7,6 @@ export default async function Page() {
 
   return (
     <>
-      <h1>Top</h1>
       <h2>Playlist一覧</h2>
       <Playlists listsData={listsData} />
       <ul>

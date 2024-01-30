@@ -9,10 +9,17 @@ export default function Playlist({ listData }) {
         href={`watch?clip=${listData.playlist[0].clip.tw_id}&list=MyPlaylist`}
       >
         <div className={styles.left}>
-          <img
-            src={`${listData.playlist[0].clip.thumbnail_url}`}
-            height="120"
-          />
+          <div className={styles.playlistImage}>
+            <img
+              src={`${listData.playlist[0].clip.thumbnail_url}`}
+              className={styles.img}
+            />
+            <div className={styles.shadow1}></div>
+            <div className={styles.shadow2}></div>
+            <div className={styles.clipCount}>
+              <span>1本のクリップ</span>
+            </div>
+          </div>
         </div>
         <div className={styles.right}>
           <p className={styles.listId}>{listData.id}</p>
