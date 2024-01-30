@@ -1,5 +1,6 @@
 require "http"
 require "json"
+require "csv"
 
 class TwitchApiController < ApplicationController
   # アプリアクセストークン取得
@@ -29,7 +30,7 @@ class TwitchApiController < ApplicationController
     render html: html_content.html_safe
   end
 
-  # アプリアクセストークンを使用して、rabibit君のidを取得
+  # rabibit君のidを取得
   def get_user
     header = { "Authorization" => ENV["APP_ACCESS_TOKEN"],  "Client-id" => ENV["CLIENT_ID"] }
     uri = "https://api.twitch.tv/helix/users?login=#{ENV["RABBIT_LOGIN_NAME"]}"
@@ -59,6 +60,28 @@ class TwitchApiController < ApplicationController
     render json: { "broadcaster_ids": broadcaster_ids }, status: :ok
   end
 
+  # public/broadcaster_ids.txtに記載されている全broadcaster_idのクリップを取得。
+  # 取得したクリップ情報をpublic/clip_list.csvに出力。
+  # TODO: チャンネル数を絞って直近1ヶ月全てを取得し、件数を調べる。件数によってはチャンネル数を絞る。
+  # TODO: seeds.rbを作成する。
+  def get_broadcaster_clips
+    clip_list = []
+    broadcaster_ids = File.readlines("public/broadcaster_ids.txt").map(&:chomp)
+    header = { "Authorization" => ENV["APP_ACCESS_TOKEN"],  "Client-id" => ENV["CLIENT_ID"] }
+
+    broadcaster_ids.each_with_index do |broadcaster_id, index|
+      uri = "https://api.twitch.tv/helix/clips?broadcaster_id=#{broadcaster_id}&first=2"
+      res = request_get(header, uri)
+
+      broadcaster_clips = res["data"]
+      clip_list.concat(broadcaster_clips)
+      break if index == 10 # NOTE: とりあえず10件でbreak
+    end
+
+    write_csv("public/clip_list.csv", clip_list)
+    render json: { "res": clip_list }, status: :ok
+  end
+
   private
     def request_get(header, uri)
       res = HTTP[header].get(uri)
@@ -68,5 +91,19 @@ class TwitchApiController < ApplicationController
     def request_post(header, uri, body)
       res = HTTP[header].get(uri, json: body)
       JSON.parse(res.to_s)
+    end
+
+    def write_csv(path, clip_list)
+      CSV.open(path, "wb") do |csv|
+        clip_list.each do |clip|
+          csv << [
+            clip["id"], clip["url"], clip["embed_url"], clip["broadcaster_id"],
+            clip["broadcaster_name"], clip["creator_id"], clip["creator_name"],
+            clip["video_id"], clip["game_id"], clip["language"], clip["title"],
+            clip["view_count"], clip["created_at"], clip["thumbnail_url"],
+            clip["duration"], clip["vod_offset"], clip["is_featured"]
+          ]
+        end
+      end
     end
 end
