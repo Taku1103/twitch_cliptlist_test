@@ -12,10 +12,10 @@ export default function Header() {
             </Link>
           </div>
         </div>
-        <div class="search-box">
+        <div className="search-box">
           <input type="text" placeholder="検索ワード" />
           <button type="submit">
-            <i class="fas fa-search fa-fw"></i>
+            <i className="fas fa-search fa-fw"></i>
           </button>
         </div>
         <div className="header-right">

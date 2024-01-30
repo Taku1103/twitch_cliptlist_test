@@ -97,6 +97,82 @@ header {
   background-color: #efeff1;
   width: 280px; /* 仮 */
   height: 2000px; /* 仮 */
+  box-shadow: inset 5px 0px 0px 0px var(--button); /* 内側ボーダー */
+}
+.sidebar-wrapper ul {
+  margin: 0;
+  padding: 0;
+}
+
+.side-element {
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.side-element p {
+  margin-top: 0px;
+}
+
+/* サイドバーのリスト */
+
+.nav {
+  width: 60%;
+  margin: 0 auto;
+}
+
+li {
+  list-style: none;
+}
+
+.nav ul {
+  display: flex;
+  justify-content: space-between;
+}
+
+.fa-solid {
+  font-size: 25px;
+  color: var(--paragraph);
+}
+
+.fa-heatrt {
+  margin-right: 10px;
+}
+
+.list-item {
+  border-bottom: 1px solid rgba(43, 44, 52, 0.1);
+  padding: 10px 0px;
+  color: var(--paragraph);
+
+  transition:
+    background-color 0.3s,
+    border-radius 0.3s,
+    padding-left 0.3s;
+}
+
+.list-item:hover {
+  background-color: #e9e8e8;
+  border-radius: 15px;
+  padding-left: 10px;
+}
+
+.side-list {
+  margin-top: 10px;
+
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.active {
+  border-radius: 50%; /* 角を完全に丸くする */
+  background-color: rgba(204, 204, 206, 0.1);
+  color: var(--button);
+
+  font-size: 27px;
+}
+
+.rounded-image {
+  border-radius: 50%; /* 画像を円形にする */
 }
 
 /* content */
