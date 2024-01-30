@@ -1,7 +1,7 @@
 'use client'
-import Favorite_list from '@/app/ui/favorite_list'
-import Follow from '@/app/ui/follow'
-import List from '@/app/ui/list'
+import Favorite_list from '@/app/ui/sidevar/favorite_list'
+import Follow from '@/app/ui/sidevar/follow'
+import List from '@/app/ui/sidevar/list'
 import Image from 'next/image'
 import { useState } from 'react'
 
