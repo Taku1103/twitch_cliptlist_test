@@ -131,6 +131,245 @@ export async function fetchWeeklyRankingData() {
   }
 }
 
+export async function fetchTopPlaylistsData() {
+  try {
+    const response = [
+      {
+        playlist: [
+          {
+            clip: {
+              clip_id: 1,
+              tw_id: 'InnocentFastRadicchioLitty-lngA37a3soWC1Bo4',
+              title: 'ゲッダンwwwwww',
+              broadcaster_name: 'fps_shaka',
+              view_count: 761388,
+              thumbnail_url:
+                'https://clips-media-assets2.twitch.tv/ZNaDBhvOSPcOctWsAeihdg/AT-cm%7CZNaDBhvOSPcOctWsAeihdg-preview-480x272.jpg',
+            },
+          },
+        ],
+        id: '爆速一般通過SHAKAまとめ',
+        creatorName: 'Sakana',
+        createdAt: '2024-01-29',
+        favoritesCount: 10000,
+      },
+      {
+        playlist: [
+          {
+            clip: {
+              clip_id: 1,
+              tw_id: 'InnocentFastRadicchioLitty-lngA37a3soWC1Bo4',
+              title: 'ゲッダンwwwwww',
+              broadcaster_name: 'fps_shaka',
+              view_count: 761388,
+              thumbnail_url:
+                'https://clips-media-assets2.twitch.tv/ZNaDBhvOSPcOctWsAeihdg/AT-cm%7CZNaDBhvOSPcOctWsAeihdg-preview-480x272.jpg',
+            },
+          },
+        ],
+        id: '予想外の返答に沈黙するしんじさんまとめ',
+        creatorName: 'Sakana',
+        createdAt: '2024-01-29',
+        favoritesCount: 9999,
+      },
+      {
+        playlist: [
+          {
+            clip: {
+              clip_id: 1,
+              tw_id: 'InnocentFastRadicchioLitty-lngA37a3soWC1Bo4',
+              title: 'ゲッダンwwwwww',
+              broadcaster_name: 'fps_shaka',
+              view_count: 761388,
+              thumbnail_url:
+                'https://clips-media-assets2.twitch.tv/ZNaDBhvOSPcOctWsAeihdg/AT-cm%7CZNaDBhvOSPcOctWsAeihdg-preview-480x272.jpg',
+            },
+          },
+        ],
+        id: '釈迦誘拐の危機を救う英雄かるびまとめ',
+        creatorName: 'Sakana',
+        createdAt: '2024-01-29',
+        favoritesCount: 9998,
+      },
+      {
+        playlist: [
+          {
+            clip: {
+              clip_id: 1,
+              tw_id: 'InnocentFastRadicchioLitty-lngA37a3soWC1Bo4',
+              title: 'ゲッダンwwwwww',
+              broadcaster_name: 'fps_shaka',
+              view_count: 761388,
+              thumbnail_url:
+                'https://clips-media-assets2.twitch.tv/ZNaDBhvOSPcOctWsAeihdg/AT-cm%7CZNaDBhvOSPcOctWsAeihdg-preview-480x272.jpg',
+            },
+          },
+        ],
+        id: '愛車が炎上するかるびまとめ',
+        creatorName: 'Sakana',
+        createdAt: '2024-01-29',
+        favoritesCount: 9997,
+      },
+      {
+        playlist: [
+          {
+            clip: {
+              clip_id: 1,
+              tw_id: 'InnocentFastRadicchioLitty-lngA37a3soWC1Bo4',
+              title: 'ゲッダンwwwwww',
+              broadcaster_name: 'fps_shaka',
+              view_count: 761388,
+              thumbnail_url:
+                'https://clips-media-assets2.twitch.tv/ZNaDBhvOSPcOctWsAeihdg/AT-cm%7CZNaDBhvOSPcOctWsAeihdg-preview-480x272.jpg',
+            },
+          },
+        ],
+        id: '分かんないよ！（号泣）まとめ',
+        creatorName: 'Sakana',
+        createdAt: '2024-01-29',
+        favoritesCount: 9996,
+      },
+      {
+        playlist: [
+          {
+            clip: {
+              clip_id: 1,
+              tw_id: 'InnocentFastRadicchioLitty-lngA37a3soWC1Bo4',
+              title: 'ゲッダンwwwwww',
+              broadcaster_name: 'fps_shaka',
+              view_count: 761388,
+              thumbnail_url:
+                'https://clips-media-assets2.twitch.tv/ZNaDBhvOSPcOctWsAeihdg/AT-cm%7CZNaDBhvOSPcOctWsAeihdg-preview-480x272.jpg',
+            },
+          },
+        ],
+        id: '地声　やべぇまとめ',
+        creatorName: 'Sakana',
+        createdAt: '2024-01-29',
+        favoritesCount: 9995,
+      },
+      {
+        playlist: [
+          {
+            clip: {
+              clip_id: 1,
+              tw_id: 'InnocentFastRadicchioLitty-lngA37a3soWC1Bo4',
+              title: 'ゲッダンwwwwww',
+              broadcaster_name: 'fps_shaka',
+              view_count: 761388,
+              thumbnail_url:
+                'https://clips-media-assets2.twitch.tv/ZNaDBhvOSPcOctWsAeihdg/AT-cm%7CZNaDBhvOSPcOctWsAeihdg-preview-480x272.jpg',
+            },
+          },
+        ],
+        id: 'たるまとめ',
+        creatorName: 'Sakana',
+        createdAt: '2024-01-29',
+        favoritesCount: 9994,
+      },
+      {
+        playlist: [
+          {
+            clip: {
+              clip_id: 1,
+              tw_id: 'InnocentFastRadicchioLitty-lngA37a3soWC1Bo4',
+              title: 'ゲッダンwwwwww',
+              broadcaster_name: 'fps_shaka',
+              view_count: 761388,
+              thumbnail_url:
+                'https://clips-media-assets2.twitch.tv/ZNaDBhvOSPcOctWsAeihdg/AT-cm%7CZNaDBhvOSPcOctWsAeihdg-preview-480x272.jpg',
+            },
+          },
+        ],
+        id: 'かなえに成敗されるトロール警官かるびまとめ',
+        creatorName: 'Sakana',
+        createdAt: '2024-01-29',
+        favoritesCount: 9993,
+      },
+      {
+        playlist: [
+          {
+            clip: {
+              clip_id: 1,
+              tw_id: 'InnocentFastRadicchioLitty-lngA37a3soWC1Bo4',
+              title: 'ゲッダンwwwwww',
+              broadcaster_name: 'fps_shaka',
+              view_count: 761388,
+              thumbnail_url:
+                'https://clips-media-assets2.twitch.tv/ZNaDBhvOSPcOctWsAeihdg/AT-cm%7CZNaDBhvOSPcOctWsAeihdg-preview-480x272.jpg',
+            },
+          },
+        ],
+        id: 'かるび、他人の車に給油まとめ',
+        creatorName: 'Sakana',
+        createdAt: '2024-01-29',
+        favoritesCount: 9992,
+      },
+      {
+        playlist: [
+          {
+            clip: {
+              clip_id: 1,
+              tw_id: 'InnocentFastRadicchioLitty-lngA37a3soWC1Bo4',
+              title: 'ゲッダンwwwwww',
+              broadcaster_name: 'fps_shaka',
+              view_count: 761388,
+              thumbnail_url:
+                'https://clips-media-assets2.twitch.tv/ZNaDBhvOSPcOctWsAeihdg/AT-cm%7CZNaDBhvOSPcOctWsAeihdg-preview-480x272.jpg',
+            },
+          },
+        ],
+        id: 'かるびロケラン発射(炎上)まとめ',
+        creatorName: 'Sakana',
+        createdAt: '2024-01-29',
+        favoritesCount: 9991,
+      },
+      {
+        playlist: [
+          {
+            clip: {
+              clip_id: 1,
+              tw_id: 'InnocentFastRadicchioLitty-lngA37a3soWC1Bo4',
+              title: 'ゲッダンwwwwww',
+              broadcaster_name: 'fps_shaka',
+              view_count: 761388,
+              thumbnail_url:
+                'https://clips-media-assets2.twitch.tv/ZNaDBhvOSPcOctWsAeihdg/AT-cm%7CZNaDBhvOSPcOctWsAeihdg-preview-480x272.jpg',
+            },
+          },
+        ],
+        id: 'ウェッ！まとめ',
+        creatorName: 'Sakana',
+        createdAt: '2024-01-29',
+        favoritesCount: 9990,
+      },
+      {
+        playlist: [
+          {
+            clip: {
+              clip_id: 1,
+              tw_id: 'InnocentFastRadicchioLitty-lngA37a3soWC1Bo4',
+              title: 'ゲッダンwwwwww',
+              broadcaster_name: 'fps_shaka',
+              view_count: 761388,
+              thumbnail_url:
+                'https://clips-media-assets2.twitch.tv/ZNaDBhvOSPcOctWsAeihdg/AT-cm%7CZNaDBhvOSPcOctWsAeihdg-preview-480x272.jpg',
+            },
+          },
+        ],
+        id: 'デイリーまとめ',
+        creatorName: 'Sakana',
+        createdAt: '2024-01-29',
+        favoritesCount: 9989,
+      },
+    ]
+
+    return response
+  } catch (error) {
+    console.log(TopPlaylistsDataの取得に失敗しました)
+  }
+}
+
 export async function fetchTest() {
   try {
     const response = await fetch('http://api:3000/api/users/1')

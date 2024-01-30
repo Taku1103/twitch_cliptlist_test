@@ -1,0 +1,79 @@
+.playlists {
+  display: flex;
+
+  .operation {
+    .chevronLeft {
+      height: 40px;
+      width: 40px;
+      font-size: 20px;
+      border: none;
+      border-radius: 10px;
+      background-color: #f7f7f8;
+      cursor: pointer;
+    }
+
+    .chevronLeft:hover {
+      background-color: #d7d7d8;
+    }
+
+    .chevronRight {
+      height: 40px;
+      width: 40px;
+      font-size: 20px;
+      border: none;
+      border-radius: 10px;
+      background-color: #f7f7f8;
+      cursor: pointer;
+    }
+
+    .chevronRight:hover {
+      background-color: #d7d7d8;
+    }
+  }
+}
+
+.row {
+  float: left;
+  width: 30%;
+  padding: 10px;
+
+  .left {
+    float: left;
+    padding-right: 15px;
+  }
+
+  .right {
+    .listId {
+      padding-top: 10px;
+      font-weight: bold;
+      font-size: 20px;
+      line-height: 22px;
+      overflow-wrap: break-word;
+    }
+
+    .favoritesCount {
+      margin: 0px;
+      font-size: 14px;
+      line-height: 14px;
+      display: flex;
+
+      .count {
+        padding-left: 5px;
+      }
+    }
+
+    .createdAt {
+      padding-top: 6px;
+      margin: 0px;
+      font-size: 14px;
+      line-height: 14px;
+    }
+  }
+}
+
+.operation {
+  width: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
