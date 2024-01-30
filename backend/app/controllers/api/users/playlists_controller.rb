@@ -1,14 +1,17 @@
 module Api
   module Users
     class PlaylistsController < ApplicationController
-      before_action :set_playlist, only: [:update, :destroy]
+      before_action :set_playlist, only: [:show, :update, :destroy]
 
-      # aciton全て:本当は違う。user_idに紐づけてacitonを動作させる
-      # ここでは仮組みとしてuserの紐づけ関係なくplaylistを操作できる
-
+      # indexのみクエリパラメータでuser_idが必要
       def index
-        @playlists = Playlist.all
-        render json: { status: :ok, message: "getting playlists sucessed", playlists: @playlists }
+        user_id = params[:user_id].to_i
+        @user_playlists = Playlist.where(user_id: user_id)
+        render json: { status: :ok, message: "getting playlists sucessed", user_playlists: @user_playlists }
+      end
+
+      def show
+        render json: { status: :ok, message: "showing success", playlist: @playlist }
       end
 
       def create
@@ -22,9 +25,9 @@ module Api
 
       def update
         if @playlist.update(playlist_param)
-          render json: { status: "Updating playlist successed", playlist: @playlist }
+          render json: { status: :ok, message: "Updating playlist successed", playlist: @playlist }
         else
-          render json: { status: "Updating playlist failed" }
+          render json: { message: "Updating playlist failed" }
         end
       end
 
@@ -39,7 +42,7 @@ module Api
         end
 
         def playlist_param
-          params.require(:playlist).permit(:name, :favorited, :favorite_count, :published)
+          params.require(:playlist).permit(:name, :user_id, :favorite_count, :published)
         end
     end
   end
