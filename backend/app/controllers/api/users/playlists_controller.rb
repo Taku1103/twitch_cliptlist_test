@@ -3,9 +3,9 @@ module Api
     class PlaylistsController < ApplicationController
       before_action :set_playlist, only: [:show, :update, :destroy]
 
-      # indexのみクエリパラメータでuser_idが必要
+      # user_idをパスパラメータで取得
       def index
-        user_id = params[:user_id].to_i
+        user_id = params[:id].to_i
         @user_playlists = Playlist.where(user_id: user_id)
         render json: { status: :ok, message: "getting playlists sucessed", user_playlists: @user_playlists }
       end
