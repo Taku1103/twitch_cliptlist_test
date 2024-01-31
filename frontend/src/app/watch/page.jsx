@@ -15,9 +15,10 @@ export default async function Page({ searchParams }) {
   /* listIdがあるときとないときで場合分け */
   if (listId) {
     listData = await fetchPlaylistData({ listId })
-    clipData = listData.playlist.find((clip) => clip.clip.tw_id === clipId)
-    index = listData.playlist.findIndex((clip) => clip.clip.tw_id === clipId)
-    console.log(index)
+    clipData = listData.playlist.find((clip) => String(clip.clip.id) === clipId)
+    index = listData.playlist.findIndex(
+      (clip) => String(clip.clip.id) === clipId,
+    )
   } else {
     listData = await fetchWeeklyRankingData()
     clipData = await fetchClipData({ clipId })

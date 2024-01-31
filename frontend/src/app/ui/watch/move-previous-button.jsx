@@ -7,7 +7,7 @@ export default function MovePreviousButton({ listData, index, autoplay }) {
     const clipId =
       listData.playlist[
         (index + listData.playlist.length - 1) % listData.playlist.length
-      ].clip.tw_id
+      ].clip.id
     router.push(`?clip=${clipId}&list=${listData.id}`)
     autoplay.current = true
   }

@@ -16,9 +16,9 @@ export default function PlaylistInClip({ listData, autoplay, clipId }) {
       <h2 className={styles.h2}>{listData.id}</h2>
       {listData.playlist.map((clip) => (
         <div
-          className={`${styles.eachClip} ${clipId == clip.clip.tw_id && styles.active}`}
-          onClick={() => moveClip(clip.clip.tw_id, listData.id)}
-          key={clip.clip.clip_id}
+          className={`${styles.eachClip} ${clipId == String(clip.clip.id) && styles.active}`}
+          onClick={() => moveClip(clip.clip.id, listData.id)}
+          key={clip.clip.id}
         >
           <div className={styles.left}>
             <div className={styles.img}>

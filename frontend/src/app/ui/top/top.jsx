@@ -37,12 +37,10 @@ export default function Top({
           <Link href="/users/sakana/playlists/MyPlaylist">MyPlaylist</Link>
         </li>
         <li>
-          <Link href="/watch/?clip=ShinyUgliestFerretKreygasm-PdQRHzhylDkgxmRh">
-            Example Clip
-          </Link>
+          <Link href="/watch/?clip=1">Example Clip</Link>
         </li>
         <li>
-          <Link href="/watch/?clip=ShinyUgliestFerretKreygasm-PdQRHzhylDkgxmRh&list=MyPlaylist">
+          <Link href="/watch/?clip=1&list=MyPlaylist">
             Example Clip(listData付き)
           </Link>
         </li>
