@@ -12,7 +12,6 @@ export default async function Page() {
   const dailyClipsData = await fetchDailyClipsData()
   const weeklyClipsData = await fetchWeeklyClipsData()
   const monthlyClipsData = await fetchMonthlyClipsData()
-  console.log(listsData)
 
   return (
     <Top
