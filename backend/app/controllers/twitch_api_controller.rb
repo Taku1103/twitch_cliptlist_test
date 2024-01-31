@@ -4,7 +4,7 @@ require "csv"
 require "date"
 
 class TwitchApiController < ApplicationController
-  # アプリアクセストークン取得
+  # アプリアクセストークン作成
   def create_app_token
     header = { "Content-Type" => "application/json" }
     uri = "https://id.twitch.tv/oauth2/token"
@@ -19,7 +19,7 @@ class TwitchApiController < ApplicationController
     render json: { "app_token": token }, status: :created
   end
 
-  # ユーザーアクセストークン取得
+  # ユーザーアクセストークン作成
   # NOTE: redirect_uriが"http://localhost"でないとエラーが発生する。"http://localhost:3001"ではエラー。
   def create_user_token
     client_id = ENV["CLIENT_ID"]
@@ -31,14 +31,14 @@ class TwitchApiController < ApplicationController
     render html: html_content.html_safe
   end
 
-  # rabibit君のidを取得
-  def get_user
+  # rabibit君のtwitchのidを取得
+  def get_user_id
     header = { "Authorization" => ENV["APP_ACCESS_TOKEN"],  "Client-id" => ENV["CLIENT_ID"] }
     uri = "https://api.twitch.tv/helix/users?login=#{ENV["RABBIT_LOGIN_NAME"]}"
 
     res = request_get(header, uri)
     user_id = res["data"][0]["id"]
-    render json: { "user_id": user_id }, status: :ok
+    render json: { "user_id": res }, status: :ok
   end
 
   # rabibit君のフォローしているチャンネルのbroadcaster_idを取得（total: 183channels)
