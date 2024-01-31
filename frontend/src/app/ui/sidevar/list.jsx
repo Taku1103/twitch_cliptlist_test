@@ -13,8 +13,10 @@ export default function List() {
   return (
     <div className="side-list">
       <ul>
-        {items.map((item) => (
-          <li className="list-item">{item}</li>
+        {items.map((item, index) => (
+          <li key={index} className="list-item">
+            {item}
+          </li>
         ))}
       </ul>
     </div>

@@ -567,3 +567,20 @@ export async function fetchTest() {
     console.log(error)
   }
 }
+
+// ユーザーの持つプレイリストデータを取得するメソッド
+// http://localhost:3001/api/users/1/playlists
+export async function fetchPlaylists({ userId }) {
+  try {
+    const response = await fetch(
+      `http://api:3000/api/users/${userId}/playlists`,
+    )
+    if (!response.ok) {
+      throw new Error('ネットワークレスポンスが不正です')
+    }
+    const playlistsdata = await response.json()
+    return playlistsdata
+  } catch (error) {
+    console.error('プレイリストデータの取得に失敗しました', error)
+  }
+}
