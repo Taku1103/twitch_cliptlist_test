@@ -1,6 +1,7 @@
 require "http"
 require "json"
 require "csv"
+require "date"
 
 class TwitchApiController < ApplicationController
   # アプリアクセストークン取得
@@ -56,30 +57,40 @@ class TwitchApiController < ApplicationController
     broadcaster_list.concat(response["data"])
 
     broadcaster_ids = broadcaster_list.map { |broadcaster| broadcaster["broadcaster_id"].to_i }
-    File.write("public/broadcaster_ids.txt", broadcaster_ids.join("\n"))
+    # File.write("public/broadcaster_ids.txt", broadcaster_ids.join("\n"))　#txt書き込みコマンド
     render json: { "broadcaster_ids": broadcaster_ids }, status: :ok
   end
 
   # public/broadcaster_ids.txtに記載されている全broadcaster_idのクリップを取得。
-  # 取得したクリップ情報をpublic/clip_list.csvに出力。
-  # TODO: チャンネル数を絞って直近1ヶ月全てを取得し、件数を調べる。件数によってはチャンネル数を絞る。
-  # TODO: seeds.rbを作成する。
+  # 取得したクリップ情報をpublic/clip_list.csvに出力。条件：view_count >= 5000以上
   def get_broadcaster_clips
+    current_datetime = DateTime.now.new_offset(0)
+    current_date_rfc3339 = current_datetime.strftime("%Y-%m-%dT%H:%M:%SZ")
+    one_month_ago_datetime = current_datetime << 1
+    one_month_ago_rfc3339 = one_month_ago_datetime.strftime("%Y-%m-%dT%H:%M:%SZ")
+
     clip_list = []
     broadcaster_ids = File.readlines("public/broadcaster_ids.txt").map(&:chomp)
     header = { "Authorization" => ENV["APP_ACCESS_TOKEN"],  "Client-id" => ENV["CLIENT_ID"] }
 
-    broadcaster_ids.each_with_index do |broadcaster_id, index|
-      uri = "https://api.twitch.tv/helix/clips?broadcaster_id=#{broadcaster_id}&first=2"
-      res = request_get(header, uri)
+    broadcaster_ids.each do |broadcaster_id|
+      after = nil
+      base_uri = "https://api.twitch.tv/helix/clips?broadcaster_id=#{broadcaster_id}&started_at=#{one_month_ago_rfc3339}&ended_at=#{current_date_rfc3339}&first=100"
 
-      broadcaster_clips = res["data"]
-      clip_list.concat(broadcaster_clips)
-      break if index == 10 # NOTE: とりあえず10件でbreak
+      loop do
+        uri = after ? "#{base_uri}&after=#{after}" : "#{base_uri}"
+        res = request_get(header, uri)
+
+        broadcaster_clips = res["data"].select { |clip| clip["view_count"] >= 5000 }
+        clip_list.concat(broadcaster_clips)
+        after = res["pagination"]["cursor"]
+
+        break if after.nil? || after.empty?
+      end
     end
 
-    write_csv("public/clip_list.csv", clip_list)
-    render json: { "res": clip_list }, status: :ok
+    # write_csv("public/clip_list.csv", clip_list) #csv書き込みコマンド
+    render json: { "clip_counts": clip_list.length, "clip_list": clip_list }, status: :ok
   end
 
   private
