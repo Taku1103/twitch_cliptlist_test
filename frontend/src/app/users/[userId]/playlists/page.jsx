@@ -1,10 +1,7 @@
-import { fetchPlaylists } from '@/app/lib/data'
+import Myplaylists from '@/app/ui/playlists/myplaylists'
 
 export default async function Page({ params }) {
-  const response = await fetchPlaylists({ userId: params.userId })
-
   // responseが正しく取得されたかを確認し、user_playlistsを取得
-  const playlists = response ? response.user_playlists : []
 
   return (
     <>
@@ -15,11 +12,8 @@ export default async function Page({ params }) {
         <p>プレイリスト</p>
         <p>お気に入り</p>
       </div>
-      <ul>
-        {playlists.map((playlist, index) => (
-          <li key={index}>プレイリストの名前：{playlist.name}</li>
-        ))}
-      </ul>
+      {/* propsでpramsのuserIdを渡す */}
+      <Myplaylists userId={params.userId} />
     </>
   )
 }
