@@ -7,7 +7,7 @@ class Api::PlaylistClipsController < ApplicationController
     @playlist_clips_relation = PlaylistClip.new(clip_id: @clip_id, playlist_id: @playlist_id)
 
     if @playlist_clips_relation.save
-      render json: { status: :created, message: "Sucessed adding the clip(clip_id:#{@clip_id}) in this playlist(playlist_id:#{@playlist_id})" }
+      render json: { status: :created, message: "Successed adding the clip(clip_id:#{@clip_id}) in this playlist(playlist_id:#{@playlist_id})" }
     else
       render json: { status: :unprocessable_entity, message: "Failed adding the clip(#{@clip_id}) in this playlist(#{@playlist_id})" }
     end
@@ -22,7 +22,7 @@ class Api::PlaylistClipsController < ApplicationController
   # デバッグ用アクション(不要になったらコメントアウト)
   def index
     @playlist_clips_relations = PlaylistClip.all
-    render json: { status: :ok, message: "Sucessed Getting Index" , playlist_clips_relation: @playlist_clips_relations}
+    render json: { status: :ok, message: "Successed Getting Index", playlist_clips_relations: @playlist_clips_relations }
   end
 
   private
