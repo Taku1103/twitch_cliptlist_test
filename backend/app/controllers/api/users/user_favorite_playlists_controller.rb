@@ -14,6 +14,7 @@ module Api
         end
       end
 
+      # 現状 req.bodyにuser_idとplaylist_idを作ってもらう
       # DELETE /api/users/:id/user_favorite_playlists
       def destroy
         @favorite_relation = UserFavoritePlaylist.find_by(user_id: @user_id, playlist_id: @playlist_id)
