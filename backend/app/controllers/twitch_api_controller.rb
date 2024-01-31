@@ -105,7 +105,7 @@ class TwitchApiController < ApplicationController
     end
 
     def write_csv(path, clip_list)
-      CSV.open(path, "wb") do |csv|
+      CSV.open(path, "wb", encoding: "UTF-8") do |csv|
         clip_list.each do |clip|
           csv << [
             clip["id"], clip["url"], clip["embed_url"], clip["broadcaster_id"],
