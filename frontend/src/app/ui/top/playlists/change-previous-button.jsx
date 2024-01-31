@@ -1,4 +1,4 @@
-import styles from '@/app/top.module.css'
+import styles from '@/app/ui/top/playlists/topPlaylists.module.css'
 
 export default function ChangePreviousButton({
   chunkedArray,

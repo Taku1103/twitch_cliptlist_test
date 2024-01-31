@@ -1,7 +1,7 @@
 'use client'
 
-import Draggable from '@/app/ui/playlists/draggable'
-import styles from '@/app/users/playlist.module.css'
+import Draggable from '@/app/ui/playlists/playlist/draggable'
+import styles from '@/app/ui/playlists/playlist/playlist.module.css'
 import { DndContext } from '@dnd-kit/core'
 import { SortableContext } from '@dnd-kit/sortable'
 import { useState } from 'react'
