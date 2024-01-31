@@ -23,7 +23,7 @@ export default async function Page({ searchParams }) {
     )
   } else {
     listData = await fetchWeeklyClipsData()
-    clipData = await fetchClipData({ clipId })
+    clipData = (await fetchClipData({ clipId })).clip
   }
   return (
     <Clip

@@ -4,7 +4,7 @@ export default function XShareButton({ clipData }) {
   return (
     <button
       onClick={() =>
-        (location.href = `https://twitter.com/share?url=http://localhost:3000/watch?clip=${clipData.tw_id}&ref_src=twsrc%5Etfw&text=「${clipData.title}」を共有`)
+        (location.href = `https://twitter.com/share?url=http://localhost:3000/watch?clip=${clipData.id}&ref_src=twsrc%5Etfw&text=「${clipData.title}」を共有`)
       }
       className={styles.xShareButton}
       data-text="プレイリストを共有する"
