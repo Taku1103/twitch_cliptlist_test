@@ -20,7 +20,7 @@ export default function Header() {
         </div>
         <div className="header-right">
           <div className="header-element">
-            <Link href="/playlists">マイプレイリスト</Link>
+            <Link href="/users/1/playlists">マイプレイリスト</Link>
           </div>
           <div className="header-element">
             <Link href="#">ログアウト</Link>
