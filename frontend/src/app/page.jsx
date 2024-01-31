@@ -1,33 +1,23 @@
-import { fetchTopPlaylistsData } from '@/app/lib/data'
-import Playlists from '@/app/ui/playlists/top/playlists'
-import Link from 'next/link'
+import {
+  fetchDailyClipsData,
+  fetchMonthlyClipsData,
+  fetchTopPlaylistsData,
+  fetchWeeklyClipsData,
+} from '@/app/lib/data'
+import Top from '@/app/ui/top/top'
 
 export default async function Page() {
   const listsData = await fetchTopPlaylistsData()
+  const dailyClipsData = await fetchDailyClipsData()
+  const weeklyClipsData = await fetchWeeklyClipsData()
+  const monthlyClipsData = await fetchMonthlyClipsData()
 
   return (
-    <>
-      <h2>Playlist一覧</h2>
-      <Playlists listsData={listsData} />
-      <ul>
-        <li>
-          <Link href="/users/sakana/playlists/MyPlaylist">MyPlaylist</Link>
-        </li>
-      </ul>
-
-      <h2>Clip一覧</h2>
-      <ul>
-        <li>
-          <Link href="/watch/?clip=ShinyUgliestFerretKreygasm-PdQRHzhylDkgxmRh">
-            Example Clip
-          </Link>
-        </li>
-        <li>
-          <Link href="/watch/?clip=ShinyUgliestFerretKreygasm-PdQRHzhylDkgxmRh&list=MyPlaylist">
-            Example Clip(listData付き)
-          </Link>
-        </li>
-      </ul>
-    </>
+    <Top
+      listsData={listsData}
+      dailyClipsData={dailyClipsData}
+      weeklyClipsData={weeklyClipsData}
+      monthlyClipsData={monthlyClipsData}
+    />
   )
 }

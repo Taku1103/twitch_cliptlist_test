@@ -366,8 +366,255 @@ export async function fetchTopPlaylistsData() {
 
     return response
   } catch (error) {
-    console.log(TopPlaylistsDataの取得に失敗しました)
+    console.log('TopPlaylistsDataの取得に失敗しました')
   }
+}
+
+export async function fetchDailyClipsData() {
+  try {
+    const response = [
+      {
+        clip: {
+          clip_id: 5,
+          tw_id: 'AmericanMuddyChickenPeteZarollTie-z-pCCOoYt0_K7D0v',
+          title: 'Daily',
+          broadcaster_name: 'darumaisgod',
+          view_count: 761388,
+          thumbnail_url:
+            'https://clips-media-assets2.twitch.tv/ZNaDBhvOSPcOctWsAeihdg/AT-cm%7CZNaDBhvOSPcOctWsAeihdg-preview-480x272.jpg',
+        },
+      },
+      {
+        clip: {
+          clip_id: 6,
+          tw_id: 'RefinedHonestWerewolfAMPTropPunch-mukuPxkrXGPUmgwP',
+          title: 'カルビ姫による「KICK BACK」のようなもの',
+          broadcaster_name: 'darumaisgod',
+          view_count: 287755,
+          thumbnail_url:
+            'https://clips-media-assets2.twitch.tv/ZNaDBhvOSPcOctWsAeihdg/AT-cm%7CZNaDBhvOSPcOctWsAeihdg-preview-480x272.jpg',
+        },
+      },
+      {
+        clip: {
+          clip_id: 7,
+          tw_id: 'ObliviousFunGoshawkShazBotstix-m8UuwNHW4sVNNAmH',
+          title: '更生施設',
+          broadcaster_name: 'darumaisgod',
+          view_count: 238830,
+          thumbnail_url:
+            'https://clips-media-assets2.twitch.tv/ZNaDBhvOSPcOctWsAeihdg/AT-cm%7CZNaDBhvOSPcOctWsAeihdg-preview-480x272.jpg',
+        },
+      },
+      {
+        clip: {
+          clip_id: 8,
+          tw_id: 'PricklyRealPoultryPhilosoraptor-CtWj8iTS2c219ZSS',
+          title: 'これぞ元ギャングのボスの実力',
+          broadcaster_name: 'darumaisgod',
+          view_count: 238830,
+          thumbnail_url:
+            'https://clips-media-assets2.twitch.tv/ZNaDBhvOSPcOctWsAeihdg/AT-cm%7CZNaDBhvOSPcOctWsAeihdg-preview-480x272.jpg',
+        },
+      },
+      {
+        clip: {
+          clip_id: 9,
+          tw_id: 'DeliciousTameBearDoritosChip-dwGxA7JEVC5boKnX',
+          title: 'だるま炎上',
+          broadcaster_name: 'darumaisgod',
+          view_count: 238830,
+          thumbnail_url:
+            'https://clips-media-assets2.twitch.tv/ZNaDBhvOSPcOctWsAeihdg/AT-cm%7CZNaDBhvOSPcOctWsAeihdg-preview-480x272.jpg',
+        },
+      },
+      {
+        clip: {
+          clip_id: 10,
+          tw_id: 'SourCulturedPheasantSmoocherZ-IbdBO5I01XCypUXT',
+          title: '消えたまるまる',
+          broadcaster_name: 'darumaisgod',
+          view_count: 238830,
+          thumbnail_url:
+            'https://clips-media-assets2.twitch.tv/ZNaDBhvOSPcOctWsAeihdg/AT-cm%7CZNaDBhvOSPcOctWsAeihdg-preview-480x272.jpg',
+        },
+      },
+      {
+        clip: {
+          clip_id: 11,
+          tw_id: 'AlertGrotesqueLEDImGlitch-Mj4fkSFALz1Pwh0T',
+          title: 'Selly 『葛葉意外に頭いい』',
+          broadcaster_name: 'darumaisgod',
+          view_count: 238830,
+          thumbnail_url:
+            'https://clips-media-assets2.twitch.tv/ZNaDBhvOSPcOctWsAeihdg/AT-cm%7CZNaDBhvOSPcOctWsAeihdg-preview-480x272.jpg',
+        },
+      },
+      {
+        clip: {
+          clip_id: 12,
+          tw_id: 'DarkMoldyReindeerSmoocherZ-Ewo-B85pIgT4dzG7',
+          title: '極刑ハセシンの刑',
+          broadcaster_name: 'darumaisgod',
+          view_count: 238830,
+          thumbnail_url:
+            'https://clips-media-assets2.twitch.tv/ZNaDBhvOSPcOctWsAeihdg/AT-cm%7CZNaDBhvOSPcOctWsAeihdg-preview-480x272.jpg',
+        },
+      },
+      {
+        clip: {
+          clip_id: 13,
+          tw_id: 'ShinyUgliestFerretKreygasm-PdQRHzhylDkgxmRh',
+          title: 'だるま視点おいす',
+          broadcaster_name: 'darumaisgod',
+          view_count: 238830,
+          thumbnail_url:
+            'https://clips-media-assets2.twitch.tv/ZNaDBhvOSPcOctWsAeihdg/AT-cm%7CZNaDBhvOSPcOctWsAeihdg-preview-480x272.jpg',
+        },
+      },
+      {
+        clip: {
+          clip_id: 14,
+          tw_id: 'AgreeableGentleSoybeanKeepo-zbVx3XZEfAevK4qi',
+          title: 'アルス「だる～～！」',
+          broadcaster_name: 'darumaisgod',
+          view_count: 238830,
+          thumbnail_url:
+            'https://clips-media-assets2.twitch.tv/ZNaDBhvOSPcOctWsAeihdg/AT-cm%7CZNaDBhvOSPcOctWsAeihdg-preview-480x272.jpg',
+        },
+      },
+    ]
+    return response
+  } catch (error) {}
+  console.log('TopClipsDataの取得に失敗しました')
+}
+
+export async function fetchWeeklyClipsData() {
+  try {
+    const response = [
+      {
+        clip: {
+          clip_id: 5,
+          tw_id: 'AmericanMuddyChickenPeteZarollTie-z-pCCOoYt0_K7D0v',
+          title: 'Weekly',
+          broadcaster_name: 'darumaisgod',
+          view_count: 761388,
+          thumbnail_url:
+            'https://clips-media-assets2.twitch.tv/ZNaDBhvOSPcOctWsAeihdg/AT-cm%7CZNaDBhvOSPcOctWsAeihdg-preview-480x272.jpg',
+        },
+      },
+      {
+        clip: {
+          clip_id: 6,
+          tw_id: 'RefinedHonestWerewolfAMPTropPunch-mukuPxkrXGPUmgwP',
+          title: 'カルビ姫による「KICK BACK」のようなもの',
+          broadcaster_name: 'darumaisgod',
+          view_count: 287755,
+          thumbnail_url:
+            'https://clips-media-assets2.twitch.tv/ZNaDBhvOSPcOctWsAeihdg/AT-cm%7CZNaDBhvOSPcOctWsAeihdg-preview-480x272.jpg',
+        },
+      },
+      {
+        clip: {
+          clip_id: 7,
+          tw_id: 'ObliviousFunGoshawkShazBotstix-m8UuwNHW4sVNNAmH',
+          title: '更生施設',
+          broadcaster_name: 'darumaisgod',
+          view_count: 238830,
+          thumbnail_url:
+            'https://clips-media-assets2.twitch.tv/ZNaDBhvOSPcOctWsAeihdg/AT-cm%7CZNaDBhvOSPcOctWsAeihdg-preview-480x272.jpg',
+        },
+      },
+      {
+        clip: {
+          clip_id: 8,
+          tw_id: 'PricklyRealPoultryPhilosoraptor-CtWj8iTS2c219ZSS',
+          title: 'これぞ元ギャングのボスの実力',
+          broadcaster_name: 'darumaisgod',
+          view_count: 238830,
+          thumbnail_url:
+            'https://clips-media-assets2.twitch.tv/ZNaDBhvOSPcOctWsAeihdg/AT-cm%7CZNaDBhvOSPcOctWsAeihdg-preview-480x272.jpg',
+        },
+      },
+      {
+        clip: {
+          clip_id: 9,
+          tw_id: 'DeliciousTameBearDoritosChip-dwGxA7JEVC5boKnX',
+          title: 'だるま炎上',
+          broadcaster_name: 'darumaisgod',
+          view_count: 238830,
+          thumbnail_url:
+            'https://clips-media-assets2.twitch.tv/ZNaDBhvOSPcOctWsAeihdg/AT-cm%7CZNaDBhvOSPcOctWsAeihdg-preview-480x272.jpg',
+        },
+      },
+    ]
+    return response
+  } catch (error) {}
+  console.log('TopClipsDataの取得に失敗しました')
+}
+
+export async function fetchMonthlyClipsData() {
+  try {
+    const response = [
+      {
+        clip: {
+          clip_id: 5,
+          tw_id: 'AmericanMuddyChickenPeteZarollTie-z-pCCOoYt0_K7D0v',
+          title: 'Monthly',
+          broadcaster_name: 'darumaisgod',
+          view_count: 761388,
+          thumbnail_url:
+            'https://clips-media-assets2.twitch.tv/ZNaDBhvOSPcOctWsAeihdg/AT-cm%7CZNaDBhvOSPcOctWsAeihdg-preview-480x272.jpg',
+        },
+      },
+      {
+        clip: {
+          clip_id: 6,
+          tw_id: 'RefinedHonestWerewolfAMPTropPunch-mukuPxkrXGPUmgwP',
+          title: 'カルビ姫による「KICK BACK」のようなもの',
+          broadcaster_name: 'darumaisgod',
+          view_count: 287755,
+          thumbnail_url:
+            'https://clips-media-assets2.twitch.tv/ZNaDBhvOSPcOctWsAeihdg/AT-cm%7CZNaDBhvOSPcOctWsAeihdg-preview-480x272.jpg',
+        },
+      },
+      {
+        clip: {
+          clip_id: 7,
+          tw_id: 'ObliviousFunGoshawkShazBotstix-m8UuwNHW4sVNNAmH',
+          title: '更生施設',
+          broadcaster_name: 'darumaisgod',
+          view_count: 238830,
+          thumbnail_url:
+            'https://clips-media-assets2.twitch.tv/ZNaDBhvOSPcOctWsAeihdg/AT-cm%7CZNaDBhvOSPcOctWsAeihdg-preview-480x272.jpg',
+        },
+      },
+      {
+        clip: {
+          clip_id: 8,
+          tw_id: 'PricklyRealPoultryPhilosoraptor-CtWj8iTS2c219ZSS',
+          title: 'これぞ元ギャングのボスの実力',
+          broadcaster_name: 'darumaisgod',
+          view_count: 238830,
+          thumbnail_url:
+            'https://clips-media-assets2.twitch.tv/ZNaDBhvOSPcOctWsAeihdg/AT-cm%7CZNaDBhvOSPcOctWsAeihdg-preview-480x272.jpg',
+        },
+      },
+      {
+        clip: {
+          clip_id: 9,
+          tw_id: 'DeliciousTameBearDoritosChip-dwGxA7JEVC5boKnX',
+          title: 'だるま炎上',
+          broadcaster_name: 'darumaisgod',
+          view_count: 238830,
+          thumbnail_url:
+            'https://clips-media-assets2.twitch.tv/ZNaDBhvOSPcOctWsAeihdg/AT-cm%7CZNaDBhvOSPcOctWsAeihdg-preview-480x272.jpg',
+        },
+      },
+    ]
+    return response
+  } catch (error) {}
+  console.log('TopClipsDataの取得に失敗しました')
 }
 
 export async function fetchTest() {

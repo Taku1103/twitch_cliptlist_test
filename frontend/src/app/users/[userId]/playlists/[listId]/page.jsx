@@ -1,5 +1,5 @@
 import { fetchPlaylistData } from '@/app/lib/data'
-import Playlist from '@/app/ui/playlists/playlist'
+import Playlist from '@/app/ui/playlists/playlist/playlist'
 
 export default async function Page({ params }) {
   const listData = await fetchPlaylistData({ listId: params.listId })

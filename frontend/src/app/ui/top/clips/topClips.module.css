@@ -1,0 +1,50 @@
+.column {
+  .clip {
+    width: 20%;
+    float: left;
+
+    .clipBox {
+      .top {
+        display: flex;
+        justify-content: center;
+      }
+
+      .bottomWrapper {
+        .bottom {
+          width: 300px;
+          height: 120px;
+          display: flex;
+          align-items: flex-start;
+          .left {
+            float: left;
+            padding: 10px 10px 0px 10px;
+
+            .img {
+              height: 60px;
+              width: 40px;
+            }
+          }
+
+          .right {
+            .info {
+              .title {
+                margin: 0px;
+                padding: 15px 0px 0px 0px;
+                font-weight: bold;
+                font-size: 15px;
+                line-height: 15px;
+                overflow-wrap: break-word;
+              }
+              .broadcaster {
+                margin: 0px;
+                padding: 5px 0px 0px 0px;
+                font-size: 12px;
+                line-height: 12px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

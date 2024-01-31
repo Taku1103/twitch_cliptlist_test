@@ -1,9 +1,9 @@
 'use client'
 
-import styles from '@/app/top.module.css'
-import ChangeNextButton from '@/app/ui/playlists/top/change-next-button'
-import ChangePreviousButton from '@/app/ui/playlists/top/change-previous-button'
-import Playlist from '@/app/ui/playlists/top/playlist'
+import ChangeNextButton from '@/app/ui/top/playlists/change-next-button'
+import ChangePreviousButton from '@/app/ui/top/playlists/change-previous-button'
+import Playlist from '@/app/ui/top/playlists/playlist'
+import styles from '@/app/ui/top/playlists/topPlaylists.module.css'
 import { useRef, useState } from 'react'
 
 export default function Playlists({ listsData }) {
