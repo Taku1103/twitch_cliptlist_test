@@ -10,7 +10,7 @@ export default function Clip({ clipData }) {
       <div className={styles.clipBox}>
         <div className={styles.top}>
           <div className={styles.img}>
-            <img src={clipData.clip.thumbnail_url} height="180" />
+            <img src={clipData.clip.thumbnail_url} height="170" />
           </div>
         </div>
         <div className={styles.bottomWrapper}>
