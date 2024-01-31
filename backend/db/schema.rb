@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_29_171739) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_31_023313) do
   create_table "clips", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "id_on_twitch"
     t.string "url"
@@ -23,7 +23,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_29_171739) do
     t.string "game_id"
     t.string "language"
     t.string "title"
-    t.string "view_count"
+    t.integer "view_count"
     t.string "clip_created_at"
     t.string "thumbnail_url"
     t.float "duration"
