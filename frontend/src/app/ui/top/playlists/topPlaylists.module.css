@@ -39,11 +39,12 @@
 
   .playlist {
     padding-bottom: 50px;
+    padding-right: 10px;
     height: 150px;
 
     .left {
       float: left;
-      padding-right: 45px;
+      padding-right: 20px;
       position: relative;
 
       .playlistImage {
@@ -90,7 +91,7 @@
           color: white;
           position: absolute;
           bottom: 20px;
-          right: 80px;
+          right: 55px;
           z-index: 4;
         }
       }
