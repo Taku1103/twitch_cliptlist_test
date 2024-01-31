@@ -1,4 +1,4 @@
-import styles from '@/app/ui/top/clips/topClip.module.css'
+import styles from '@/app/ui/top/clips/topClips.module.css'
 import Link from 'next/link'
 
 export default function Clip({ clipData }) {

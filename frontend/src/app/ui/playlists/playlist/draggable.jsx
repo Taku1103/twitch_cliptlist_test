@@ -1,4 +1,4 @@
-import styles from '@/app/users/playlist.module.css'
+import styles from '@/app/ui/playlists/playlist/playlist.module.css'
 import { useSortable } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
 import Link from 'next/link'

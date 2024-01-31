@@ -1,4 +1,4 @@
-import styles from '@/app/top.module.css'
+import styles from '@/app/ui/top/playlists/topPlaylists.module.css'
 import Link from 'next/link'
 
 export default function Playlist({ listData }) {

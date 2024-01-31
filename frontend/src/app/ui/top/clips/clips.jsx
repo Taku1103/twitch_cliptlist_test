@@ -1,5 +1,5 @@
 import Clip from '@/app/ui/top/clips/clip'
-import styles from '@/app/ui/top/clips/topClip.module.css'
+import styles from '@/app/ui/top/clips/topClips.module.css'
 
 export default function Clips({ clipsData }) {
   const chunkedArray = []

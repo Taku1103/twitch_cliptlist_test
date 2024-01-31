@@ -1,6 +1,6 @@
 import { fetchTopClipsData, fetchTopPlaylistsData } from '@/app/lib/data'
-import Playlists from '@/app/ui/playlists/top/playlists'
 import Clips from '@/app/ui/top/clips/clips'
+import Playlists from '@/app/ui/top/playlists/playlists'
 import Link from 'next/link'
 
 export default async function Page() {

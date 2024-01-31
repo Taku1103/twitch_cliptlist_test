@@ -1,4 +1,4 @@
-import styles from '@/app/watch/watch.module.css'
+import styles from '@/app/ui/watch/watch.module.css'
 
 export default function XShareButton({ clipData }) {
   return (
