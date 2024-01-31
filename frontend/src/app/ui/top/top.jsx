@@ -29,7 +29,10 @@ export default function Top({
         sortType={sortType}
       />
       <div className="clear-right"></div>
-      <Clips clipsData={clipsData} />
+      <Clips
+        clipsData={clipsData.playlist_clips}
+        listId={clipsData.playlist.id}
+      />
 
       <h2>確認用リンク(後で削除)</h2>
       <ul>

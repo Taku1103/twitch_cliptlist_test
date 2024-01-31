@@ -16,8 +16,6 @@ export default function Playlists({ listsData }) {
     chunkedArray.push(listsData.slice(i, i + chunkSize))
   }
 
-  // console.log(chunkedArray)
-
   const baseRowNum = useRef(0)
   const [rows, setRows] = useState(
     chunkedArray.slice(baseRowNum.current, baseRowNum.current + displayRowMax),
@@ -38,7 +36,7 @@ export default function Playlists({ listsData }) {
       {rows.map((row) => (
         <div className={styles.row} key={rows.indexOf(row)}>
           {row.map((listData) => (
-            <div className={styles.playlist} key={listData.id}>
+            <div className={styles.playlist} key={listData.playlist.id}>
               <Playlist listData={listData} />
             </div>
           ))}

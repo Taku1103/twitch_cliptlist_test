@@ -1,7 +1,7 @@
 import {
   fetchClipData,
   fetchPlaylistData,
-  fetchWeeklyRankingData,
+  fetchWeeklyClipsData,
 } from '@/app/lib/data'
 import Clip from '@/app/ui/watch/clip'
 
@@ -22,7 +22,7 @@ export default async function Page({ searchParams }) {
       (clip) => String(clip.id) === clipId,
     )
   } else {
-    listData = await fetchWeeklyRankingData()
+    listData = await fetchWeeklyClipsData()
     clipData = await fetchClipData({ clipId })
   }
   return (
