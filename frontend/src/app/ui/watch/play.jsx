@@ -1,6 +1,6 @@
 'use client'
 
-export default function Play({ clipId, autoplay }) {
+export default function Play({ twitchId, autoplay }) {
   const baseUrl = 'https://clips.twitch.tv/embed?clip='
   return (
     <>
@@ -8,7 +8,7 @@ export default function Play({ clipId, autoplay }) {
         id="twitchIframe"
         title="title"
         src={
-          baseUrl + clipId + '&parent=localhost&autoplay=' + autoplay.current
+          baseUrl + twitchId + '&parent=localhost&autoplay=' + autoplay.current
         }
         allowFullScreen
         width="100%"

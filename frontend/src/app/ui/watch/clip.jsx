@@ -9,13 +9,15 @@ import XShareButton from '@/app/ui/watch/x-share-button'
 import { useRef } from 'react'
 
 export default function Clip({ clipId, clipData, listData, index }) {
+  console.log(clipData)
   const autoplay = useRef('false')
+  const twitchId = clipData.id_on_twitch
   return (
     <>
       <div className={styles.clip}>
         <div className={styles.mainArea}>
           <div className={styles.play}>
-            <Play clipId={clipId} autoplay={autoplay} />
+            <Play twitchId={twitchId} autoplay={autoplay} />
           </div>
           <div className={styles.operation}>
             <MovePreviousButton
@@ -49,6 +51,7 @@ export default function Clip({ clipId, clipData, listData, index }) {
               listData={listData}
               autoplay={autoplay}
               clipId={clipId}
+              twitchId={twitchId}
             />
           )}
         </div>

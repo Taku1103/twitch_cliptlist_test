@@ -3,19 +3,9 @@
 // clipIdに応じたclipDataを取得するメソッド
 export async function fetchClipData({ clipId }) {
   try {
-    if (clipId == 'ShinyUgliestFerretKreygasm-PdQRHzhylDkgxmRh') {
-      const response = {
-        clip: {
-          clip_id: 4,
-          tw_id: 'ShinyUgliestFerretKreygasm-PdQRHzhylDkgxmRh',
-          title: 'さすがのgonも唖然',
-          broadcaster_name: 'gon_vl',
-          view_count: 238830,
-        },
-      }
-
-      return response
-    }
+    const response = await fetch(`http://api:3000/api/clips/${clipId}`)
+    const data = await response.json()
+    return data
   } catch (error) {
     console.log(clipDataの取得に失敗しました)
   }
@@ -28,46 +18,111 @@ export async function fetchPlaylistData({ listId }) {
         playlist: [
           {
             clip: {
-              clip_id: 1,
-              tw_id: 'InnocentFastRadicchioLitty-lngA37a3soWC1Bo4',
-              title: 'ゲッダンwwwwww',
-              broadcaster_name: 'fps_shaka',
-              view_count: 761388,
+              id: 1,
+              id_on_twitch: 'NastyVastSangDogFace-OyJ_N63sxuPJFQ0U',
+              url: 'https://clips.twitch.tv/NastyVastSangDogFace-OyJ_N63sxuPJFQ0U',
+              embed_url:
+                'https://clips.twitch.tv/embed?clip=NastyVastSangDogFace-OyJ_N63sxuPJFQ0U',
+              broadcaster_id: '94618049',
+              broadcaster_name: 'ととみっくす',
+              creator_id: '573724715',
+              creator_name: 'ロゼロイア',
+              video_id: '2036096608',
+              game_id: '32982',
+              language: 'ja',
+              title: '貰ったガチャでSRを出したとと',
+              view_count: 8475,
+              clip_created_at: '2024-01-18',
               thumbnail_url:
-                'https://clips-media-assets2.twitch.tv/ZNaDBhvOSPcOctWsAeihdg/AT-cm%7CZNaDBhvOSPcOctWsAeihdg-preview-480x272.jpg',
+                'https://clips-media-assets2.twitch.tv/hhfNXzsifzet7MbjyRUNFA/AT-cm%7ChhfNXzsifzet7MbjyRUNFA-preview-480x272.jpg',
+              duration: 59.9,
+              vod_offset: 0,
+              is_featured: false,
+              game_title: null,
+              created_at: '2024-01-31T21:14:52.370+09:00',
+              updated_at: '2024-01-31T21:14:52.370+09:00',
             },
           },
           {
             clip: {
-              clip_id: 2,
-              tw_id: 'PrettiestEnticingHornetStinkyCheese-G85I9w5y1awB6KF2',
-              title: '医療費4億5355万円',
-              broadcaster_name: 'k4sen',
-              view_count: 287755,
+              id: 2,
+              id_on_twitch: 'FunExcitedNightingaleDuDudu-n4hbUO7EhA1Rmlu6',
+              url: 'https://clips.twitch.tv/FunExcitedNightingaleDuDudu-n4hbUO7EhA1Rmlu6',
+              embed_url:
+                'https://clips.twitch.tv/embed?clip=FunExcitedNightingaleDuDudu-n4hbUO7EhA1Rmlu6',
+              broadcaster_id: '94618049',
+              broadcaster_name: 'ととみっくす',
+              creator_id: '190926145',
+              creator_name: '保栖朔',
+              video_id: '2043015714',
+              game_id: '32982',
+              language: 'ja',
+              title: 'レダーはこの街に舞い降りた天性のホットドッグ屋さん',
+              view_count: 5777,
+              clip_created_at: '2024-01-25',
               thumbnail_url:
-                'https://clips-media-assets2.twitch.tv/ZNaDBhvOSPcOctWsAeihdg/AT-cm%7CZNaDBhvOSPcOctWsAeihdg-preview-480x272.jpg',
+                'https://clips-media-assets2.twitch.tv/9ahR2Z-IW1DuxIQNUZpbug/AT-cm%7C9ahR2Z-IW1DuxIQNUZpbug-preview-480x272.jpg',
+              duration: 50.3,
+              vod_offset: 0,
+              is_featured: false,
+              game_title: null,
+              created_at: '2024-01-31T21:14:52.379+09:00',
+              updated_at: '2024-01-31T21:14:52.379+09:00',
             },
           },
           {
             clip: {
-              clip_id: 3,
-              tw_id: 'BlueFastWoodcockRitzMitz-e3PUaor-d3riNxtB',
-              title: 'あまり調子に・・・乗るなァァァ！！！（ｽｶｯ）',
-              broadcaster_name: 'k4sen',
-              view_count: 5803,
+              id: 3,
+              id_on_twitch:
+                'ResourcefulGrotesqueButterGOWSkull-TAfpGyGRV79trqH3',
+              url: 'https://clips.twitch.tv/ResourcefulGrotesqueButterGOWSkull-TAfpGyGRV79trqH3',
+              embed_url:
+                'https://clips.twitch.tv/embed?clip=ResourcefulGrotesqueButterGOWSkull-TAfpGyGRV79trqH3',
+              broadcaster_id: '94618049',
+              broadcaster_name: 'ととみっくす',
+              creator_id: '456764323',
+              creator_name: 'kimitan7',
+              video_id: '2047046524',
+              game_id: '32982',
+              language: 'ja',
+              title: '森に帰る',
+              view_count: 5588,
+              clip_created_at: '2024-01-29',
               thumbnail_url:
-                'https://clips-media-assets2.twitch.tv/ZNaDBhvOSPcOctWsAeihdg/AT-cm%7CZNaDBhvOSPcOctWsAeihdg-preview-480x272.jpg',
+                'https://clips-media-assets2.twitch.tv/pJSHykwH6RshkVe_ba6h9w/AT-cm%7CpJSHykwH6RshkVe_ba6h9w-preview-480x272.jpg',
+              duration: 53.7,
+              vod_offset: 0,
+              is_featured: false,
+              game_title: null,
+              created_at: '2024-01-31T21:14:52.387+09:00',
+              updated_at: '2024-01-31T21:14:52.387+09:00',
             },
           },
           {
             clip: {
-              clip_id: 4,
-              tw_id: 'ShinyUgliestFerretKreygasm-PdQRHzhylDkgxmRh',
-              title: 'さすがのgonも唖然',
-              broadcaster_name: 'gon_vl',
-              view_count: 238830,
+              id: 4,
+              id_on_twitch: 'GiantBillowingStorkTinyFace-BI_q2mvzCSRXpM4R',
+              url: 'https://clips.twitch.tv/GiantBillowingStorkTinyFace-BI_q2mvzCSRXpM4R',
+              embed_url:
+                'https://clips.twitch.tv/embed?clip=GiantBillowingStorkTinyFace-BI_q2mvzCSRXpM4R',
+              broadcaster_id: '190063430',
+              broadcaster_name: 'てん_ぷら',
+              creator_id: '463157844',
+              creator_name: 'yamamine3',
+              video_id: '2037062735',
+              game_id: '32982',
+              language: 'ja',
+              title: '空架ぐち逸のIDカード',
+              view_count: 9045,
+              clip_created_at: '2024-01-19',
               thumbnail_url:
-                'https://clips-media-assets2.twitch.tv/ZNaDBhvOSPcOctWsAeihdg/AT-cm%7CZNaDBhvOSPcOctWsAeihdg-preview-480x272.jpg',
+                'https://clips-media-assets2.twitch.tv/Xvo_AQSP6tpr8wkkV6TOEQ/40988240343-offset-11940-preview-480x272.jpg',
+              duration: 26,
+              vod_offset: 0,
+              is_featured: false,
+              game_title: null,
+              created_at: '2024-01-31T21:14:52.393+09:00',
+              updated_at: '2024-01-31T21:14:52.393+09:00',
             },
           },
         ],
@@ -619,10 +674,10 @@ export async function fetchMonthlyClipsData() {
 
 export async function fetchTest() {
   try {
-    const response = await fetch('http://api:3000/api/users/1')
-    // const response = await fetch('http://localhost:3001/api/home')
-    console.log(response)
-    return response
+    const response = await fetch('http://api:3000/api/clips/2000')
+    const data = await response.json()
+    console.log(data)
+    return data
   } catch (error) {
     console.log('fetchに失敗')
     console.log(error)
