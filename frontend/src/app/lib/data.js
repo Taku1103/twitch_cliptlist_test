@@ -633,47 +633,15 @@ export async function fetchTest() {
 // http://localhost:3001/api/users/1/playlists
 export async function fetchPlaylists({ userId }) {
   try {
-    if (userId == 1) {
-      const response = {
-        user_playlists: [
-          {
-            id: '2',
-            name: 'しゃかまとめ',
-            favorite_count: 321,
-            created_at: '2021-04-29',
-            updated_at: '2021-04-29',
-            user_id: 1,
-          },
-          {
-            id: '2',
-            name: 'すたぬまとめ',
-            favorite_count: 123,
-            created_at: '2021-05-29',
-            updated_at: '2021-08-29',
-            user_id: 1,
-          },
-          {
-            id: '2',
-            name: 'プレイリスト3',
-            favorite_count: 5,
-            created_at: '2023-04-29',
-            updated_at: '2023-04-29',
-            user_id: 1,
-          },
-          {
-            id: '2',
-            name: 'テスト',
-            favorite_count: 1,
-            created_at: '2024-01-29',
-            updated_at: '2024-01-30',
-            user_id: 1,
-          },
-        ],
-      }
-
-      return response
+    const response = await fetch(
+      `http://api:3000/api/users/${userId}/playlists`,
+    )
+    if (!response.ok) {
+      throw new Error('ネットワークレスポンスが不正です')
     }
+    const playlistsdata = await response.json()
+    return playlistsdata
   } catch (error) {
-    console.log('プレイリストデータの取得に失敗しました')
+    console.error('プレイリストデータの取得に失敗しました', error)
   }
 }

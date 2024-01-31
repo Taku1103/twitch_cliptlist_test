@@ -48,7 +48,7 @@ end
 # ダミープレイリスト
 # user_id：1はadmin
 2.upto(11) do |user_id|
-  3.times do |i|
+  8.times do |i|
     Playlist.create(
       name: "#{user_names[user_id - 1]}_#{i + 1}",
       user_id: user_id,
