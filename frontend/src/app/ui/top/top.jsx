@@ -34,15 +34,13 @@ export default function Top({
       <h2>確認用リンク(後で削除)</h2>
       <ul>
         <li>
-          <Link href="/users/sakana/playlists/MyPlaylist">MyPlaylist</Link>
+          <Link href="/users/2/playlists/4">suuusanのプレイリスト1つ目</Link>
         </li>
         <li>
           <Link href="/watch/?clip=1">Example Clip</Link>
         </li>
         <li>
-          <Link href="/watch/?clip=1&list=MyPlaylist">
-            Example Clip(listData付き)
-          </Link>
+          <Link href="/watch/?clip=46&list=4">Example Clip(listData付き)</Link>
         </li>
       </ul>
     </div>

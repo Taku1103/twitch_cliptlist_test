@@ -8,8 +8,8 @@ import { useState } from 'react'
 
 export default function Playlist({ listData }) {
   const playlist = []
-  listData.playlist.map((clip) => {
-    playlist.push(clip.clip.tw_id)
+  listData.playlist_clips.map((clip) => {
+    playlist.push(clip.id)
   })
 
   const [items, setItems] = useState(playlist)
@@ -52,10 +52,8 @@ export default function Playlist({ listData }) {
             <Draggable
               key={item}
               id={item}
-              clip={
-                listData.playlist.find((clip) => clip.clip.tw_id == item).clip
-              }
-              listId={listData.id}
+              clip={listData.playlist_clips.find((clip) => clip.id == item)}
+              listId={listData.playlist.id}
             />
           ))}
         </SortableContext>
