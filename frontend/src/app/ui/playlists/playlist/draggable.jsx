@@ -17,7 +17,7 @@ const Draggable = (props) => {
 
   return (
     <>
-      <Link href={`/watch?clip=${props.clip.tw_id}&list=${props.listId}`}>
+      <Link href={`/watch?clip=${props.clip.id}&list=${props.listId}`}>
         <div
           className={styles.clip}
           ref={setNodeRef}

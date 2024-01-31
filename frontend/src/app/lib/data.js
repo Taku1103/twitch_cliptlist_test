@@ -11,129 +11,13 @@ export async function fetchClipData({ clipId }) {
   }
 }
 
-export async function fetchPlaylistData({ listId }) {
+export async function fetchPlaylistData({ userId, listId }) {
   try {
-    if (listId == 'MyPlaylist') {
-      const response = {
-        playlist: [
-          {
-            clip: {
-              id: 1,
-              id_on_twitch: 'NastyVastSangDogFace-OyJ_N63sxuPJFQ0U',
-              url: 'https://clips.twitch.tv/NastyVastSangDogFace-OyJ_N63sxuPJFQ0U',
-              embed_url:
-                'https://clips.twitch.tv/embed?clip=NastyVastSangDogFace-OyJ_N63sxuPJFQ0U',
-              broadcaster_id: '94618049',
-              broadcaster_name: 'ととみっくす',
-              creator_id: '573724715',
-              creator_name: 'ロゼロイア',
-              video_id: '2036096608',
-              game_id: '32982',
-              language: 'ja',
-              title: '貰ったガチャでSRを出したとと',
-              view_count: 8475,
-              clip_created_at: '2024-01-18',
-              thumbnail_url:
-                'https://clips-media-assets2.twitch.tv/hhfNXzsifzet7MbjyRUNFA/AT-cm%7ChhfNXzsifzet7MbjyRUNFA-preview-480x272.jpg',
-              duration: 59.9,
-              vod_offset: 0,
-              is_featured: false,
-              game_title: null,
-              created_at: '2024-01-31T21:14:52.370+09:00',
-              updated_at: '2024-01-31T21:14:52.370+09:00',
-            },
-          },
-          {
-            clip: {
-              id: 2,
-              id_on_twitch: 'FunExcitedNightingaleDuDudu-n4hbUO7EhA1Rmlu6',
-              url: 'https://clips.twitch.tv/FunExcitedNightingaleDuDudu-n4hbUO7EhA1Rmlu6',
-              embed_url:
-                'https://clips.twitch.tv/embed?clip=FunExcitedNightingaleDuDudu-n4hbUO7EhA1Rmlu6',
-              broadcaster_id: '94618049',
-              broadcaster_name: 'ととみっくす',
-              creator_id: '190926145',
-              creator_name: '保栖朔',
-              video_id: '2043015714',
-              game_id: '32982',
-              language: 'ja',
-              title: 'レダーはこの街に舞い降りた天性のホットドッグ屋さん',
-              view_count: 5777,
-              clip_created_at: '2024-01-25',
-              thumbnail_url:
-                'https://clips-media-assets2.twitch.tv/9ahR2Z-IW1DuxIQNUZpbug/AT-cm%7C9ahR2Z-IW1DuxIQNUZpbug-preview-480x272.jpg',
-              duration: 50.3,
-              vod_offset: 0,
-              is_featured: false,
-              game_title: null,
-              created_at: '2024-01-31T21:14:52.379+09:00',
-              updated_at: '2024-01-31T21:14:52.379+09:00',
-            },
-          },
-          {
-            clip: {
-              id: 3,
-              id_on_twitch:
-                'ResourcefulGrotesqueButterGOWSkull-TAfpGyGRV79trqH3',
-              url: 'https://clips.twitch.tv/ResourcefulGrotesqueButterGOWSkull-TAfpGyGRV79trqH3',
-              embed_url:
-                'https://clips.twitch.tv/embed?clip=ResourcefulGrotesqueButterGOWSkull-TAfpGyGRV79trqH3',
-              broadcaster_id: '94618049',
-              broadcaster_name: 'ととみっくす',
-              creator_id: '456764323',
-              creator_name: 'kimitan7',
-              video_id: '2047046524',
-              game_id: '32982',
-              language: 'ja',
-              title: '森に帰る',
-              view_count: 5588,
-              clip_created_at: '2024-01-29',
-              thumbnail_url:
-                'https://clips-media-assets2.twitch.tv/pJSHykwH6RshkVe_ba6h9w/AT-cm%7CpJSHykwH6RshkVe_ba6h9w-preview-480x272.jpg',
-              duration: 53.7,
-              vod_offset: 0,
-              is_featured: false,
-              game_title: null,
-              created_at: '2024-01-31T21:14:52.387+09:00',
-              updated_at: '2024-01-31T21:14:52.387+09:00',
-            },
-          },
-          {
-            clip: {
-              id: 4,
-              id_on_twitch: 'GiantBillowingStorkTinyFace-BI_q2mvzCSRXpM4R',
-              url: 'https://clips.twitch.tv/GiantBillowingStorkTinyFace-BI_q2mvzCSRXpM4R',
-              embed_url:
-                'https://clips.twitch.tv/embed?clip=GiantBillowingStorkTinyFace-BI_q2mvzCSRXpM4R',
-              broadcaster_id: '190063430',
-              broadcaster_name: 'てん_ぷら',
-              creator_id: '463157844',
-              creator_name: 'yamamine3',
-              video_id: '2037062735',
-              game_id: '32982',
-              language: 'ja',
-              title: '空架ぐち逸のIDカード',
-              view_count: 9045,
-              clip_created_at: '2024-01-19',
-              thumbnail_url:
-                'https://clips-media-assets2.twitch.tv/Xvo_AQSP6tpr8wkkV6TOEQ/40988240343-offset-11940-preview-480x272.jpg',
-              duration: 26,
-              vod_offset: 0,
-              is_featured: false,
-              game_title: null,
-              created_at: '2024-01-31T21:14:52.393+09:00',
-              updated_at: '2024-01-31T21:14:52.393+09:00',
-            },
-          },
-        ],
-        id: 'MyPlaylist',
-        creatorName: 'Sakana',
-        createdAt: '2024-01-29',
-        favoritesCount: 3,
-      }
-
-      return response
-    }
+    const response = await fetch(
+      `http://api:3000/api/users/${userId}/playlists/${listId}`,
+    )
+    const data = await response.json()
+    return data
   } catch (error) {
     console.log(playlistDataの取得に失敗しました)
   }
@@ -674,7 +558,7 @@ export async function fetchMonthlyClipsData() {
 
 export async function fetchTest() {
   try {
-    const response = await fetch('http://api:3000/api/clips/2000')
+    const response = await fetch('http://api:3000/api/users/2/playlists')
     const data = await response.json()
     console.log(data)
     return data

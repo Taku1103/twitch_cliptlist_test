@@ -1,6 +1,7 @@
 import {
   fetchDailyClipsData,
   fetchMonthlyClipsData,
+  fetchTest,
   fetchTopPlaylistsData,
   fetchWeeklyClipsData,
 } from '@/app/lib/data'
@@ -11,6 +12,8 @@ export default async function Page() {
   const dailyClipsData = await fetchDailyClipsData()
   const weeklyClipsData = await fetchWeeklyClipsData()
   const monthlyClipsData = await fetchMonthlyClipsData()
+  const data = await fetchTest()
+  console.log(data)
 
   return (
     <Top
