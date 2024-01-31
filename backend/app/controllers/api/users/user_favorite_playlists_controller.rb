@@ -3,6 +3,7 @@ module Api
     class UserFavoritePlaylistsController < ApplicationController
       before_action :set_id_user_and_playlist, only: [:create, :destroy]
 
+      # 参照はreq.bodyのuser_idとplaylist_id
       # POST /api/users/:id/user_favorite_playlists
       def create
         @favorite_relation = UserFavoritePlaylist.new(user_id: @user_id, playlist_id: @playlist_id)
@@ -14,18 +15,20 @@ module Api
         end
       end
 
-      # 現状 req.bodyにuser_idとplaylist_idを作ってもらう
+      # 参照はreq.bodyのuser_idとplaylist_id
       # DELETE /api/users/:id/user_favorite_playlists
       def destroy
         @favorite_relation = UserFavoritePlaylist.find_by(user_id: @user_id, playlist_id: @playlist_id)
         @favorite_relation.destroy
       end
 
-      # デバッグ用アクション(不要になったらコメントアウト)
+      # favしたplaylistsを取ってくる処理
+      # 参照しているのはパスパラメータ
       # GET /api/users/:id/user_favorite_playlists
       def index
-        @favorite_relations = UserFavoritePlaylist.all
-        render json: { status: :ok, message: "Successed Getting Index", playlist_clips_relations: @favorite_relations }
+        @user = User.find(params[:id])
+        @user_favorite_playlists = @user.playlists
+        render json: { status: :ok, message: "Successed Getting fav_playlists Index", user_favorite_playlists: @user_favorite_playlists }
       end
 
       private
