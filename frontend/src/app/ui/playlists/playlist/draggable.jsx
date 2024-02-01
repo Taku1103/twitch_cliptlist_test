@@ -13,8 +13,6 @@ const Draggable = (props) => {
     transition,
   }
 
-  console.log(props.clip)
-
   return (
     <>
       <Link href={`/watch?clip=${props.clip.id}&list=${props.listId}`}>
@@ -26,7 +24,7 @@ const Draggable = (props) => {
           {...attributes}
         >
           <div className={styles.left}>
-            <i class="fas fa-bars"></i>
+            <i className="fas fa-bars"></i>
           </div>
           <div className={styles.middle}>
             <div className={styles.img}>
