@@ -10,12 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_31_152554) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_01_093843) do
+  create_table "broadcasters", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "broadcaster_id"
+    t.string "profile_image_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "clips", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "id_on_twitch"
     t.string "url"
     t.string "embed_url"
-    t.string "broadcaster_id"
     t.string "broadcaster_name"
     t.string "creator_id"
     t.string "creator_name"
@@ -31,6 +37,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_31_152554) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "game_id"
+    t.bigint "broadcaster_id"
+    t.index ["broadcaster_id"], name: "index_clips_on_broadcaster_id"
     t.index ["game_id"], name: "index_clips_on_game_id"
   end
 
