@@ -2,6 +2,7 @@ module Api
   module Users
     class PlaylistsController < ApplicationController
       before_action :set_playlist, only: [:show, :update, :destroy]
+      before_action :count_favorites, only: [:show]
 
       # user_idをパスパラメータで取得
       def index
@@ -12,7 +13,7 @@ module Api
 
       def show
         @playlist_clips = @playlist.clips
-        render json: { status: :ok, message: "showing success", playlist: @playlist, playlist_clips: @playlist_clips }
+        render json: { status: :ok, message: "showing success", playlist: @playlist, playlist_clips: @playlist_clips, favorite_count: @favorite_count }
       end
 
       def create
@@ -40,6 +41,10 @@ module Api
       private
         def set_playlist
           @playlist = Playlist.find(params[:id])
+        end
+
+        def count_favorites
+          @favorite_count = @playlist.user_favorite_playlists.count
         end
 
         def playlist_param
