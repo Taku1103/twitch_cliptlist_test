@@ -86,7 +86,7 @@ export async function fetchPlaylists({ userId }) {
       `http://api:3000/api/users/${userId}/playlists`,
     )
     if (!response.ok) {
-      throw new Error('ネットワークレスポンスが不正です')
+      throw new Error('プレイリストデータの取得に失敗しました')
     }
     const playlistsdata = await response.json()
     return playlistsdata
