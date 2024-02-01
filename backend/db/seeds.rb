@@ -52,7 +52,6 @@ end
     Playlist.create(
       name: "#{user_names[user_id - 1]}_#{i + 1}",
       user_id: user_id,
-      favorite_count: rand(20..100)
     )
   end
 end
