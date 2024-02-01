@@ -1,4 +1,5 @@
 import { fetchPlaylistData } from '@/app/lib/data'
+import DeletePlaylist from '@/app/ui/playlists/playlist/delete-playlist'
 import Playlist from '@/app/ui/playlists/playlist/playlist'
 import PlaylistName from '@/app/ui/playlists/playlist/playlistName'
 import XShareButton from '@/app/ui/playlists/playlist/x-share-button'
@@ -26,7 +27,7 @@ export default async function Page({ params }) {
         <p>作成者：{userId}</p>
         <p>作成日：{displayDate(listData.playlist.created_at)}</p>
         <p>お気に入り数：{listData.playlist.favorite_count}</p>
-        <p>削除</p>
+        <DeletePlaylist userId={userId} listId={listId} />
         <XShareButton
           userId={userId}
           listId={listId}
