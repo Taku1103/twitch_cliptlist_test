@@ -1,5 +1,25 @@
 'use server'
 
+export async function addClipToPlaylist({ clipId, listId }) {
+  try {
+    const response = await fetch(`http://api:3000/api/playlist_clips`, {
+      method: 'POST',
+      headers: {
+        // Authorization: `Bearer ${cookies().get('session').value}`,
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        playlist_id: listId,
+        clip_id: clipId,
+      }),
+    })
+    if (!response.ok) {
+      throw new Error('playlistへのclipの追加に失敗しました')
+    }
+  } catch (error) {}
+  console.log('playlistへのclipの追加に失敗しました')
+}
+
 export async function editPlaylistName({
   listData,
   userId,

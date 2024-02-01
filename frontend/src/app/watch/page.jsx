@@ -1,6 +1,7 @@
 import {
   fetchClipData,
   fetchPlaylistData,
+  fetchPlaylists,
   fetchWeeklyClipsData,
 } from '@/app/lib/data'
 import Clip from '@/app/ui/watch/clip'
@@ -25,12 +26,14 @@ export default async function Page({ searchParams }) {
     listData = await fetchWeeklyClipsData()
     clipData = (await fetchClipData({ clipId })).clip
   }
+  const myListsData = await fetchPlaylists({ userId: 2 }) // 本当は、Headerからログインユーザーのidを取得して使う
   return (
     <Clip
       clipId={clipId}
       clipData={clipData}
       listData={listData}
       index={index}
+      myListsData={myListsData}
     />
   )
 }
