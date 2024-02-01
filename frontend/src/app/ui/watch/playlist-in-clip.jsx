@@ -1,6 +1,7 @@
 'use client'
 
 import styles from '@/app/ui/watch/watch.module.css'
+import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
 export default function PlaylistInClip({ listData, autoplay, clipId }) {
@@ -13,7 +14,13 @@ export default function PlaylistInClip({ listData, autoplay, clipId }) {
 
   return (
     <div className={styles.playlist}>
-      <h2 className={styles.h2}>{listData.id}</h2>
+      <h2 className={styles.h2}>
+        <Link
+          href={`users/${listData.playlist.user_id}/playlists/${listData.playlist.id}`}
+        >
+          {listData.playlist.name}
+        </Link>
+      </h2>
       {listData.playlist_clips.map((clip) => (
         <div
           className={`${styles.eachClip} ${clipId == String(clip.id) && styles.active}`}
