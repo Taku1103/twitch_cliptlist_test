@@ -54,3 +54,12 @@
 .remove {
   padding: 8px 10px 10px 10px;
 }
+
+.deleteAction {
+  cursor: pointer;
+  color: #bb3333;
+}
+
+.deleteAction:hover {
+  text-decoration: underline;
+}

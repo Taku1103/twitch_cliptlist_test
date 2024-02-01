@@ -1,6 +1,7 @@
 'use server'
 
 import { revalidatePath } from 'next/cache'
+import { redirect } from 'next/navigation'
 
 export async function addClipToPlaylist({ clipId, listId }) {
   try {
@@ -79,5 +80,26 @@ export async function editPlaylistName({
   } catch (error) {
     console.log('playlistNameのeditに失敗しました')
     return false
+  }
+}
+
+export async function deletePlaylist({ userId, listId }) {
+  try {
+    const response = await fetch(
+      `http://api:3000/api/users/${userId}/playlists/${listId}`,
+      {
+        method: 'DELETE',
+        headers: {
+          // Authorization: `Bearer ${cookies().get('session').value}`,
+          'Content-type': 'application/json',
+        },
+      },
+    )
+    if (!response.ok) {
+      throw new Error('playlistのdeleteに失敗しました')
+    }
+    redirect(`/users/${userId}/playlists`)
+  } catch (error) {
+    console.log('playlistのdeleteに失敗しました')
   }
 }
