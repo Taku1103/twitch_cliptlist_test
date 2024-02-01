@@ -39,7 +39,7 @@ module Api
 
         data.each_with_index do |channel, index|
           # channel["profile_image_url"] = broadcaster_list[index]
-          channel["profile_image_url"] = "Hello"
+          channel["profile_image_url"] = "https://static-cdn.jtvnw.net/jtv_user_pictures/8a6381c7-d0c0-4576-b179-38bd5ce1d6af-profile_image-300x300.png"
         end
         data
       end
