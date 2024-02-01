@@ -8,11 +8,11 @@ export default async function Page({ params }) {
   return (
     <>
       <div className="playlists-name">
-        <h1>User_nameのプレイリスト一覧</h1>
+        <h1>Unameのプレイリスト一覧</h1>
       </div>
       <div className="playlists-tab">
-        <p>プレイリスト</p>
-        <p>お気に入り</p>
+        <button className="tab-button">プレイリスト</button>
+        <button className="tab-button">お気に入り</button>
       </div>
       {/* propsでpramsのuserIdを渡す */}
       <Myplaylists userId={params.userId} listsData={listsData} />

@@ -13,10 +13,7 @@ export default function PlaylistItem({ listData }) {
       <Link href={`/users/${listData.user_id}/playlists/${listData.id}`}>
         <div className={styles.left}>
           <div className={styles.playlistImage}>
-            <img
-              src={`https://clips-media-assets2.twitch.tv/dNRakxXLA8srbytL7xszPA/AT-cm%7CdNRakxXLA8srbytL7xszPA-preview-480x272.jpg`}
-              className={styles.img}
-            />
+            <img src={`${listData.thumbnail_url}`} className={styles.img} />
             <div className={styles.shadow1}></div>
             <div className={styles.shadow2}></div>
             <div className={styles.clipCount}>

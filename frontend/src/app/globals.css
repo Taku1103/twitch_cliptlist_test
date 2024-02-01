@@ -218,3 +218,32 @@ li {
 }
 
 /* user_playlist */
+.playlists-name {
+  margin-left: 128px;
+  margin-top: 25`px;
+}
+
+.playlists-tab {
+  display: flex;
+  gap: 15px;
+  margin-left: 128px;
+}
+
+.playlists-tab button {
+  height: 32px;
+  padding: 0px 10px 0px 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  margin-right: 10px;
+  border-radius: 5px;
+  background-color: #6246ea;
+  color: white;
+  display: block;
+  margin-bottom: 30px;
+}
+
+.tab-button:hover {
+  background-color: #5236da;
+}
