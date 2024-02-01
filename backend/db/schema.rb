@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_01_135548) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_01_143724) do
   create_table "broadcasters", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "broadcaster_id"
     t.string "profile_image_url"
@@ -55,6 +55,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_01_135548) do
     t.string "game_title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "game_thumbnail_url"
   end
 
   create_table "monthly_highlight_playlists", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
