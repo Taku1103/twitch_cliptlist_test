@@ -1,5 +1,6 @@
 'use client'
 
+import AddClipToPlaylist from '@/app/ui/watch/add-clip-to-playlist'
 import MoveNextButton from '@/app/ui/watch/move-next-button'
 import MovePreviousButton from '@/app/ui/watch/move-previous-button'
 import Play from '@/app/ui/watch/play'
@@ -8,7 +9,13 @@ import styles from '@/app/ui/watch/watch.module.css'
 import XShareButton from '@/app/ui/watch/x-share-button'
 import { useRef } from 'react'
 
-export default function Clip({ clipId, clipData, listData, index }) {
+export default function Clip({
+  clipId,
+  clipData,
+  listData,
+  index,
+  myListsData,
+}) {
   const autoplay = useRef('false')
   const twitchId = clipData.id_on_twitch
   return (
@@ -32,6 +39,7 @@ export default function Clip({ clipId, clipData, listData, index }) {
           </div>
           <div className={styles.detail}>
             <XShareButton clipData={clipData} />
+            <AddClipToPlaylist clipId={clipId} myListsData={myListsData} />
           </div>
           <div className={styles.explanation}>
             <div className={styles.title}>{clipData.title}</div>
