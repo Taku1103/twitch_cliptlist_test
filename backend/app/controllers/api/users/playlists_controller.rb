@@ -3,17 +3,21 @@ module Api
     class PlaylistsController < ApplicationController
       before_action :set_playlist, only: [:show, :update, :destroy]
       before_action :count_favorites, only: [:show]
+      before_action :set_playlist_thumbnail, only: [:show]
 
       # user_idをパスパラメータで取得
+      # プレイリストのサムネイルを最初のクリップのサムネイルを利用
       def index
         user_id = params[:id].to_i
-        @user_playlists = Playlist.where(user_id: user_id)
+        @user_playlists = Playlist.includes(:clips).where(user_id: user_id).map do |playlist|
+          playlist.attributes.merge({ thumbnail_url: playlist.clips.first&.thumbnail_url })
+        end
         render json: { status: :ok, message: "getting playlists sucessed", user_playlists: @user_playlists }
       end
 
       def show
         @playlist_clips = @playlist.clips
-        render json: { status: :ok, message: "showing success", playlist: @playlist.attributes.merge(favorite_count: @favorite_count), playlist_clips: @playlist_clips }
+        render json: { status: :ok, message: "showing success", playlist: @playlist.attributes.merge(favorite_count: @favorite_count, playlist_thumbnail_url: @playlist_thumbnail_url), playlist_clips: @playlist_clips }
       end
 
       def create
@@ -39,13 +43,23 @@ module Api
 
 
       private
+        # clipの最初のサムネイルをサムネとして取得
         def set_playlist
           @playlist = Playlist.find(params[:id])
         end
 
+        def set_playlist_thumbnail
+          if @playlist.clips.present?
+            first_clip = @playlist.clips.first
+            @playlist_thumbnail_url = first_clip&.thumbnail_url
+          end
+        end
+
+
         def count_favorites
           @favorite_count = @playlist.user_favorite_playlists.count
         end
+
 
         def playlist_param
           params.require(:playlist).permit(:name, :user_id, :favorite_count, :published)
