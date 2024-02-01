@@ -1,14 +1,9 @@
 module Api
   class HomeController < ApplicationController
     def index
-      playlists = Playlist.where(created_at: 7.days.ago.beginning_of_day..Time.now)
-                          .where.not("name like ?", "%ranking")
-                          .order(favorite_count: :desc).as_json
-
+      playlists = fetch_playlists.as_json
       playlist_ids = playlists.map { |playlist| playlist["id"].to_i }
-      clip_count_hash = PlaylistClip.where(playlist_id: playlist_ids)
-                                .group(:playlist_id)
-                                .count
+      clip_count_hash = fetch_clip_count_hash(playlist_ids)
 
       playlist_clip_ids = PlaylistClip.where(playlist_id: playlist_ids)
                                       .order(order_index: :asc)
@@ -26,5 +21,27 @@ module Api
 
       render json: { playlists: playlists }, status: :ok
     end
+
+    private
+      def fetch_playlists
+        Playlist.where(created_at: 7.days.ago.beginning_of_day..Time.now)
+                .where.not("name like ?", "%ranking")
+                .order(favorite_count: :desc)
+      end
+
+      def fetch_clip_count_hash(playlist_ids)
+        PlaylistClip.where(playlist_id: playlist_ids)
+                    .group(:playlist_id)
+                    .count
+      end
+
+      def fetch_thumbnail_url_hash(playlist_ids)
+        clip_ids = PlaylistClip.where(playlist_id: playlist_ids)
+                              .order(order_index: :asc)
+                              .pluck(:clip_id)
+                              .uniq
+
+        Clip.where(id: clip_ids).pluck(:id, :thumbnail_url).to_h
+      end
   end
 end
