@@ -133,3 +133,11 @@
 .active {
   background-color: lightgrey;
 }
+
+.addPlaylistCandidate {
+  cursor: pointer;
+}
+
+.addPlaylistCandidate:hover {
+  color: var(--link);
+}

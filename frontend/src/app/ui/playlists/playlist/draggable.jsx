@@ -1,3 +1,4 @@
+import DeleteClipFromPlaylist from '@/app/ui/playlists/playlist/delete-clip-from-playlist'
 import styles from '@/app/ui/playlists/playlist/playlist.module.css'
 import { useSortable } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
@@ -13,32 +14,47 @@ const Draggable = (props) => {
     transition,
   }
 
-  console.log(props.clip)
-
   return (
     <>
-      <Link href={`/watch?clip=${props.clip.id}&list=${props.listId}`}>
-        <div
-          className={styles.clip}
-          ref={setNodeRef}
-          style={style}
-          {...listeners}
-          {...attributes}
-        >
+      <div
+        className={styles.clip}
+        ref={setNodeRef}
+        style={style}
+        {...listeners}
+        {...attributes}
+      >
+        <div className={styles.clipMain}>
           <div className={styles.left}>
-            <i class="fas fa-bars"></i>
+            <i className="fas fa-bars"></i>
           </div>
           <div className={styles.middle}>
-            <div className={styles.img}>
-              <img src={props.clip.thumbnail_url} height="60" />
-            </div>
+            <Link href={`/watch?clip=${props.clip.id}&list=${props.listId}`}>
+              <div className={styles.img}>
+                <img src={props.clip.thumbnail_url} height="60" />
+              </div>
+            </Link>
           </div>
           <div className={styles.right}>
-            <p className={styles.title}>{props.clip.title}</p>
-            <p className={styles.broadcaster}>{props.clip.broadcaster_name}</p>
+            <Link href={`/watch?clip=${props.clip.id}&list=${props.listId}`}>
+              <p className={styles.title}>{props.clip.title}</p>
+              <p className={styles.broadcaster}>
+                {props.clip.broadcaster_name}
+              </p>
+            </Link>
           </div>
         </div>
-      </Link>
+        <div className={styles.clipOperation}>
+          <div className={styles.delete}>
+            <DeleteClipFromPlaylist
+              clipId={props.clip.id}
+              listId={props.listId}
+              setItems={props.setItems}
+              playlist={props.playlist}
+            />
+          </div>
+        </div>
+        <div className="clear-left"></div>
+      </div>
     </>
   )
 }

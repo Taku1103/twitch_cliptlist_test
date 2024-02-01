@@ -48,12 +48,14 @@ export default function Playlist({ listData }) {
     <DndContext onDragOver={handleDragOver}>
       <div className={styles.playlistMain}>
         <SortableContext items={items}>
-          {items.map((item) => (
+          {items.map((item, i) => (
             <Draggable
-              key={item}
+              key={i}
               id={item}
               clip={listData.playlist_clips.find((clip) => clip.id == item)}
               listId={listData.playlist.id}
+              setItems={setItems}
+              playlist={playlist}
             />
           ))}
         </SortableContext>

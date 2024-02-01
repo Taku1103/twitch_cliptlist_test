@@ -183,18 +183,6 @@ li {
   height: 2000px;
 }
 
-/* clip */
-
-.clip {
-  .play {
-    width: 100%;
-    aspect-ratio: 40 / 19;
-  }
-  .explanation {
-    border-bottom: 1px solid #dddddd;
-  }
-}
-
 /* 検索バー */
 .search-box {
   display: flex;
