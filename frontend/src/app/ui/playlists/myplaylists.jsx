@@ -1,6 +1,7 @@
 'use client'
 import { fetchPlaylistData, fetchPlaylists } from '@/app/lib/data'
-import Link from 'next/link'
+import PlaylistItem from '@/app/ui/playlists/playlistitem'
+
 import { useEffect, useState } from 'react'
 
 export default function Myplaylists({ userId }) {
@@ -33,19 +34,8 @@ export default function Myplaylists({ userId }) {
 
   return (
     <ul>
-      {playlists.map((playlist, index) => (
-        <li key={index}>
-          <p>プレイリストの名前：{playlist.name}</p>
-          <Link href={`/users/${playlist.user_id}/playlists/${playlist.id}`}>
-            {playlist.playlist_clips && playlist.playlist_clips.length > 0 && (
-              <img
-                src={playlist.playlist_clips[0].thumbnail_url}
-                alt="クリップサムネイル"
-              />
-            )}
-            クリック
-          </Link>
-        </li>
+      {playlists.map((playlist) => (
+        <PlaylistItem key={playlist.id} playlist={playlist} />
       ))}
     </ul>
   )
