@@ -24,11 +24,14 @@ module Api
 
       # favしたplaylistsを取ってくる処理
       # 参照しているのはパスパラメータ
+      # playlistのサムネイルは最初のclipのサムネイル
       # GET /api/users/:id/user_favorite_playlists
       def index
-        @user = User.find(params[:id])
-        @user_favorite_playlists = @user.playlists
-        render json: { status: :ok, message: "Successed Getting fav_playlists Index", user_favorite_playlists: @user_favorite_playlists }
+        user_id = params[:id].to_i
+        @user_favorite_playlists = Playlist.includes(:clips).joins(:user_favorite_playlists).where(user_favorite_playlists: { user_id: user_id }).map do |playlist|
+        playlist.attributes.merge({ thumbnail_url: playlist.clips.first&.thumbnail_url })
+      end
+        render json: { status: :ok, message: "getting favorite playlists succeeded", user_favorite_playlists: @user_favorite_playlists }
       end
 
       private
