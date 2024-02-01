@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_31_085844) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_31_152554) do
   create_table "clips", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "id_on_twitch"
     t.string "url"
@@ -20,7 +20,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_31_085844) do
     t.string "creator_id"
     t.string "creator_name"
     t.string "video_id"
-    t.string "game_id"
     t.string "language"
     t.string "title"
     t.integer "view_count"
@@ -29,9 +28,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_31_085844) do
     t.float "duration"
     t.integer "vod_offset"
     t.boolean "is_featured"
-    t.string "game_title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "game_id"
+    t.index ["game_id"], name: "index_clips_on_game_id"
   end
 
   create_table "daily_highlight_playlists", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -40,6 +40,13 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_31_085844) do
     t.datetime "updated_at", null: false
     t.bigint "playlist_id"
     t.index ["playlist_id"], name: "index_daily_highlight_playlists_on_playlist_id"
+  end
+
+  create_table "games", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "game_id"
+    t.string "game_title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "monthly_highlight_playlists", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
