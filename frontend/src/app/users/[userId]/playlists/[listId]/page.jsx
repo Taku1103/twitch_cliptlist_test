@@ -1,5 +1,6 @@
 import { fetchPlaylistData } from '@/app/lib/data'
 import Playlist from '@/app/ui/playlists/playlist/playlist'
+import PlaylistName from '@/app/ui/playlists/playlist/playlistName'
 
 export default async function Page({ params }) {
   const listData = await fetchPlaylistData({
@@ -17,7 +18,11 @@ export default async function Page({ params }) {
     <>
       <div className="playlist-header">
         <p>公開プレイリスト</p>
-        <h1>{listData.playlist.name}</h1>
+        <PlaylistName
+          listData={listData}
+          userId={params.userId}
+          listId={params.listId}
+        />
         <p>作成者：{params.userId}</p>
         <p>作成日：{displayDate(listData.playlist.created_at)}</p>
         <p>お気に入り数：{listData.playlist.favorite_count}</p>

@@ -15,6 +15,10 @@ export async function fetchPlaylistData({ userId, listId }) {
   try {
     const response = await fetch(
       `http://api:3000/api/users/${userId}/playlists/${listId}`,
+      {
+        method: 'GET',
+        cache: 'no-store',
+      },
     )
     const data = await response.json()
     return data
@@ -25,9 +29,18 @@ export async function fetchPlaylistData({ userId, listId }) {
 
 export async function fetchTopPlaylistsData() {
   try {
-    const response1 = await fetch(`http://api:3000/api/users/2/playlists/4`)
-    const response2 = await fetch(`http://api:3000/api/users/2/playlists/5`)
-    const response3 = await fetch(`http://api:3000/api/users/2/playlists/6`)
+    const response1 = await fetch(`http://api:3000/api/users/2/playlists/4`, {
+      method: 'GET',
+      cache: 'no-store',
+    })
+    const response2 = await fetch(`http://api:3000/api/users/2/playlists/5`, {
+      method: 'GET',
+      cache: 'no-store',
+    })
+    const response3 = await fetch(`http://api:3000/api/users/2/playlists/6`, {
+      method: 'GET',
+      cache: 'no-store',
+    })
     const data1 = await response1.json()
     const data2 = await response2.json()
     const data3 = await response3.json()
@@ -84,6 +97,10 @@ export async function fetchPlaylists({ userId }) {
   try {
     const response = await fetch(
       `http://api:3000/api/users/${userId}/playlists`,
+      {
+        method: 'GET',
+        cache: 'no-store',
+      },
     )
     if (!response.ok) {
       throw new Error('プレイリストデータの取得に失敗しました')
