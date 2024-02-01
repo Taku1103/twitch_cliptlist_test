@@ -13,7 +13,7 @@ module Api
 
       def show
         @playlist_clips = @playlist.clips
-        render json: { status: :ok, message: "showing success", playlist: @playlist, playlist_clips: @playlist_clips, favorite_count: @favorite_count }
+        render json: { status: :ok, message: "showing success", playlist: @playlist.attributes.merge(favorite_count: @favorite_count), playlist_clips: @playlist_clips }
       end
 
       def create
