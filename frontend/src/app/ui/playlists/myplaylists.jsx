@@ -1,42 +1,32 @@
 'use client'
-import { fetchPlaylistData, fetchPlaylists } from '@/app/lib/data'
 import PlaylistItem from '@/app/ui/playlists/playlistitem'
+import styles from '@/app/ui/playlists/playlists.module.css'
 
-import { useEffect, useState } from 'react'
+export default function Myplaylists({ userId, listsData }) {
+  const chunkedArray = []
+  const chunkSize = 3
+  const displayRowMax = 3
 
-export default function Myplaylists({ userId }) {
-  const [playlists, setPlaylists] = useState([])
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetchPlaylists({ userId })
-        if (response && response.user_playlists) {
-          // 各プレイリストの詳細データを取得
-          const playlistsData = await Promise.all(
-            response.user_playlists.map(async (playlist) => {
-              const listData = await fetchPlaylistData({
-                userId,
-                listId: playlist.id,
-              })
-              return { ...playlist, playlist_clips: listData.playlist_clips }
-            }),
-          )
-          setPlaylists(playlistsData)
-        }
-      } catch (error) {
-        console.error('プレイリストデータの取得に失敗しました', error)
-      }
-    }
-
-    fetchData()
-  }, [userId])
+  for (let i = 0; i < listsData.user_playlists.length; i += chunkSize) {
+    chunkedArray.push(listsData.user_playlists.slice(i, i + chunkSize))
+  }
 
   return (
-    <ul>
-      {playlists.map((playlist) => (
-        <PlaylistItem key={playlist.id} playlist={playlist} />
-      ))}
-    </ul>
+    <div className={styles.playlists}>
+      <div className={styles.spaceLeft}></div>
+      <div className={styles.column}>
+        {chunkedArray.map((column, index) => (
+          <div key={index}>
+            {column.map((listData) => (
+              <div className={styles.playlist} key={listData.id}>
+                <PlaylistItem listData={listData} />
+              </div>
+            ))}
+            <div className="clear-left"></div>
+          </div>
+        ))}
+      </div>
+      <div className={styles.spaceRight}></div>
+    </div>
   )
 }

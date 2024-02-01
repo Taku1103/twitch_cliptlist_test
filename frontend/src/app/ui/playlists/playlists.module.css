@@ -1,0 +1,108 @@
+.playlists {
+  display: flex;
+}
+
+.spaceLeft {
+  width: 5%;
+  background-color: pink;
+}
+
+.spaceRight {
+  width: 5%;
+  background-color: pink;
+}
+
+.column {
+  width: 90%;
+  .playlist {
+    padding-bottom: 100px;
+    padding-right: 10px;
+    float: left;
+    width: 33%;
+
+    .left {
+      float: left;
+      height: 120px;
+      width: 260px; /* relativeのせいでimgはないものと扱われているので、ここを変更して、rightの要素の場所を調整する */
+      padding-right: 20px;
+      position: relative;
+      background-color: lightgreen;
+
+      .playlistImage {
+        .img {
+          height: 120px;
+          position: absolute;
+          top: 10px;
+          z-index: 3;
+        }
+
+        .shadow1 {
+          height: 120px;
+          width: 215px;
+          background-color: #333;
+          border: 1px solid #000000;
+          position: absolute;
+          top: 0px;
+          left: 10px;
+          z-index: 2;
+        }
+
+        .shadow2 {
+          height: 120px;
+          width: 215px;
+          background-color: #333;
+          border: 1px solid #000000;
+          position: absolute;
+          top: -10px;
+          left: 20px;
+          z-index: 1;
+        }
+
+        .clipCount {
+          height: 30px;
+          width: 120px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 12px;
+          border-radius: 4px;
+          background-color: #666;
+          color: white;
+          position: absolute;
+          bottom: 0px;
+          right: 60px;
+          z-index: 4;
+        }
+      }
+    }
+
+    .right {
+      background-color: lightblue;
+      .listId {
+        padding-top: 10px;
+        font-weight: bold;
+        font-size: 20px;
+        line-height: 22px;
+        overflow-wrap: break-word;
+      }
+
+      .favoritesCount {
+        margin: 0px;
+        font-size: 14px;
+        line-height: 14px;
+        display: flex;
+
+        .count {
+          padding-left: 5px;
+        }
+      }
+
+      .createdAt {
+        padding-top: 6px;
+        margin: 0px;
+        font-size: 14px;
+        line-height: 14px;
+      }
+    }
+  }
+}
