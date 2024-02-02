@@ -14,42 +14,48 @@ export default function Myplaylists({ userId, listsData }) {
     chunkedArray.push(listsData.user_playlists.slice(i, i + chunkSize))
   }
 
+  const getTabClass = (tabName) => {
+    return `tab-button ${activeTab === tabName ? 'active' : ''}`
+  }
+
   return (
     <>
       <div className="playlists-tab">
         <button
-          className="tab-button"
+          className={getTabClass('playlists')}
           onClick={() => setActiveTab('playlists')}
         >
           プレイリスト
         </button>
         <button
-          className="tab-button"
+          className={getTabClass('favorites')}
           onClick={() => setActiveTab('favorites')}
         >
           お気に入り
         </button>
       </div>
 
-      {activeTab === 'playlists' && (
-        <div className={styles.playlists}>
-          <div className={styles.spaceLeft}></div>
-          <div className={styles.column}>
-            {chunkedArray.map((column, index) => (
-              <div key={index}>
-                {column.map((listData) => (
-                  <div className={styles.playlist} key={listData.id}>
-                    <PlaylistItem listData={listData} />
-                  </div>
-                ))}
-                <div className="clear-left"></div>
-              </div>
-            ))}
+      <div>
+        {activeTab === 'playlists' && (
+          <div className={styles.playlists}>
+            <div className={styles.spaceLeft}></div>
+            <div className={styles.column}>
+              {chunkedArray.map((column, index) => (
+                <div key={index}>
+                  {column.map((listData) => (
+                    <div className={styles.playlist} key={listData.id}>
+                      <PlaylistItem listData={listData} />
+                    </div>
+                  ))}
+                  <div className="clear-left"></div>
+                </div>
+              ))}
+            </div>
+            <div className={styles.spaceRight}></div>
           </div>
-          <div className={styles.spaceRight}></div>
-        </div>
-      )}
-      {activeTab === 'favorites' && <Favorite_list />}
+        )}
+        {activeTab === 'favorites' && <Favorite_list />}
+      </div>
     </>
   )
 }

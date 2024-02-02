@@ -227,6 +227,7 @@ li {
   display: flex;
   gap: 15px;
   margin-left: 128px;
+  margin-bottom: 30px;
 }
 
 .playlists-tab button {
@@ -246,4 +247,9 @@ li {
 
 .tab-button:hover {
   background-color: #5236da;
+}
+
+.tab-button.active {
+  /* アクティブなタブのスタイル */
+  border-bottom: 3px solid #e45858; /* アクティブ時のボーダー */
 }
