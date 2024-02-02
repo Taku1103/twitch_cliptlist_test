@@ -21,7 +21,14 @@ module Api
       def show
         @clip_count = count_clips(@playlist)
         @favorite_count = count_favorites(@playlist)
-        @playlist_clips = @playlist.clips
+
+        @playlist_clips = @playlist.clips.map do |clip|
+          clip_game = clip&.game
+          game_thumbnail_url = clip_game&.game_thumbnail_url
+
+          clip.attributes.merge({ game_thumbnail_url: game_thumbnail_url })
+        end
+
         render json: {
         status: :ok,
         message: "showing success",
@@ -54,7 +61,7 @@ module Api
       private
         # clipの最初のサムネイルをサムネとして取得
         def set_playlist
-          @playlist = Playlist.find(params[:id])
+          @playlist = Playlist.includes(clips: :game).find(params[:id])
         end
 
         def set_playlist_thumbnail
