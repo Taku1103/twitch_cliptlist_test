@@ -12,6 +12,28 @@ user_names.each_with_index do |name, index|
   )
 end
 
+# プレイリストを持たいないユーザー
+dummy_names = [
+  'PixelMaster', 'StreamWizard', 'EpicGamer', 'LootLurker', 'ChatChampion', 'RaidRanger', 'BossBattle', 'QuestQueller', 'LagSlayer',
+  'MemeMage', 'PotionPatron', 'DungeonDelver', 'GlitchGhost', 'FrameRate', 'VirtualViking', 'DragonDuelist', 'GearGrinder', 'LootLord',
+  'ManaMender', 'NoobNavigator', 'PuzzlePaladin', 'QuestQueen', 'RuneReader', 'SoulSorcerer', 'TreasureTracker', 'WarpWarrior', 'XPExplorer',
+  'ZombieZapper', 'AetherArcher', 'BiomeBard', 'CosmosCrafter', 'DawnDiver', 'ElementEmissary', 'FlameFencer', 'GroveGuardian', 'HorizonHopper',
+  'IceInvoker', 'JungleJester', 'KarmaKnight', 'LunarLancer', 'MysticMarauder', 'NetherNomad', 'OasisOutlaw', 'PhantomPirate', 'QuartzQuester',
+  'RiftRaider', 'ShadowShaman', 'TideTamer', 'UndeadUsher', 'VortexVanguard', 'WindWanderer', 'XenonXylophonist', 'YarnYak', 'ZenithZoologist',
+  'AlphaAdept', 'BetaBerserker', 'GammaGuard', 'DeltaDrifter', 'EpsilonEagle', 'ZetaZephyr', 'EtaEnchanter', 'ThetaThief', 'IotaImp',
+  'KappaKeeper', 'LambdaLurker', 'MuMystic', 'NuNomad', 'XiXenomorph', 'OmicronOracle', 'PiProtector', 'RhoRanger', 'SigmaSentry',
+  'TauTrader', 'UpsilonUndertaker', 'PhiFollower', 'ChiChaser', 'PsiPaladin', 'OmegaOverlord'
+]
+dummy_names.each_with_index do |name, index|
+  User.create(
+    id_on_twitch: 1 + index,
+    login_name: name,
+    display_name: name,
+    profile_image_url: "https://static-cdn.jtvnw.net/user-default-pictures-uv/75305d54-c7cc-40d1-bb9c-91fbe85943c7-profile_image-300x300.png",
+    user_created_at: "2024-01-30T07:42:51Z"
+  )
+end
+
 # clipsテーブル
 CSV.foreach('public/clip_list.csv') do |row|
   Clip.create(
@@ -47,8 +69,10 @@ end
 
 # ダミープレイリスト
 # user_id：1はadmin
+playlist_count = 8
+playlist_total = playlist_count * (user_names.length - 1)
 2.upto(11) do |user_id|
-  8.times do |i|
+  playlist_count.times do |i|
     Playlist.create(
       name: "#{user_names[user_id - 1]}_#{i + 1}",
       user_id: user_id,
@@ -75,11 +99,12 @@ ranking_ranking_clip_ids.each_with_index do |clip_ids, playlist_id|
 end
 
 # ダミープレイリスト
-4.upto(33) do |playlist_id|
-  1.upto(5) do |i|
+clip_count = 5
+4.upto(playlist_total) do |playlist_id|
+  1.upto(clip_count) do |i|
     PlaylistClip.create(
       playlist_id: playlist_id,
-      clip_id: rand(1..2074),
+      clip_id: rand(1..2704),
       order_index: i
     )
   end
@@ -114,4 +139,15 @@ CSV.foreach('public/broadcaster_list.csv') do |row|
     broadcaster_id: row[0].to_i,
     profile_image_url: row[1],
   )
+end
+
+# user_favorite_playlistsテーブル
+2.upto(101) do |user_id|
+  unique_playlist_ids = (4..playlist_total).to_a.sample(30)
+  unique_playlist_ids.each do |playlist_id|
+    UserFavoritePlaylist.create(
+      playlist_id: playlist_id,
+      user_id: user_id
+    )
+  end
 end
