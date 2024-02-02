@@ -8,7 +8,9 @@ export default async function Page({ params }) {
   return (
     <>
       <div className="playlists-name">
-        <h1>Unameのプレイリスト一覧</h1>
+        <p>
+          <span className="username">User_name</span>のプレイリスト一覧
+        </p>
       </div>
 
       {/* propsでpramsのuserIdを渡す */}
