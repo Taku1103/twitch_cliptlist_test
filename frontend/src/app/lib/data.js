@@ -1,9 +1,20 @@
 'use server'
 
+import { cookies } from 'next/headers'
+
 // clipIdに応じたclipDataを取得するメソッド
 export async function fetchClipData({ clipId }) {
+  let currentUserId
+  if (cookies().get('userId')) {
+    currentUserId = cookies().get('userId').value
+  }
   try {
-    const response = await fetch(`http://api:3000/api/clips/${clipId}`)
+    const response = await fetch(`http://api:3000/api/clips/${clipId}`, {
+      method: 'GET',
+      headers: {
+        current_user_id: currentUserId,
+      },
+    })
     const data = await response.json()
     return data
   } catch (error) {
@@ -12,12 +23,19 @@ export async function fetchClipData({ clipId }) {
 }
 
 export async function fetchPlaylistData({ userId, listId }) {
+  let currentUserId
+  if (cookies().get('userId')) {
+    currentUserId = cookies().get('userId').value
+  }
   try {
     const response = await fetch(
       `http://api:3000/api/users/${userId}/playlists/${listId}`,
       {
         method: 'GET',
         cache: 'no-store',
+        headers: {
+          current_user_id: currentUserId,
+        },
       },
     )
     const data = await response.json()
@@ -28,18 +46,31 @@ export async function fetchPlaylistData({ userId, listId }) {
 }
 
 export async function fetchTopPlaylistsData() {
+  let currentUserId
+  if (cookies().get('userId')) {
+    currentUserId = cookies().get('userId').value
+  }
   try {
     const response1 = await fetch(`http://api:3000/api/users/2/playlists/4`, {
       method: 'GET',
       cache: 'no-store',
+      headers: {
+        current_user_id: currentUserId,
+      },
     })
     const response2 = await fetch(`http://api:3000/api/users/2/playlists/5`, {
       method: 'GET',
       cache: 'no-store',
+      headers: {
+        current_user_id: currentUserId,
+      },
     })
     const response3 = await fetch(`http://api:3000/api/users/2/playlists/6`, {
       method: 'GET',
       cache: 'no-store',
+      headers: {
+        current_user_id: currentUserId,
+      },
     })
     const data1 = await response1.json()
     const data2 = await response2.json()
@@ -65,8 +96,17 @@ export async function fetchTopPlaylistsData() {
 }
 
 export async function fetchDailyClipsData() {
+  let currentUserId
+  if (cookies().get('userId')) {
+    currentUserId = cookies().get('userId').value
+  }
   try {
-    const response = await fetch(`http://api:3000/api/users/1/playlists/1`)
+    const response = await fetch(`http://api:3000/api/users/1/playlists/1`, {
+      method: 'GET',
+      headers: {
+        current_user_id: currentUserId,
+      },
+    })
     const data = await response.json()
     return data
   } catch (error) {}
@@ -74,8 +114,17 @@ export async function fetchDailyClipsData() {
 }
 
 export async function fetchWeeklyClipsData() {
+  let currentUserId
+  if (cookies().get('userId')) {
+    currentUserId = cookies().get('userId').value
+  }
   try {
-    const response = await fetch(`http://api:3000/api/users/1/playlists/2`)
+    const response = await fetch(`http://api:3000/api/users/1/playlists/2`, {
+      method: 'GET',
+      headers: {
+        current_user_id: currentUserId,
+      },
+    })
     const data = await response.json()
     return data
   } catch (error) {}
@@ -83,8 +132,17 @@ export async function fetchWeeklyClipsData() {
 }
 
 export async function fetchMonthlyClipsData() {
+  let currentUserId
+  if (cookies().get('userId')) {
+    currentUserId = cookies().get('userId').value
+  }
   try {
-    const response = await fetch(`http://api:3000/api/users/1/playlists/3`)
+    const response = await fetch(`http://api:3000/api/users/1/playlists/3`, {
+      method: 'GET',
+      headers: {
+        current_user_id: currentUserId,
+      },
+    })
     const data = await response.json()
     return data
   } catch (error) {}
@@ -94,12 +152,19 @@ export async function fetchMonthlyClipsData() {
 // ユーザーの持つプレイリストデータを取得するメソッド
 // http://localhost:3001/api/users/1/playlists
 export async function fetchPlaylists({ userId }) {
+  let currentUserId
+  if (cookies().get('userId')) {
+    currentUserId = cookies().get('userId').value
+  }
   try {
     const response = await fetch(
       `http://api:3000/api/users/${userId}/playlists`,
       {
         method: 'GET',
         cache: 'no-store',
+        headers: {
+          current_user_id: currentUserId,
+        },
       },
     )
     if (!response.ok) {
@@ -114,12 +179,19 @@ export async function fetchPlaylists({ userId }) {
 
 // ユーザーの持つお気に入りのプレイリストデータを取得するメソッド
 export async function fetchFavoritelists({ userId }) {
+  let currentUserId
+  if (cookies().get('userId')) {
+    currentUserId = cookies().get('userId').value
+  }
   try {
     const response = await fetch(
       `http://api:3000/api/users/${userId}/user_favorite_playlists`,
       {
         method: 'GET',
         cache: 'no-store',
+        headers: {
+          current_user_id: currentUserId,
+        },
       },
     )
     if (!response.ok) {

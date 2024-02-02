@@ -4,11 +4,15 @@ import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 
 export async function addClipToPlaylist({ clipId, listId }) {
+  let currentUserId
+  if (cookies().get('userId')) {
+    currentUserId = cookies().get('userId').value
+  }
   try {
     const response = await fetch(`http://api:3000/api/playlist_clips`, {
       method: 'POST',
       headers: {
-        // Authorization: `Bearer ${cookies().get('session').value}`,
+        current_user_id: currentUserId,
         'Content-type': 'application/json',
       },
       body: JSON.stringify({
@@ -25,11 +29,15 @@ export async function addClipToPlaylist({ clipId, listId }) {
 }
 
 export async function deleteClipFromPlaylist({ clipId, listId }) {
+  let currentUserId
+  if (cookies().get('userId')) {
+    currentUserId = cookies().get('userId').value
+  }
   try {
     const response = await fetch(`http://api:3000/api/playlist_clips/0`, {
       method: 'DELETE',
       headers: {
-        // Authorization: `Bearer ${cookies().get('session').value}`,
+        current_user_id: currentUserId,
         'Content-type': 'application/json',
       },
       body: JSON.stringify({
@@ -54,13 +62,17 @@ export async function editPlaylistName({
   listId,
   newPlaylistName,
 }) {
+  let currentUserId
+  if (cookies().get('userId')) {
+    currentUserId = cookies().get('userId').value
+  }
   try {
     const response = await fetch(
       `http://api:3000/api/users/${userId}/playlists/${listId}`,
       {
         method: 'PUT',
         headers: {
-          // Authorization: `Bearer ${cookies().get('session').value}`,
+          current_user_id: currentUserId,
           'Content-type': 'application/json',
         },
         body: JSON.stringify({
@@ -84,13 +96,17 @@ export async function editPlaylistName({
 }
 
 export async function deletePlaylist({ userId, listId }) {
+  let currentUserId
+  if (cookies().get('userId')) {
+    currentUserId = cookies().get('userId').value
+  }
   try {
     const response = await fetch(
       `http://api:3000/api/users/${userId}/playlists/${listId}`,
       {
         method: 'DELETE',
         headers: {
-          // Authorization: `Bearer ${cookies().get('session').value}`,
+          current_user_id: currentUserId,
           'Content-type': 'application/json',
         },
       },
@@ -105,13 +121,17 @@ export async function deletePlaylist({ userId, listId }) {
 }
 
 export async function favorite({ userId, listId }) {
+  let currentUserId
+  if (cookies().get('userId')) {
+    currentUserId = cookies().get('userId').value
+  }
   try {
     const response = await fetch(
       `http://api:3000/api/users/${userId}/user_favorite_playlists`,
       {
         method: 'POST',
         headers: {
-          // Authorization: `Bearer ${cookies().get('session').value}`,
+          current_user_id: currentUserId,
           'Content-type': 'application/json',
         },
         body: JSON.stringify({
@@ -132,13 +152,17 @@ export async function favorite({ userId, listId }) {
 }
 
 export async function unfavorite({ userId, listId }) {
+  let currentUserId
+  if (cookies().get('userId')) {
+    currentUserId = cookies().get('userId').value
+  }
   try {
     const response = await fetch(
       `http://api:3000/api/users/${userId}/user_favorite_playlists/0`,
       {
         method: 'DELETE',
         headers: {
-          // Authorization: `Bearer ${cookies().get('session').value}`,
+          current_user_id: currentUserId,
           'Content-type': 'application/json',
         },
         body: JSON.stringify({
