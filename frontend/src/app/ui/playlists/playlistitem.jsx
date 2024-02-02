@@ -13,11 +13,14 @@ export default function PlaylistItem({ listData }) {
       <Link href={`/users/${listData.user_id}/playlists/${listData.id}`}>
         <div className={styles.left}>
           <div className={styles.playlistImage}>
-            <img src={`${listData.thumbnail_url}`} className={styles.img} />
+            <img
+              src={`${listData.first_thumbnail_url}`}
+              className={styles.img}
+            />
             <div className={styles.shadow1}></div>
             <div className={styles.shadow2}></div>
             <div className={styles.clipCount}>
-              <span>1本のクリップ</span>
+              <span>{listData.clip_count}本のクリップ</span>
             </div>
           </div>
         </div>
