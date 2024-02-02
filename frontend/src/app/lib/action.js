@@ -1,6 +1,7 @@
 'use server'
 
 import { revalidatePath } from 'next/cache'
+import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 
 export async function addClipToPlaylist({ clipId, listId }) {
@@ -53,6 +54,51 @@ export async function deleteClipFromPlaylist({ clipId, listId }) {
   } catch (error) {
     console.log('playlistからclipの削除に失敗しました')
     return false
+  }
+}
+
+export async function createPlaylist({ userId, listName }) {
+  let currentUserId
+  if (cookies().get('userId')) {
+    currentUserId = cookies().get('userId').value
+  }
+  try {
+    const response = await fetch(
+      `http://api:3000/api/users/${userId}/playlists`,
+      {
+        method: 'POST',
+        headers: {
+          current_user_id: currentUserId,
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify({
+          playlist: {
+            user_id: userId,
+            name: listName,
+            published: true,
+          },
+        }),
+      },
+    )
+    if (!response.ok) {
+      throw new Error('playlistの作成に失敗しました')
+    }
+    console.log('playlistの作成に成功しました')
+    const data = await response.json()
+    const listId = data.playlist.id
+    return listId
+  } catch (error) {
+    console.log('playlistの作成に失敗しました')
+  }
+}
+
+export async function createPlaylistAndAddClip({ userId, clipId, listName }) {
+  const listId = await createPlaylist({ userId, listName })
+  if (listId) {
+    await addClipToPlaylist({ clipId, listId })
+    console.log('作成したプレイリストにクリップを追加しました')
+  } else {
+    console.log('playlistの作成に失敗したので、クリップ追加処理を中断します')
   }
 }
 
