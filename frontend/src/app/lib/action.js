@@ -183,6 +183,7 @@ export async function favorite({ userId, listId }) {
         body: JSON.stringify({
           user_id: userId,
           playlist_id: listId,
+          current_user_id: currentUserId,
         }),
       },
     )
@@ -214,6 +215,7 @@ export async function unfavorite({ userId, listId }) {
         body: JSON.stringify({
           user_id: userId,
           playlist_id: listId,
+          current_user_id: currentUserId,
         }),
       },
     )
