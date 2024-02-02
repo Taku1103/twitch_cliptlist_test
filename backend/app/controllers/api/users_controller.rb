@@ -16,14 +16,20 @@ module Api
     end
 
     def create
-      res = request_twitch_api("https://api.twitch.tv/helix/users")
-      if res.status.success?
-        user_data = JSON.parse(res.body)["data"][0]
-        user = build_user(user_data)
-        save_user(user)
-      else
-        render_api_error
-      end
+      @current_user_id = get_current_user_id()
+      render json: @current_user_id
+      # res = request_twitch_api("https://api.twitch.tv/helix/users")
+      # if res.status.success?
+      #   user_data = JSON.parse(res.body)["data"][0]
+      #   if User.find_by(id: @current_user_id)
+      #     render json: {message: "すでに存在します", users: User.find(@current_user_id)}
+      #   else
+      #     user = build_user(user_data)
+      #     save_user(user)
+      #   end
+      # else
+      #   render_api_error
+      # end
     end
 
     private
