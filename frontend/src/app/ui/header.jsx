@@ -11,7 +11,7 @@ export default function Header() {
         <div className="header-left">
           <div className="header-element">
             <Link href="/">
-              <Image src="/logo2.png" alt="" width="50" height="50" />
+              <Image src="/logo3.png" alt="" width="225" height="49" />
             </Link>
           </div>
         </div>
