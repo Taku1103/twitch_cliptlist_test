@@ -174,3 +174,30 @@ export async function fetchFavoritelists({ userId }) {
     console.error('プレイリストデータの取得に失敗しました', error)
   }
 }
+
+export async function fetchFollowStreamers({ userId }) {
+  let currentUserId
+  if (cookies().get('userId')) {
+    currentUserId = cookies().get('userId').value
+  } else {
+  }
+  try {
+    if (!cookies().get('accessToken')) {
+      throw new Error('フォロー配信者の取得に失敗しました')
+    }
+    const response = await fetch(`http://api:3000/api/users/${userId}`, {
+      method: 'GET',
+      headers: {
+        current_user_id: currentUserId,
+        Authorization: `Bearer ${cookies().get('accessToken').value}`,
+      },
+    })
+    if (!response.ok) {
+      throw new Error('フォロー配信者の取得に失敗しました')
+    }
+    const data = await response.json()
+    return data
+  } catch (error) {
+    console.log('フォロー配信者の取得に失敗しました')
+  }
+}
