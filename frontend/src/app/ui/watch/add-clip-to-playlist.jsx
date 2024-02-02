@@ -29,6 +29,7 @@ export default function AddClipToPlaylist({ clipId, myListsData, myUserId }) {
       >
         プレイリストを作成して追加
       </div>
+
       {myListsData.user_playlists.map((playlist, index) => (
         <div
           key={index}

@@ -1,14 +1,16 @@
 'use client'
 import PlaylistItem from '@/app/ui/playlists/playlistitem'
 import styles from '@/app/ui/playlists/playlists.module.css'
-import Favorite_list from '@/app/ui/sidevar/favorite_list'
 import { useState } from 'react'
 
-export default function Myplaylists({ userId, listsData }) {
+export default function Myplaylists({ userId, listsData, favoriteListsData }) {
   const [activeTab, setActiveTab] = useState('playlists') // 初期タブをプレイリストに設定
   const chunkedArray = []
+  const favoritesChunked = []
   const chunkSize = 3
   const displayRowMax = 3
+
+  // const name = favoriteListsData.user_favorite_playlists[0].name
 
   for (let i = 0; i < listsData.user_playlists.length; i += chunkSize) {
     chunkedArray.push(listsData.user_playlists.slice(i, i + chunkSize))
@@ -54,7 +56,21 @@ export default function Myplaylists({ userId, listsData }) {
             <div className={styles.spaceRight}></div>
           </div>
         )}
-        {activeTab === 'favorites' && <Favorite_list />}
+        {activeTab === 'favorites' && (
+          <div className={styles.playlists}>
+            <div className={styles.spaceLeft}></div>
+            <div className={styles.column}>
+              {favoriteListsData.user_favorite_playlists.map((listData) => (
+                <div className={styles.playlist} key={listData.id}>
+                  {/* ここでlistDataを渡す適切なコンポーネントを使用します */}
+                  <PlaylistItem listData={listData} />
+                </div>
+              ))}
+              <div className="clear-left"></div>
+            </div>
+            <div className={styles.spaceRight}></div>
+          </div>
+        )}
       </div>
     </>
   )
