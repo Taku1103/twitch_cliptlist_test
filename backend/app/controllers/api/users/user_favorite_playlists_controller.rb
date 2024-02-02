@@ -32,7 +32,12 @@ module Api
         @clip_count = count_clips(playlist)
         @favorite_count = count_favorites(playlist)
 
-        playlist.attributes.merge({ clip_count: @clip_count, favorite_count: @favorite_count, first_thumbnail_url: playlist.clips.first&.thumbnail_url })
+        playlist.attributes.merge({
+          playlist_creator_name: playlist.user.display_name,
+          playlist_creator_profile_image_url: playlist.user.profile_image_url,
+          clip_count: @clip_count,
+          favorite_count: @favorite_count,
+          first_thumbnail_url: playlist.clips.first&.thumbnail_url })
       end
         render json: { status: :ok, message: "getting favorite playlists succeeded", user_favorite_playlists: @user_favorite_playlists }
       end
