@@ -2,7 +2,7 @@ require "http"
 
 module Api
   class UsersController < ApplicationController
-    before_action :extract_headers, only: [:show, :create]
+    before_action :extract_token_from_headers, only: [:show, :create]
     before_action :set_user, only: [:show]
 
     def show
@@ -69,7 +69,7 @@ module Api
         @user = User.find(params[:id])
       end
 
-      def extract_headers
+      def extract_token_from_headers
         @user_token = request.headers["Authorization"]
       end
   end
