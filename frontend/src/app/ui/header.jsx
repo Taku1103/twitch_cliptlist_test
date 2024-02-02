@@ -31,7 +31,7 @@ export default function Header() {
             {userId && <Link href="#">ログアウト</Link>}
             {!userId && (
               <a
-                href={`https://id.twitch.tv/oauth2/authorize?response_type=token&client_id=${process.env.CLIENT_ID}&redirect_uri=http://localhost:3000/login`}
+                href={`https://id.twitch.tv/oauth2/authorize?response_type=token&client_id=${process.env.CLIENT_ID}&redirect_uri=http://localhost:3000/login&scope=user:read:follows`}
               >
                 ログイン　
               </a>

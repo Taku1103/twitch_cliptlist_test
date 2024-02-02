@@ -9,7 +9,16 @@ class ApplicationController < ActionController::API
     playlist.clips.count
   end
 
-  def get_current_user_id
-    request.headers["current_user_id"]
+  # user_id がDB内にあるuser_idかチェック
+  # def get_current_user_id
+  #   user_id = request.headers["current_user_id"] # TODO要確認
+  #   @current_user = User.find_by(id: user_id) if user_id
+  #   @current_user
+  #   puts @current_user
+  # end
+
+  # ユーザーがログインしていればtrue、その他ならfalseを返す
+  def logged_in?
+    !get_current_user_id.nil?
   end
 end
