@@ -42,7 +42,11 @@ export default function Clip({
           </div>
           <div className={styles.detail}>
             <XShareButton clipData={clipData} />
-            <AddClipToPlaylist clipId={clipId} myListsData={myListsData} />
+            <AddClipToPlaylist
+              clipId={clipId}
+              myListsData={myListsData}
+              myUserId={myUserId}
+            />
           </div>
           <div className={styles.explanation}>
             <div className={styles.title}>{clipData.title}</div>

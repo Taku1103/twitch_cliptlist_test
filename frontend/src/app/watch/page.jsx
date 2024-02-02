@@ -5,6 +5,7 @@ import {
   fetchWeeklyClipsData,
 } from '@/app/lib/data'
 import Clip from '@/app/ui/watch/clip'
+import { cookies } from 'next/headers'
 
 export default async function Page({ searchParams }) {
   const clipId = searchParams['clip']
@@ -12,6 +13,11 @@ export default async function Page({ searchParams }) {
   let clipData
   let listData
   let index
+  let myUserId
+  if (cookies().get('userId')) {
+    myUserId = cookies().get('userId').value
+  }
+  let myListsData
 
   /* listIdがあるときとないときで場合分け */
   if (listId) {
@@ -26,7 +32,8 @@ export default async function Page({ searchParams }) {
     listData = await fetchWeeklyClipsData()
     clipData = (await fetchClipData({ clipId })).clip
   }
-  const myListsData = await fetchPlaylists({ userId: 2 }) // 本当は、Headerからログインユーザーのidを取得して使う
+  myListsData = await fetchPlaylists({ userId: myUserId })
+  console.log(myListsData)
   return (
     <Clip
       clipId={clipId}
