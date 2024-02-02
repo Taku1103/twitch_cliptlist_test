@@ -10,12 +10,18 @@ module Api
       # プレイリストのサムネイルを最初のクリップのサムネイルを利用
       def index
         user_id = params[:id].to_i
-        @user_playlists = Playlist.includes(:clips).where(user_id: user_id).map do |playlist|
+        @user_playlists = Playlist.includes(:clips, :user).where(user_id: user_id).map do |playlist|
           @clip_count = count_clips(playlist)
           @favorite_count = count_favorites(playlist)
           @is_favorited_by_current_user = playlist.favorited_by?(@current_user_id) # TODO 要確認
 
-          playlist.attributes.merge({ is_favorited_by_current_user: @is_favorited_by_current_user, clip_count: @clip_count, favorite_count: @favorite_count, first_thumbnail_url: playlist.clips.first&.thumbnail_url })
+          playlist.attributes.merge({
+            playlist_creator_name: playlist.user.display_name,
+            playlist_profile_image_url: playlist.user.profile_image_url,
+            is_favorited_by_current_user: @is_favorited_by_current_user,
+            clip_count: @clip_count,
+            favorite_count: @favorite_count,
+            first_thumbnail_url: playlist.clips.first&.thumbnail_url })
         end
         render json: { status: :ok, message: "getting playlists sucessed", user_playlists: @user_playlists }
       end
@@ -35,7 +41,12 @@ module Api
         render json: {
         status: :ok,
         message: "showing success",
-        playlist: @playlist.attributes.merge(is_favorited_by_current_user: @is_favorited_by_current_user, clip_count: @clip_count, favorite_count: @favorite_count, first_thumbnail_url: @playlist_thumbnail_url),
+        playlist: @playlist.attributes.merge(
+          playlist_creator_name: @playlist.user.display_name,
+          playlist_profile_image_url: @playlist.user.profile_image_url,
+          is_favorited_by_current_user: @is_favorited_by_current_user,
+          clip_count: @clip_count, favorite_count: @favorite_count,
+          first_thumbnail_url: @playlist_thumbnail_url),
         playlist_clips: @playlist_clips }
       end
 
