@@ -1,8 +1,9 @@
-import { fetchPlaylists } from '@/app/lib/data'
+import { fetchFavoritelists, fetchPlaylists } from '@/app/lib/data'
 import Myplaylists from '@/app/ui/playlists/myplaylists'
 
 export default async function Page({ params }) {
   const listsData = await fetchPlaylists({ userId: params.userId })
+  const favoriteListsData = await fetchFavoritelists({ userId: params.userId })
 
   return (
     <>
@@ -11,7 +12,11 @@ export default async function Page({ params }) {
       </div>
 
       {/* propsでpramsのuserIdを渡す */}
-      <Myplaylists userId={params.userId} listsData={listsData} />
+      <Myplaylists
+        userId={params.userId}
+        listsData={listsData}
+        favoriteListsData={favoriteListsData}
+      />
     </>
   )
 }
