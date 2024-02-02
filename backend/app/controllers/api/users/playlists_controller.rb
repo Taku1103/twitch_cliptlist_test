@@ -3,6 +3,7 @@ module Api
     class PlaylistsController < ApplicationController
       before_action :set_playlist, only: [:show, :update, :destroy]
       before_action :set_playlist_thumbnail, only: [:show]
+      before_action :get_current_user_id, only: [:index, :show]
 
       # clip_count,favorite_countは継承元
       # user_idをパスパラメータで取得
@@ -12,8 +13,9 @@ module Api
         @user_playlists = Playlist.includes(:clips).where(user_id: user_id).map do |playlist|
           @clip_count = count_clips(playlist)
           @favorite_count = count_favorites(playlist)
+          @is_favorited_by_current_user = playlist.favorited_by?(@current_user_id) # TODO 要確認
 
-          playlist.attributes.merge({ clip_count: @clip_count, favorite_count: @favorite_count, first_thumbnail_url: playlist.clips.first&.thumbnail_url })
+          playlist.attributes.merge({ is_favorited_by_current_user: @is_favorited_by_current_user, clip_count: @clip_count, favorite_count: @favorite_count, first_thumbnail_url: playlist.clips.first&.thumbnail_url })
         end
         render json: { status: :ok, message: "getting playlists sucessed", user_playlists: @user_playlists }
       end
@@ -21,6 +23,7 @@ module Api
       def show
         @clip_count = count_clips(@playlist)
         @favorite_count = count_favorites(@playlist)
+        @is_favorited_by_current_user = @playlist.favorited_by?(@current_user_id) # TODO 要確認
 
         @playlist_clips = @playlist.clips.map do |clip|
           clip_game = clip&.game
@@ -32,7 +35,7 @@ module Api
         render json: {
         status: :ok,
         message: "showing success",
-        playlist: @playlist.attributes.merge(clip_count: @clip_count, favorite_count: @favorite_count, first_thumbnail_url: @playlist_thumbnail_url),
+        playlist: @playlist.attributes.merge(is_favorited_by_current_user: @is_favorited_by_current_user, clip_count: @clip_count, favorite_count: @favorite_count, first_thumbnail_url: @playlist_thumbnail_url),
         playlist_clips: @playlist_clips }
       end
 
