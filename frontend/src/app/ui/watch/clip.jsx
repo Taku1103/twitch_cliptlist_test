@@ -1,12 +1,14 @@
 'use client'
 
 import AddClipToPlaylist from '@/app/ui/watch/add-clip-to-playlist'
+import Favorite from '@/app/ui/watch/favorite'
 import MoveNextButton from '@/app/ui/watch/move-next-button'
 import MovePreviousButton from '@/app/ui/watch/move-previous-button'
 import Play from '@/app/ui/watch/play'
 import PlaylistInClip from '@/app/ui/watch/playlist-in-clip'
 import styles from '@/app/ui/watch/watch.module.css'
 import XShareButton from '@/app/ui/watch/x-share-button'
+import Cookies from 'js-cookie'
 import { useRef } from 'react'
 
 export default function Clip({
@@ -18,6 +20,7 @@ export default function Clip({
 }) {
   const autoplay = useRef('false')
   const twitchId = clipData.id_on_twitch
+  const myUserId = Cookies.get('userId')
   return (
     <>
       <div className={styles.clip}>
@@ -61,6 +64,14 @@ export default function Clip({
               twitchId={twitchId}
             />
           )}
+          <div className={styles.favoriteArea}>
+            <Favorite
+              listData={listData}
+              myUserId={myUserId}
+              listId={listData.playlist.id}
+            />
+            <div className="clear-right"></div>
+          </div>
         </div>
       </div>
     </>

@@ -103,3 +103,57 @@ export async function deletePlaylist({ userId, listId }) {
     console.log('playlistのdeleteに失敗しました')
   }
 }
+
+export async function favorite({ userId, listId }) {
+  try {
+    const response = await fetch(
+      `http://api:3000/api/users/${userId}/user_favorite_playlists`,
+      {
+        method: 'POST',
+        headers: {
+          // Authorization: `Bearer ${cookies().get('session').value}`,
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify({
+          user_id: userId,
+          playlist_id: listId,
+        }),
+      },
+    )
+    if (!response.ok) {
+      throw new Error('favoriteに失敗しました')
+    }
+    console.log('favoriteに成功しました')
+    return true
+  } catch (error) {
+    console.log('favoriteに失敗しました')
+    return false
+  }
+}
+
+export async function unfavorite({ userId, listId }) {
+  try {
+    const response = await fetch(
+      `http://api:3000/api/users/${userId}/user_favorite_playlists/0`,
+      {
+        method: 'DELETE',
+        headers: {
+          // Authorization: `Bearer ${cookies().get('session').value}`,
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify({
+          user_id: userId,
+          playlist_id: listId,
+        }),
+      },
+    )
+    if (!response.ok) {
+      throw new Error('unfavoriteに失敗しました')
+    }
+    console.log('unfavoriteに成功しました')
+    return true
+  } catch (error) {
+    console.log('unfavoriteに失敗しました')
+    return false
+  }
+}
