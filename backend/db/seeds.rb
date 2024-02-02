@@ -107,3 +107,11 @@ CSV.foreach('public/game_list.csv') do |row|
     game_thumbnail_url: row[2],
   )
 end
+
+# broadcastersテーブル
+CSV.foreach('public/broadcaster_list.csv') do |row|
+  Broadcaster.create(
+    broadcaster_id: row[0].to_i,
+    profile_image_url: row[1],
+  )
+end
