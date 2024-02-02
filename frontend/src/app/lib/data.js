@@ -111,3 +111,23 @@ export async function fetchPlaylists({ userId }) {
     console.error('プレイリストデータの取得に失敗しました', error)
   }
 }
+
+// ユーザーの持つお気に入りのプレイリストデータを取得するメソッド
+export async function fetchFavoritelists({ userId }) {
+  try {
+    const response = await fetch(
+      `http://api:3000/api/users/${userId}/user_favorite_playlists`,
+      {
+        method: 'GET',
+        cache: 'no-store',
+      },
+    )
+    if (!response.ok) {
+      throw new Error('プレイリストデータの取得に失敗しました')
+    }
+    const playlistsdata = await response.json()
+    return playlistsdata
+  } catch (error) {
+    console.error('プレイリストデータの取得に失敗しました', error)
+  }
+}

@@ -4,18 +4,16 @@
 
 .spaceLeft {
   width: 5%;
-  background-color: pink;
 }
 
 .spaceRight {
   width: 5%;
-  background-color: pink;
 }
 
 .column {
   width: 90%;
   .playlist {
-    padding-bottom: 100px;
+    padding-bottom: 50px;
     padding-right: 10px;
     float: left;
     width: 33%;
@@ -26,7 +24,7 @@
       width: 260px; /* relativeのせいでimgはないものと扱われているので、ここを変更して、rightの要素の場所を調整する */
       padding-right: 20px;
       position: relative;
-      background-color: lightgreen;
+      /* /* background-color: lightgreen; */
 
       .playlistImage {
         .img {
@@ -77,17 +75,18 @@
     }
 
     .right {
-      background-color: lightblue;
+      /* background-color: lightblue; */
       .listId {
-        padding-top: 10px;
+        padding-top: 0px;
+        margin-bottom: 0px;
         font-weight: bold;
-        font-size: 20px;
+        font-size: 25px;
         line-height: 22px;
         overflow-wrap: break-word;
       }
 
       .favoritesCount {
-        margin: 0px;
+        margin-top: 10px;
         font-size: 14px;
         line-height: 14px;
         display: flex;
@@ -105,4 +104,13 @@
       }
     }
   }
+}
+
+.createday_containar span {
+  display: block;
+  margin-top: 10px;
+}
+
+.createday {
+  font-size: 12px;
 }
