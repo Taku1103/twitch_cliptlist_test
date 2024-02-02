@@ -10,10 +10,10 @@ export default function Playlists({ listsData }) {
   const chunkedArray = []
   const chunkSize = 3
   const displayRowMax = 3
-  const rowMax = Math.floor(listsData.length / displayRowMax)
+  const rowMax = Math.floor(listsData.playlists.length / displayRowMax)
 
-  for (let i = 0; i < listsData.length; i += chunkSize) {
-    chunkedArray.push(listsData.slice(i, i + chunkSize))
+  for (let i = 0; i < listsData.playlists.length; i += chunkSize) {
+    chunkedArray.push(listsData.playlists.slice(i, i + chunkSize))
   }
 
   const baseRowNum = useRef(0)
@@ -36,7 +36,7 @@ export default function Playlists({ listsData }) {
       {rows.map((row) => (
         <div className={styles.row} key={rows.indexOf(row)}>
           {row.map((listData) => (
-            <div className={styles.playlist} key={listData.playlist.id}>
+            <div className={styles.playlist} key={listData.id}>
               <Playlist listData={listData} />
             </div>
           ))}
