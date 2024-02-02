@@ -23,7 +23,12 @@ export default function Header() {
             <Link href="/users/2/playlists">マイプレイリスト</Link>
           </div>
           <div className="header-element">
-            <Link href="#">ログアウト</Link>
+            <a
+              href={`https://id.twitch.tv/oauth2/authorize?response_type=token&client_id=${process.env.CLIENT_ID}&redirect_uri=http://localhost:3000/login`}
+            >
+              認証
+            </a>
+            <Link href="#">/ログアウト</Link>
           </div>
         </div>
       </header>

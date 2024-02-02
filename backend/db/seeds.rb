@@ -98,3 +98,12 @@ MonthlyHighlightPlaylist.create(
   playlist_id: 3,
   start_date: "2024-01-31"
 )
+
+# gamesテーブル
+CSV.foreach('public/game_list.csv') do |row|
+  Game.create(
+    game_id: row[0].to_i,
+    game_title: row[1],
+    game_thumbnail_url: row[2],
+  )
+end
