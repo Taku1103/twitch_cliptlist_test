@@ -16,7 +16,7 @@ module Api
     end
 
     def create
-      @current_user_id = get_current_user_id()
+      @current_user_id = get_current_user_id
       render json: @current_user_id
       # res = request_twitch_api("https://api.twitch.tv/helix/users")
       # if res.status.success?
