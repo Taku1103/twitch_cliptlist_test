@@ -141,3 +141,45 @@
 .addPlaylistCandidate:hover {
   color: var(--link);
 }
+
+.favoriteArea {
+  padding: 20px;
+  .favorited {
+    float: right;
+    .heartBackground {
+      width: 50px;
+      height: 50px;
+      border-radius: 100%;
+      cursor: pointer;
+      background-color: #ffeaf4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .heart {
+        font-size: 28px;
+        color: #f76685;
+      }
+    }
+  }
+
+  .unfavorited {
+    float: right;
+    .heartBackground {
+      width: 50px;
+      height: 50px;
+      border-radius: 100%;
+      cursor: pointer;
+      background-color: #edf2f7;
+      color: #8f9faa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .heart {
+        font-size: 28px;
+      }
+    }
+    .heartBackground:hover {
+      background-color: #dde2e7;
+    }
+  }
+}
