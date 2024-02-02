@@ -16,33 +16,35 @@ export default function Sidebar() {
   return (
     <>
       <div className="sidebar-wrapper">
-        {/* サイドバートップのアイコンとユーザー名を表示する */}
-        <div className="side-element">
-          <Image
-            src="/dog_icon.jpg"
-            width={50}
-            height={50}
-            className="rounded-image"
-          />
-          <p>testuser</p>
+        <div className="sidebar">
+          {/* サイドバートップのアイコンとユーザー名を表示する */}
+          <div className="side-element">
+            <Image
+              src="/dog_icon.jpg"
+              width={50}
+              height={50}
+              className="rounded-image"
+            />
+            <p>testuser</p>
+          </div>
+          {/* アイコン表示する */}
+          <div className="nav">
+            <ul>
+              <li className="list" onClick={() => setActiveTab('list')}>
+                <i className={getIconClass('list') + ' fa-list'}></i>
+              </li>
+              <li className="list" onClick={() => setActiveTab('favorites')}>
+                <i className={getIconClass('favorites') + ' fa-heart'}></i>
+              </li>
+              <li className="list" onClick={() => setActiveTab('follow')}>
+                <i className={getIconClass('follow') + ' fa-circle-user'}></i>
+              </li>
+            </ul>
+          </div>
+          {activeTab === 'list' && <List />}
+          {activeTab === 'favorites' && <Favorite_list />}
+          {activeTab === 'follow' && <Follow />}
         </div>
-        {/* アイコン表示する */}
-        <div className="nav">
-          <ul>
-            <li className="list" onClick={() => setActiveTab('list')}>
-              <i className={getIconClass('list') + ' fa-list'}></i>
-            </li>
-            <li className="list" onClick={() => setActiveTab('favorites')}>
-              <i className={getIconClass('favorites') + ' fa-heart'}></i>
-            </li>
-            <li className="list" onClick={() => setActiveTab('follow')}>
-              <i className={getIconClass('follow') + ' fa-circle-user'}></i>
-            </li>
-          </ul>
-        </div>
-        {activeTab === 'list' && <List />}
-        {activeTab === 'favorites' && <Favorite_list />}
-        {activeTab === 'follow' && <Follow />}
       </div>
     </>
   )
