@@ -69,13 +69,16 @@ a:hover {
 .body-wrapper {
   background-color: red;
   align-items: start;
-  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .header-wrapper {
   position: sticky;
   z-index: 100;
   top: 0;
+  width: 100%;
 }
 
 /* header */
@@ -102,6 +105,8 @@ header {
 
 .main-wrapper {
   display: flex;
+  width: 100%;
+  flex-grow: 1;
 }
 
 /* sidebarの固定 */
@@ -113,6 +118,7 @@ header {
   position: sticky;
   z-index: 99;
   top: 82px;
+  width: 100%;
 }
 
 /* sidebar */
