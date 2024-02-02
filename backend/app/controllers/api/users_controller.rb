@@ -19,6 +19,10 @@ module Api
       res = request_twitch_api("https://api.twitch.tv/helix/users")
       if res.status.success?
         user_data = JSON.parse(res.body)["data"][0]
+
+        find_user = User.find_by(id_on_twitch: user_data["id"])
+        return render json: find_user, status: :ok if find_user
+
         user = build_user(user_data)
         save_user(user)
       else
