@@ -51,44 +51,15 @@ export async function fetchTopPlaylistsData() {
     currentUserId = cookies().get('userId').value
   }
   try {
-    const response1 = await fetch(`http://api:3000/api/users/2/playlists/4`, {
+    const response = await fetch(`http://api:3000/api`, {
       method: 'GET',
       cache: 'no-store',
       headers: {
         current_user_id: currentUserId,
       },
     })
-    const response2 = await fetch(`http://api:3000/api/users/2/playlists/5`, {
-      method: 'GET',
-      cache: 'no-store',
-      headers: {
-        current_user_id: currentUserId,
-      },
-    })
-    const response3 = await fetch(`http://api:3000/api/users/2/playlists/6`, {
-      method: 'GET',
-      cache: 'no-store',
-      headers: {
-        current_user_id: currentUserId,
-      },
-    })
-    const data1 = await response1.json()
-    const data2 = await response2.json()
-    const data3 = await response3.json()
-    const data = [
-      data1,
-      data2,
-      data3,
-      data2,
-      data3,
-      data1,
-      data3,
-      data1,
-      data2,
-      data1,
-      data2,
-      data3,
-    ]
+    const dataBefore = await response.json()
+    const data = await { playlists: dataBefore.playlists.slice(0, 60) } // 3の倍数でないと挙動バグるので、とりあえず60個使う
     return data
   } catch (error) {
     console.log('TopPlaylistsDataの取得に失敗しました')
