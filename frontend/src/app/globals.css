@@ -67,7 +67,9 @@ a:hover {
 
 /* headerの固定 */
 .body-wrapper {
+  background-color: red;
   align-items: start;
+  height: 100vh;
 }
 
 .header-wrapper {
