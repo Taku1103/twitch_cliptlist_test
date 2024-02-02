@@ -10,14 +10,21 @@ module Api
       def index
         user_id = params[:id].to_i
         @user_playlists = Playlist.includes(:clips).where(user_id: user_id).map do |playlist|
-          playlist.attributes.merge({ first_thumbnail_url: playlist.clips.first&.thumbnail_url })
+          @clip_count = count_clips(playlist)
+          playlist.attributes.merge({ clip_count: @clip_count, first_thumbnail_url: playlist.clips.first&.thumbnail_url })
         end
         render json: { status: :ok, message: "getting playlists sucessed", user_playlists: @user_playlists }
       end
 
       def show
         @playlist_clips = @playlist.clips
-        render json: { status: :ok, message: "showing success", playlist: @playlist.attributes.merge(favorite_count: @favorite_count, first_thumbnail_url: @playlist_thumbnail_url), playlist_clips: @playlist_clips }
+        @clip_count = count_clips(@playlist)
+
+        render json: {
+        status: :ok,
+        message: "showing success",
+        playlist: @playlist.attributes.merge(clip_count: @clip_count, favorite_count: @favorite_count, first_thumbnail_url: @playlist_thumbnail_url),
+        playlist_clips: @playlist_clips }
       end
 
       def create
@@ -60,6 +67,9 @@ module Api
           @favorite_count = @playlist.user_favorite_playlists.count
         end
 
+        def count_clips(playlist)
+          @clip_count = playlist.clips.count
+        end
 
         def playlist_param
           params.require(:playlist).permit(:name, :user_id, :favorite_count, :published)
