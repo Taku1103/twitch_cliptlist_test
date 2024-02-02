@@ -14,8 +14,8 @@ class Playlist < ApplicationRecord
   has_many :playlist_clips
   has_many :clips, through: :playlist_clips
 
-  # このplaylistが引数のuserにfavoriteされているか
-  def favorited_by?(user)
+  # このplaylistが引数のuser_idにfavoriteされているか
+  def favorited_by?(user_id)
     user_favorite_playlists.exists?(user_id: user_id)
   end
 
