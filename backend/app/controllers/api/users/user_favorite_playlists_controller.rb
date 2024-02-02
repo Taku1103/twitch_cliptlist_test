@@ -2,6 +2,7 @@ module Api
   module Users
     class UserFavoritePlaylistsController < ApplicationController
       before_action :set_id_user_and_playlist, only: [:create, :destroy]
+      before_action :get_current_user_id, only: [:create, :destroy]
 
       # 参照はreq.bodyのuser_idとplaylist_id
       # POST /api/users/:id/user_favorite_playlists
