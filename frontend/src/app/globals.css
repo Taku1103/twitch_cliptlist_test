@@ -192,6 +192,21 @@ li {
   padding-right: 20px;
 }
 
+/* リストのアイコン */
+.side-list .list-item {
+  display: flex;
+  align-items: center; /* アイテムを中央揃えに */
+  margin-bottom: 10px; /* リストアイテム間の余白 */
+}
+
+.follow-icon {
+  width: 40px; /* アイコンのサイズを小さく */
+  height: 40px; /* アイコンのサイズを小さく */
+  border-radius: 50%; /* アイコンを円形に */
+  border: 1px solid grey; /* アイコンの枠線をグレーに */
+  margin-right: 10px; /* アイコンと名前の間に余白 */
+}
+
 .active {
   border-radius: 50%; /* 角を完全に丸くする */
   background-color: rgba(204, 204, 206, 0.1);

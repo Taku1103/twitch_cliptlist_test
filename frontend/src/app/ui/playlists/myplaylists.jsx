@@ -62,7 +62,6 @@ export default function Myplaylists({ userId, listsData, favoriteListsData }) {
             <div className={styles.column}>
               {favoriteListsData.user_favorite_playlists.map((listData) => (
                 <div className={styles.playlist} key={listData.id}>
-                  {/* ここでlistDataを渡す適切なコンポーネントを使用します */}
                   <PlaylistItem listData={listData} />
                 </div>
               ))}
