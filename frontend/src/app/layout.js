@@ -20,11 +20,13 @@ export default function RootLayout({ children }) {
         ></link>
       </head>
       <body className={inter.className}>
-        <Header />
-        <div className="clear-right"></div>
-        <div className="main-wrapper">
-          <Sidebar />
-          <div className="content-wrapper">{children}</div>
+        <div className="body-wrapper">
+          <Header />
+          <div className="clear-right"></div>
+          <div className="main-wrapper">
+            <Sidebar />
+            <div className="content-wrapper">{children}</div>
+          </div>
         </div>
         <script
           src="https://kit.fontawesome.com/8de743f310.js"
