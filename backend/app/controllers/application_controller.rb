@@ -10,6 +10,6 @@ class ApplicationController < ActionController::API
   end
 
   def get_current_user_id
-    @current_user_id = request.headers["current_user_id"]
+    request.headers["current_user_id"]
   end
 end
