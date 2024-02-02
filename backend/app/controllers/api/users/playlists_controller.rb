@@ -2,24 +2,26 @@ module Api
   module Users
     class PlaylistsController < ApplicationController
       before_action :set_playlist, only: [:show, :update, :destroy]
-      before_action :count_favorites, only: [:show]
       before_action :set_playlist_thumbnail, only: [:show]
 
+      # clip_count,favorite_countは継承元
       # user_idをパスパラメータで取得
       # プレイリストのサムネイルを最初のクリップのサムネイルを利用
       def index
         user_id = params[:id].to_i
         @user_playlists = Playlist.includes(:clips).where(user_id: user_id).map do |playlist|
           @clip_count = count_clips(playlist)
-          playlist.attributes.merge({ clip_count: @clip_count, first_thumbnail_url: playlist.clips.first&.thumbnail_url })
+          @favorite_count = count_favorites(playlist)
+
+          playlist.attributes.merge({ clip_count: @clip_count, favorite_count: @favorite_count, first_thumbnail_url: playlist.clips.first&.thumbnail_url })
         end
         render json: { status: :ok, message: "getting playlists sucessed", user_playlists: @user_playlists }
       end
 
       def show
-        @playlist_clips = @playlist.clips
         @clip_count = count_clips(@playlist)
-
+        @favorite_count = count_favorites(@playlist)
+        @playlist_clips = @playlist.clips
         render json: {
         status: :ok,
         message: "showing success",
@@ -62,14 +64,6 @@ module Api
           end
         end
 
-
-        def count_favorites
-          @favorite_count = @playlist.user_favorite_playlists.count
-        end
-
-        def count_clips(playlist)
-          @clip_count = playlist.clips.count
-        end
 
         def playlist_param
           params.require(:playlist).permit(:name, :user_id, :favorite_count, :published)
