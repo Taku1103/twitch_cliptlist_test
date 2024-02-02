@@ -35,7 +35,7 @@ export default function Myplaylists({ userId, listsData }) {
         </button>
       </div>
 
-      <div>
+      <div className="playlists-main">
         {activeTab === 'playlists' && (
           <div className={styles.playlists}>
             <div className={styles.spaceLeft}></div>

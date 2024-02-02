@@ -220,14 +220,14 @@ li {
 /* user_playlist */
 .playlists-name {
   margin-left: 128px;
-  margin-top: 25`px;
+  margin-top: 25px;
 }
 
 .playlists-tab {
   display: flex;
   gap: 15px;
   margin-left: 128px;
-  margin-bottom: 30px;
+  margin-bottom: 18px;
 }
 
 .playlists-tab button {
@@ -252,4 +252,10 @@ li {
 .tab-button.active {
   /* アクティブなタブのスタイル */
   border-bottom: 3px solid #e45858; /* アクティブ時のボーダー */
+}
+
+.playlists-main {
+  background-color: #e8e8ea;
+  padding-top: 30px;
+  border-top: 1px solid rgba(43, 44, 52, 0.1);
 }
