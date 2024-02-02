@@ -17,7 +17,7 @@ module Api
 
           playlist.attributes.merge({
             playlist_creator_name: playlist.user.display_name,
-            playlist_profile_image_url: playlist.user.profile_image_url,
+            playlist_creator_profile_image_url: playlist.user.profile_image_url,
             is_favorited_by_current_user: @is_favorited_by_current_user,
             clip_count: @clip_count,
             favorite_count: @favorite_count,
@@ -43,7 +43,7 @@ module Api
         message: "showing success",
         playlist: @playlist.attributes.merge(
           playlist_creator_name: @playlist.user.display_name,
-          playlist_profile_image_url: @playlist.user.profile_image_url,
+          playlist_creator_profile_image_url: @playlist.user.profile_image_url,
           is_favorited_by_current_user: @is_favorited_by_current_user,
           clip_count: @clip_count, favorite_count: @favorite_count,
           first_thumbnail_url: @playlist_thumbnail_url),
