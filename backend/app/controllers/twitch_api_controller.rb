@@ -89,8 +89,23 @@ class TwitchApiController < ApplicationController
       end
     end
 
-    # write_csv("public/clip_list.csv", clip_list) #csv書き込みコマンド
+    # write_clips_csv("public/clip_list.csv", clip_list) #csv書き込みコマンド
     render json: { "clip_counts": clip_list.length, "clip_list": clip_list }, status: :ok
+  end
+
+  def get_games
+    header = { "Authorization" => ENV["USER_ACCESS_TOKEN"],  "Client-id" => ENV["CLIENT_ID"] }
+    game_list = []
+
+    game_ids = Clip.pluck(:game_id).uniq.compact
+    game_ids.each do |game_id|
+      uri = "https://api.twitch.tv/helix/games?id=#{game_id}"
+      res = request_get(header, uri)
+      game_list << res["data"][0]
+    end
+
+    write_games_csv("public/game_list.csv", game_list)
+    render json: game_list
   end
 
   private
@@ -104,7 +119,7 @@ class TwitchApiController < ApplicationController
       JSON.parse(res.to_s)
     end
 
-    def write_csv(path, clip_list)
+    def write_clips_csv(path, clip_list)
       CSV.open(path, "wb", encoding: "UTF-8") do |csv|
         clip_list.each do |clip|
           csv << [
@@ -113,6 +128,16 @@ class TwitchApiController < ApplicationController
             clip["video_id"], clip["game_id"], clip["language"], clip["title"],
             clip["view_count"], clip["created_at"], clip["thumbnail_url"],
             clip["duration"], clip["vod_offset"], clip["is_featured"]
+          ]
+        end
+      end
+    end
+
+    def write_games_csv(path, clip_list)
+      CSV.open(path, "wb", encoding: "UTF-8") do |csv|
+        clip_list.each do |clip|
+          csv << [
+            clip["id"], clip["name"], clip["box_art_url"]
           ]
         end
       end
