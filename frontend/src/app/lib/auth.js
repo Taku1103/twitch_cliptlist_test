@@ -14,7 +14,11 @@ export async function createUser() {
       },
     })
     const data = await response.json()
-    console.log(data)
+    console.log(data.id)
+    cookies().set('userId', data.id, {
+      maxAge: 60 * 60 * 24 * 7, // One week
+    })
+
     console.log('user作成に成功しました')
   } catch (error) {
     console.log('user作成に失敗しました')

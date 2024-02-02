@@ -1,7 +1,10 @@
+import { cookies } from 'next/headers'
 import Image from 'next/image'
 import Link from 'next/link'
 
 export default function Header() {
+  const userId = cookies().get('userId')
+
   return (
     <div className="header-wrapper">
       <header>
@@ -23,12 +26,14 @@ export default function Header() {
             <Link href="/users/2/playlists">マイプレイリスト</Link>
           </div>
           <div className="header-element">
-            <a
-              href={`https://id.twitch.tv/oauth2/authorize?response_type=token&client_id=${process.env.CLIENT_ID}&redirect_uri=http://localhost:3000/login`}
-            >
-              認証
-            </a>
-            <Link href="#">/ログアウト</Link>
+            {userId && <Link href="#">ログアウト</Link>}
+            {!userId && (
+              <a
+                href={`https://id.twitch.tv/oauth2/authorize?response_type=token&client_id=${process.env.CLIENT_ID}&redirect_uri=http://localhost:3000/login`}
+              >
+                ログイン　
+              </a>
+            )}
           </div>
         </div>
       </header>
