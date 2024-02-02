@@ -11,6 +11,7 @@ export default function SiebarClient({
   followStreamers,
 }) {
   const [activeTab, setActiveTab] = useState('list')
+  console.log(followStreamers)
 
   // アイコンのクラス名を取得する関数
   const getIconClass = (tabName) => {
@@ -29,7 +30,7 @@ export default function SiebarClient({
               height={50}
               className="rounded-image"
             />
-            <p>testuser</p>
+            <p>testuser{favoritelists.user_favorite_playlists[0].name}</p>
           </div>
           {/* アイコン表示する */}
           <div className="nav">
@@ -45,9 +46,13 @@ export default function SiebarClient({
               </li>
             </ul>
           </div>
-          {activeTab === 'list' && <List />}
-          {activeTab === 'favorites' && <Favorite_list />}
-          {activeTab === 'follow' && <Follow />}
+          {activeTab === 'list' && <List playlists={playlists} />}
+          {activeTab === 'favorites' && (
+            <Favorite_list favoritelists={favoritelists} />
+          )}
+          {activeTab === 'follow' && (
+            <Follow followStreamers={followStreamers} />
+          )}
         </div>
       </div>
     </>

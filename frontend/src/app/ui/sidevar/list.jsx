@@ -1,23 +1,16 @@
-export default function List() {
-  // リストアイテムのデータ配列
-  const items = [
-    'プレイリスト1',
-    'プレイリスト2',
-    'プレイリスト3',
-    'プレイリスト4',
-    'プレイリスト5',
-    'プレイリスト6',
-    'プレイリスト7',
-  ]
-
+export default function List({ user_playlists = [] }) {
   return (
     <div className="side-list">
       <ul>
-        {items.map((item, index) => (
-          <li key={index} className="list-item">
-            {item}
-          </li>
-        ))}
+        {user_playlists.length > 0 ? (
+          user_playlists.map((listData, index) => (
+            <li key={index} className="list-item">
+              {listData.name}
+            </li>
+          ))
+        ) : (
+          <li className="list-item">プレイリストがありません</li>
+        )}
       </ul>
     </div>
   )
