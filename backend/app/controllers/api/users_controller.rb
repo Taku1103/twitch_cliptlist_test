@@ -34,12 +34,11 @@ module Api
 
       # TODO: broadcasterテーブル完成後、実行確認。
       def process_followed_channels(data)
-        # channel_ids = data.map { |channel| channel["broadcaster_id"] }
-        # broadcaster_list = Broadcaster.where(broadcaster_id: channel_ids)
+        channel_ids = data.map { |channel| channel["broadcaster_id"] }
+        broadcaster_list = Broadcaster.where(broadcaster_id: channel_ids).pluck(:profile_image_url)
 
         data.each_with_index do |channel, index|
-          # channel["profile_image_url"] = broadcaster_list[index]
-          channel["profile_image_url"] = "https://static-cdn.jtvnw.net/jtv_user_pictures/8a6381c7-d0c0-4576-b179-38bd5ce1d6af-profile_image-300x300.png"
+          channel["profile_image_url"] = broadcaster_list[index]
         end
         data
       end
