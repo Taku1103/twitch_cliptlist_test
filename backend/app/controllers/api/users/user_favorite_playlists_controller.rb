@@ -29,7 +29,10 @@ module Api
       def index
         user_id = params[:id].to_i
         @user_favorite_playlists = Playlist.includes(:clips).joins(:user_favorite_playlists).where(user_favorite_playlists: { user_id: user_id }).map do |playlist|
-        playlist.attributes.merge({ first_thumbnail_url: playlist.clips.first&.thumbnail_url })
+        @clip_count = count_clips(playlist)
+        @favorite_count = count_favorites(playlist)
+
+        playlist.attributes.merge({ clip_count: @clip_count, favorite_count: @favorite_count, first_thumbnail_url: playlist.clips.first&.thumbnail_url })
       end
         render json: { status: :ok, message: "getting favorite playlists succeeded", user_favorite_playlists: @user_favorite_playlists }
       end
