@@ -30,7 +30,7 @@ export default function SiebarClient({
               height={50}
               className="rounded-image"
             />
-            <p>testuser{favoritelists.user_favorite_playlists[0].name}</p>
+            <p>testuser</p>
           </div>
           {/* アイコン表示する */}
           <div className="nav">

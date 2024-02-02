@@ -27,7 +27,7 @@ export default function PlaylistItem({ listData }) {
         <div className={styles.right}>
           <p className={styles.listId}>{listData.name}</p>
           <div className={styles.favoritesCount}>
-            <i className="fas fa-heart"></i>
+            <i className="fas fa-heart heart "></i>
             <span className={styles.count}>{listData.favorite_count}</span>
           </div>
           <div className={styles.createday_containar}>

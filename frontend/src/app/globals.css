@@ -8,6 +8,7 @@
   --button: #6246ea; /* ボタン */
   --button-text: #fffffe; /* ボタンテキスト */
   --link: #6246ea; /* リンク */
+  --point: #e45858; /*差し色として  */
 }
 
 /* リセット */
@@ -135,12 +136,24 @@ header {
 
 .side-element {
   text-align: center;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin-top: 0px;
+  margin-bottom: 50px;
 }
 
 .side-element p {
   margin-top: 0px;
+
+  font-size: 1.2em; /* フォントサイズを大きく */
+  font-weight: bold; /* フォントを太く */
+  color: #333; /* フォントカラーを濃く */
+}
+
+.rounded-image {
+  margin-bottom: 10px; /* アイコンと名前の間の余白 */
+
+  width: 70px; /* アイコンのサイズを大きく */
+  height: 70px; /* アイコンのサイズを大きく */
+  border: 2px solid #ccc; /* 枠線を追加（オプション） */
 }
 
 /* サイドバーのリスト */
@@ -172,6 +185,7 @@ li {
   border-bottom: 1px solid rgba(43, 44, 52, 0.1);
   padding: 10px 0px;
   color: var(--paragraph);
+  cursor: pointer;
 
   transition:
     background-color 0.3s,
@@ -301,4 +315,8 @@ li {
   background-color: #e8e8ea;
   padding-top: 30px;
   border-top: 1px solid rgba(43, 44, 52, 0.1);
+}
+
+.heart {
+  color: #e45858;
 }
