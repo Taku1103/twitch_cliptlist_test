@@ -19,5 +19,7 @@ Rails.application.routes.draw do
   get "/twitch_api/get_user_id", to: "twitch_api#get_user_id"
   get "/twitch_api/get_user_channels", to: "twitch_api#get_user_channels"
   get "/twitch_api/get_broadcaster_clips", to: "twitch_api#get_broadcaster_clips"
+  get "/twitch_api/get_games", to: "twitch_api#get_games"
+  get "/twitch_api/get_broadcasters", to: "twitch_api#get_broadcasters"
   get "/ranking_playlists/get_ranking_clip_ids", to: "ranking_playlists#get_ranking_clip_ids"
 end
