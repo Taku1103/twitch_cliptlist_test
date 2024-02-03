@@ -8,8 +8,9 @@ export default function Favorite({ listData, myUserId, listId }) {
   const [favoritesCount, setFavoritesCount] = useState(
     listData.playlist.favorite_count,
   )
-  // const [favorited, setFavorited] = useState(listData.playlist.favorited) // 本当はこっちだけど、まだfavoritedがないので、一旦以下で仮置き
-  const [favorited, setFavorited] = useState(false)
+  const [favorited, setFavorited] = useState(
+    listData.playlist.is_favorited_by_current_user,
+  )
 
   async function applyFavorite(diff, myUserId, listId) {
     setFavoritesCount(favoritesCount + diff)
