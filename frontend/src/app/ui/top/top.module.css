@@ -4,6 +4,10 @@
   .h2 {
     margin-top: 0px;
   }
+  .playlists_area {
+    border-bottom: solid #ececf0;
+    margin-bottom: 10px;
+  }
 }
 
 .sortTypeWrapper {

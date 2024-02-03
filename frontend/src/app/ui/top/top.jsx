@@ -16,22 +16,27 @@ export default function Top({
   const sortType = useRef('daily')
   return (
     <div className={styles.top}>
-      <h2 className={styles.h2}>人気のプレイリスト</h2>
-      <Playlists listsData={listsData} />
-      <hr />
-      <h2 className={styles.h2}>人気のクリップ</h2>
-      <SortType
-        setClipsData={setClipsData}
-        dailyClipsData={dailyClipsData}
-        weeklyClipsData={weeklyClipsData}
-        monthlyClipsData={monthlyClipsData}
-        sortType={sortType}
-      />
-      <div className="clear-right"></div>
-      <Clips
-        clipsData={clipsData.playlist_clips}
-        listId={clipsData.playlist.id}
-      />
+      <div className={styles.playlists_area}>
+        <h2 className={styles.h2}>人気のプレイリスト</h2>
+        <Playlists listsData={listsData} />
+
+        {/* <hr className={styles.border_line} /> */}
+      </div>
+      <div className={styles.clip_area}>
+        <h2 className={styles.h2}>人気のクリップ</h2>
+        <SortType
+          setClipsData={setClipsData}
+          dailyClipsData={dailyClipsData}
+          weeklyClipsData={weeklyClipsData}
+          monthlyClipsData={monthlyClipsData}
+          sortType={sortType}
+        />
+        <div className="clear-right"></div>
+        <Clips
+          clipsData={clipsData.playlist_clips}
+          listId={clipsData.playlist.id}
+        />
+      </div>
     </div>
   )
 }
