@@ -35,24 +35,18 @@
                 line-height: 15px;
                 overflow-wrap: break-word;
               }
-              .broadcaster {
+              .broadcaster_and_view_count {
+                margin: 0px;
+                padding: 5px 0px 0px 0px;
+                font-size: 14px;
+                line-height: 12px;
+              }
+              .game_title {
                 margin: 0px;
                 padding: 5px 0px 0px 0px;
                 font-size: 12px;
                 line-height: 12px;
               }
-              .view_count {
-                margin: 0px;
-                padding: 5px 0px 0px 0px;
-                font-size: 12px;
-                line-height: 12px;
-              }
-              /* .game_title {
-                margin: 0px;
-                padding: 5px 0px 0px 0px;
-                font-size: 12px;
-                line-height: 12px;
-              } */
             }
           }
         }

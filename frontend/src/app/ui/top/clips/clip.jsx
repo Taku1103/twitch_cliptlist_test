@@ -23,13 +23,11 @@ export default function Clip({ clipData, listId }) {
             <div className={styles.right}>
               <div className={styles.info}>
                 <p className={styles.title}>{clipData.title}</p>
-                <p className={styles.broadcaster}>
-                  {clipData.broadcaster_name}
+                <p className={styles.broadcaster_and_view_count}>
+                  {clipData.broadcaster_name} 【視聴回数:{clipData.view_count}
+                  回】
                 </p>
-                <p className={styles.view_count}>
-                  視聴回数:{clipData.view_count}回
-                </p>
-                {/* <p className={styles.game_title}>{clipData.game_title}</p> */}
+                <p className={styles.game_title}>{clipData.game_title}</p>
               </div>
             </div>
           </div>
