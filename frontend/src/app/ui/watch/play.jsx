@@ -1,10 +1,13 @@
 'use client'
 
+import styles from '@/app/ui/watch/watch.module.css'
+
 export default function Play({ twitchId, autoplay }) {
   const baseUrl = 'https://clips.twitch.tv/embed?clip='
   return (
     <>
       <iframe
+        className={styles.video}
         id="twitchIframe"
         title="title"
         src={
