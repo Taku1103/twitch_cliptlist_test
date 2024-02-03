@@ -19,8 +19,6 @@ export default function Top({
       <div className={styles.playlists_area}>
         <h2 className={styles.h2}>人気のプレイリスト</h2>
         <Playlists listsData={listsData} />
-
-        {/* <hr className={styles.border_line} /> */}
       </div>
       <div className={styles.clip_area}>
         <h2 className={styles.h2}>人気のクリップ</h2>
