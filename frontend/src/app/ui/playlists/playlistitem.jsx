@@ -29,9 +29,10 @@ export default function PlaylistItem({ listData }) {
             <span className={styles.count}>{listData.favorite_count}</span>
           </div>
           <div className={styles.createday_containar}>
-            <span className={styles.createday}>作成日:</span>
             <p className={styles.createdAt}>
-              {displayDate(listData.created_at)}
+              <span className={styles.createday}>
+                作成日:{displayDate(listData.created_at)}
+              </span>
             </p>
           </div>
         </div>
