@@ -4,7 +4,7 @@ import { revalidatePath } from 'next/cache'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 
-export async function addClipToPlaylist({ clipId, listId }) {
+export async function addClipToPlaylist({ clipId, listId, userId }) {
   let currentUserId
   if (cookies().get('userId')) {
     currentUserId = cookies().get('userId').value
@@ -24,12 +24,13 @@ export async function addClipToPlaylist({ clipId, listId }) {
     if (!response.ok) {
       throw new Error('playlistへのclipの追加に失敗しました')
     }
+    revalidatePath(`/users/${userId}/playlists/${listId}`)
   } catch (error) {
     console.log('playlistへのclipの追加に失敗しました')
   }
 }
 
-export async function deleteClipFromPlaylist({ clipId, listId }) {
+export async function deleteClipFromPlaylist({ clipId, listId, userId }) {
   let currentUserId
   if (cookies().get('userId')) {
     currentUserId = cookies().get('userId').value
@@ -49,7 +50,8 @@ export async function deleteClipFromPlaylist({ clipId, listId }) {
     if (!response.ok) {
       throw new Error('playlistからclipの削除に失敗しました')
     }
-    revalidatePath(`/users/2/playlists/${listId}`)
+    revalidatePath(`/users/${userId}/playlists/${listId}`)
+    console.log('playlistからclipの削除に成功しました')
     return true
   } catch (error) {
     console.log('playlistからclipの削除に失敗しました')

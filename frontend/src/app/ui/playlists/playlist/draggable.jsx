@@ -50,6 +50,7 @@ const Draggable = (props) => {
               listId={props.listId}
               setItems={props.setItems}
               playlist={props.playlist}
+              userId={props.userId}
             />
           </div>
         </div>

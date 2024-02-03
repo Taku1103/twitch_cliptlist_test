@@ -8,10 +8,11 @@ export default function DeleteClipFromPlaylist({
   listId,
   setItems,
   playlist,
+  userId,
 }) {
-  async function remove({ clipId, listId }) {
-    console.log(clipId, listId)
-    const data = await deleteClipFromPlaylist({ clipId, listId })
+  async function remove({ clipId, listId, userId }) {
+    console.log(clipId, listId, userId)
+    const data = await deleteClipFromPlaylist({ clipId, listId, userId })
     if (data) {
       setItems(playlist.filter((n) => n !== clipId))
     }
@@ -20,7 +21,7 @@ export default function DeleteClipFromPlaylist({
   return (
     <div
       className={styles.remove}
-      onClick={() => remove({ clipId, listId, setItems })}
+      onClick={() => remove({ clipId, listId, setItems, userId })}
     >
       <i className="fas fa-trash-alt"></i>
     </div>
