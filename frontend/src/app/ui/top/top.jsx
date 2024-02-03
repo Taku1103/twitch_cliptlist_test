@@ -17,10 +17,10 @@ export default function Top({
   const sortType = useRef('daily')
   return (
     <div className={styles.top}>
-      <h2 className={styles.h2}>Playlist一覧</h2>
+      <h2 className={styles.h2}>人気のプレイリスト 一覧</h2>
       <Playlists listsData={listsData} />
 
-      <h2 className={styles.h2}>clip一覧</h2>
+      <h2 className={styles.h2}>人気のクリップ 一覧</h2>
       <SortType
         setClipsData={setClipsData}
         dailyClipsData={dailyClipsData}

@@ -26,6 +26,10 @@ export default function Clip({ clipData, listId }) {
                 <p className={styles.broadcaster}>
                   {clipData.broadcaster_name}
                 </p>
+                <p className={styles.view_count}>
+                  視聴回数:{clipData.view_count}回
+                </p>
+                {/* <p className={styles.game_title}>{clipData.game_title}</p> */}
               </div>
             </div>
           </div>
