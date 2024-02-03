@@ -22,14 +22,16 @@ export default function PlaylistName({ listData, userId, listId }) {
   }
 
   return (
-    <h1>
-      {listName}
+    <div className={styles.playlistNameContainer}>
+      <h1 className={`${styles.textColor} ${styles.playlistName}`}>
+        {listName}
+      </h1>
       <span
         className={styles.editPlaylistName}
         onClick={() => editAction({ listData, userId, listId })}
       >
         <i className="far fa-edit"></i>
       </span>
-    </h1>
+    </div>
   )
 }
