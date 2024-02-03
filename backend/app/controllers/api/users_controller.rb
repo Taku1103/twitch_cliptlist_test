@@ -9,7 +9,7 @@ module Api
       res = request_twitch_api("https://api.twitch.tv/helix/channels/followed?user_id=#{@user.id_on_twitch}&first=100")
       if res.status.success?
         followed_channels = process_followed_channels(JSON.parse(res.body)["data"])
-        render json: { followed_channels: followed_channels }, status: :ok
+        render json: { user: @user, followed_channels: followed_channels }, status: :ok
       else
         render_api_error
       end
