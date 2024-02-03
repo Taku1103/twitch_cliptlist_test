@@ -11,7 +11,10 @@ export default function XShareButton({ clipData }) {
       data-lang="ja"
       data-show-count="false"
     >
-      シェア
+      <span className={styles.icon}>
+        <i className="fas fa-share-alt"></i>
+      </span>
+      <span className={styles.char}>Xで共有</span>
     </button>
   )
 }
