@@ -24,12 +24,17 @@ export default function SiebarClient({
           {/* サイドバートップのアイコンとユーザー名を表示する */}
           <div className="side-element">
             <Image
-              src="/dog_icon.jpg"
-              width={50}
-              height={50}
+              src={followStreamers?.user?.id ? '/dog_icon.jpg' : '/logo4.png'}
+              width={40}
+              height={40}
               className="rounded-image"
             />
-            <p>{followStreamers.user.display_name}</p>
+
+            <p>
+              {followStreamers?.user?.display_name
+                ? followStreamers.user.display_name
+                : 'Guest'}
+            </p>
           </div>
           {/* アイコン表示する */}
           <div className="nav">

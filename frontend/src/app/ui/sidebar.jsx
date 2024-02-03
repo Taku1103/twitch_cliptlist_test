@@ -14,7 +14,6 @@ export default async function Sidebar() {
   const playlists = await fetchPlaylists({ userId: myUserId })
   const favoritelists = await fetchFavoritelists({ userId: myUserId })
   const followStreamers = await fetchFollowStreamers({ userId: myUserId })
-  console.log(`テストします： ${followStreamers}`)
 
   return (
     <>

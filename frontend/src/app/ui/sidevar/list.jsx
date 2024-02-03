@@ -1,9 +1,9 @@
-export default function List({ user_playlists = [] }) {
+export default function List({ playlists }) {
   return (
     <div className="side-list">
       <ul>
-        {user_playlists.length > 0 ? (
-          user_playlists.map((listData, index) => (
+        {playlists.user_playlists.length > 0 ? (
+          playlists.user_playlists.map((listData, index) => (
             <li key={index} className="list-item">
               {listData.name}
             </li>
