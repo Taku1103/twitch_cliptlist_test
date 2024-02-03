@@ -11,7 +11,6 @@ export default function SiebarClient({
   followStreamers,
 }) {
   const [activeTab, setActiveTab] = useState('list')
-  console.log(followStreamers)
 
   // アイコンのクラス名を取得する関数
   const getIconClass = (tabName) => {
