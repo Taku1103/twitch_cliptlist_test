@@ -1,7 +1,6 @@
 'use client'
 
 import AddClipToPlaylist from '@/app/ui/watch/add-clip-to-playlist'
-import Favorite from '@/app/ui/watch/favorite'
 import MoveNextButton from '@/app/ui/watch/move-next-button'
 import MovePreviousButton from '@/app/ui/watch/move-previous-button'
 import Play from '@/app/ui/watch/play'
@@ -77,14 +76,9 @@ export default function Clip({
               listData={listData}
               autoplay={autoplay}
               clipId={clipId}
-              twitchId={twitchId}
+              myUserId={myUserId}
             />
           )}
-          <Favorite
-            listData={listData}
-            myUserId={myUserId}
-            listId={listData.playlist.id}
-          />
           <div className="clear-right"></div>
         </div>
       </div>
