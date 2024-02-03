@@ -45,22 +45,24 @@ export default function Playlist({ listData }) {
   }
 
   return (
-    <DndContext onDragOver={handleDragOver}>
-      <div className={styles.playlistMain}>
-        <SortableContext items={items}>
-          {items.map((item, i) => (
-            <Draggable
-              key={i}
-              id={item}
-              clip={listData.playlist_clips.find((clip) => clip.id == item)}
-              listId={listData.playlist.id}
-              setItems={setItems}
-              playlist={playlist}
-              userId={listData.playlist.user_id}
-            />
-          ))}
-        </SortableContext>
-      </div>
-    </DndContext>
+    <div className={styles.playlistMainWrapper}>
+      <DndContext onDragOver={handleDragOver}>
+        <div className={styles.playlistMain}>
+          <SortableContext items={items}>
+            {items.map((item, i) => (
+              <Draggable
+                key={i}
+                id={item}
+                clip={listData.playlist_clips.find((clip) => clip.id == item)}
+                listId={listData.playlist.id}
+                setItems={setItems}
+                playlist={playlist}
+                userId={listData.playlist.user_id}
+              />
+            ))}
+          </SortableContext>
+        </div>
+      </DndContext>
+    </div>
   )
 }

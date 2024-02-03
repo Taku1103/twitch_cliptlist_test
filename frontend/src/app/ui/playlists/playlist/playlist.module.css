@@ -1,8 +1,5 @@
-.editPlaylistName {
-  cursor: pointer;
-}
-
-.playlistMain {
+.playlistMainWrapper {
+  flex-grow: 1;
 }
 
 .clip {
@@ -62,4 +59,105 @@
 
 .deleteAction:hover {
   text-decoration: underline;
+}
+
+/* playlist-header ----------------------------------------------*/
+.playlistHeaderWrapper {
+  width: 400px;
+  height: 100vh;
+  margin-left: 24px;
+  background-image: linear-gradient(
+    0deg,
+    rgba(233, 233, 233, 0.82),
+    rgba(128, 128, 128, 0.82) 56%,
+    rgba(114, 114, 114, 0.82)
+  ); /* 【確認要】色変更！ */
+}
+
+.playlistHeaderContainer {
+  padding: 24px;
+}
+
+.playlistThumbnail {
+  display: block;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.playlistNameContainer {
+  display: flex;
+  align-items: center;
+}
+
+.playlistName {
+  width: 90%;
+  margin: 0;
+}
+
+.editPlaylistName {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+
+  color: #ffffff;
+  font-size: 24px;
+  opacity: 0.4;
+  cursor: pointer;
+}
+
+.playlistState {
+  display: grid;
+  grid-template-rows: repeat(3, 40px);
+  grid-template-columns: 25px 1fr;
+  align-items: center;
+  margin-top: 6px;
+
+  .stateText {
+    grid-column: 2 / 3;
+    margin: 0;
+    padding-left: 10px;
+  }
+
+  .stateIcon {
+    grid-column: 1 / 2;
+    justify-self: center;
+    color: #ffffff;
+  }
+
+  .state_1 {
+    grid-row: 1 / 2;
+  }
+  .state_2 {
+    grid-row: 2 / 3;
+  }
+  .state_3 {
+    grid-row: 3 / 4;
+  }
+  .state_i1 {
+    grid-row: 1 / 2;
+  }
+  .state_i2 {
+    grid-row: 2 / 3;
+  }
+  .state_i3 {
+    grid-row: 3 / 4;
+  }
+}
+
+.playlistAction {
+  display: grid;
+  grid-template-rows: 50px;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  margin-top: 12px;
+}
+
+/* 共通 ---------------------------------------------- */
+.textColor {
+  color: #ffffff; /* 【確認要】色変更 */
+}
+
+.radius {
+  border-radius: 16px;
 }

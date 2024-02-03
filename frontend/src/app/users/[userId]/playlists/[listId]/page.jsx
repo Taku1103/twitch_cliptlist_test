@@ -1,8 +1,7 @@
 import { fetchPlaylistData } from '@/app/lib/data'
-import DeletePlaylist from '@/app/ui/playlists/playlist/delete-playlist'
 import Playlist from '@/app/ui/playlists/playlist/playlist'
-import PlaylistName from '@/app/ui/playlists/playlist/playlistName'
-import XShareButton from '@/app/ui/playlists/playlist/x-share-button'
+import PlaylistHeader from '@/app/ui/playlists/playlist/playlist-header'
+import styles from '@/app/users/[userId]/playlists/[listId]/style.module.css'
 
 export default async function Page({ params }) {
   const userId = params.userId
@@ -13,28 +12,10 @@ export default async function Page({ params }) {
     listId,
   })
 
-  function displayDate(date) {
-    return (
-      <>{`${date.slice(0, 4)}年${date.slice(5, 7)}月${date.slice(8, 10)}日`}</>
-    )
-  }
-
   return (
-    <>
-      <div className="playlist-header">
-        <p>公開プレイリスト</p>
-        <PlaylistName listData={listData} userId={userId} listId={listId} />
-        <p>作成者：{listData.playlist.playlist_creator_name}</p>
-        <p>作成日：{displayDate(listData.playlist.created_at)}</p>
-        <p>お気に入り数：{listData.playlist.favorite_count}</p>
-        <DeletePlaylist userId={userId} listId={listId} />
-        <XShareButton
-          userId={userId}
-          listId={listId}
-          listName={listData.playlist.name}
-        />
-      </div>
+    <div className={styles.playlistWrapper}>
+      <PlaylistHeader listData={listData} userId={userId} listId={listId} />
       <Playlist listData={listData} />
-    </>
+    </div>
   )
 }
