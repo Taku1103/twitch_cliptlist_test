@@ -2,8 +2,12 @@ import DeletePlaylist from '@/app/ui/playlists/playlist/delete-playlist'
 import styles from '@/app/ui/playlists/playlist/playlist.module.css'
 import PlaylistName from '@/app/ui/playlists/playlist/playlistName'
 import XShareButton from '@/app/ui/playlists/playlist/x-share-button'
+import Favorite from '@/app/ui/watch/favorite'
+import Cookies from 'js-cookie'
 
 export default async function PlaylistHeader({ listData, userId, listId }) {
+  const myUserId = Cookies.get('userId')
+
   function displayDate(date) {
     return (
       <>{`${date.slice(0, 4)}年${date.slice(5, 7)}月${date.slice(8, 10)}日`}</>
@@ -53,13 +57,25 @@ export default async function PlaylistHeader({ listData, userId, listId }) {
             <i class="fa-regular fa-heart"></i>
           </div>
         </div>
-
-        <DeletePlaylist userId={userId} listId={listId} />
-        <XShareButton
-          userId={userId}
-          listId={listId}
-          listName={listData.playlist.name}
-        />
+        <div className={styles.playlistAction}>
+          <div className={styles.action_1}>
+            <Favorite
+              listData={listData}
+              myUserId={myUserId}
+              listId={listData.playlist.id}
+            />
+          </div>
+          <div className={styles.action_2}>
+            <DeletePlaylist userId={userId} listId={listId} />
+          </div>
+          <div className={styles.action_3}>
+            <XShareButton
+              userId={userId}
+              listId={listId}
+              listName={listData.playlist.name}
+            />
+          </div>
+        </div>
       </div>
     </div>
   )

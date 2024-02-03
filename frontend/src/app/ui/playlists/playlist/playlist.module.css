@@ -145,6 +145,14 @@
   }
 }
 
+.playlistAction {
+  display: grid;
+  grid-template-rows: 50px;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  margin-top: 12px;
+}
+
 /* 共通 ---------------------------------------------- */
 .textColor {
   color: #ffffff; /* 【確認要】色変更 */
