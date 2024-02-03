@@ -24,7 +24,7 @@ export default async function Page({ params }) {
       <div className="playlist-header">
         <p>公開プレイリスト</p>
         <PlaylistName listData={listData} userId={userId} listId={listId} />
-        <p>作成者：{userId}</p>
+        <p>作成者：{listData.playlist.playlist_creator_name}</p>
         <p>作成日：{displayDate(listData.playlist.created_at)}</p>
         <p>お気に入り数：{listData.playlist.favorite_count}</p>
         <DeletePlaylist userId={userId} listId={listId} />
