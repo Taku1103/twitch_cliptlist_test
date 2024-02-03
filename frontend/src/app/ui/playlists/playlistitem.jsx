@@ -3,9 +3,7 @@ import Link from 'next/link'
 
 export default function PlaylistItem({ listData }) {
   function displayDate(date) {
-    return (
-      <>{`${date.slice(0, 4)}年${date.slice(5, 7)}月${date.slice(8, 10)}日`}</>
-    )
+    return <>{`${date.slice(0, 4)}/${date.slice(5, 7)}/${date.slice(8, 10)}`}</>
   }
 
   return (
@@ -31,9 +29,10 @@ export default function PlaylistItem({ listData }) {
             <span className={styles.count}>{listData.favorite_count}</span>
           </div>
           <div className={styles.createday_containar}>
-            <span className={styles.createday}>作成日:</span>
             <p className={styles.createdAt}>
-              {displayDate(listData.created_at)}
+              <span className={styles.createday}>
+                作成日:{displayDate(listData.created_at)}
+              </span>
             </p>
           </div>
         </div>

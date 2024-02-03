@@ -14,7 +14,9 @@ export default async function Page({ params }) {
     <>
       <div className="playlists-name">
         <p>
-          <span className="username">{followStreamers.user.display_name}</span>
+          <span className="username">
+            {followStreamers?.user?.display_name || 'Guest'}
+          </span>
           のプレイリスト一覧
         </p>
       </div>
