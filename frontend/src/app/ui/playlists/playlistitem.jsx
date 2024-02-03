@@ -3,9 +3,7 @@ import Link from 'next/link'
 
 export default function PlaylistItem({ listData }) {
   function displayDate(date) {
-    return (
-      <>{`${date.slice(0, 4)}年${date.slice(5, 7)}月${date.slice(8, 10)}日`}</>
-    )
+    return <>{`${date.slice(0, 4)}/${date.slice(5, 7)}/${date.slice(8, 10)}`}</>
   }
 
   return (

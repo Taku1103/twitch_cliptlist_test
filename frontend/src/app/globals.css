@@ -177,6 +177,7 @@ li {
 .nav ul {
   display: flex;
   justify-content: space-between;
+  cursor: pointer;
 }
 
 .fa-solid {
@@ -330,8 +331,5 @@ li {
   background-color: #e8e8ea;
   padding-top: 30px;
   border-top: 1px solid rgba(43, 44, 52, 0.1);
-}
-
-.heart {
-  color: #e45858;
+  min-height: 100vh;
 }
