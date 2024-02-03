@@ -29,7 +29,7 @@ export default function SiebarClient({
               height={50}
               className="rounded-image"
             />
-            <p>{followStreamers.user.display_name}</p>
+            {/* <p>{followStreamers.user.display_name}</p> */}
           </div>
           {/* アイコン表示する */}
           <div className="nav">

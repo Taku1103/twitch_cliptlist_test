@@ -80,18 +80,18 @@
         }
 
         .clipCount {
-          height: 30px;
-          width: 120px;
+          height: 20px;
+          width: 100px;
           display: flex;
           justify-content: center;
           align-items: center;
           font-size: 12px;
           border-radius: 4px;
-          background-color: #666;
+          background-color: rgba(0, 0, 0, 0.4);
           color: white;
           position: absolute;
-          bottom: 20px;
-          right: 55px;
+          bottom: 12px;
+          right: 45px;
           z-index: 4;
         }
       }
