@@ -4,10 +4,11 @@ import { addClipToPlaylist, createPlaylistAndAddClip } from '@/app/lib/action'
 import styles from '@/app/ui/watch/watch.module.css'
 
 export default function AddClipToPlaylist({ clipId, myListsData, myUserId }) {
-  async function add({ clipId, myListId }) {
+  async function add({ clipId, myListId, myUserId }) {
     const data = await addClipToPlaylist({
       clipId,
       listId: myListId,
+      userId: myUserId,
     })
   }
 
@@ -33,7 +34,9 @@ export default function AddClipToPlaylist({ clipId, myListsData, myUserId }) {
       {myListsData.user_playlists.map((playlist, index) => (
         <div
           key={index}
-          onClick={() => add({ clipId: clipId, myListId: playlist.id })}
+          onClick={() =>
+            add({ clipId: clipId, myListId: playlist.id, myUserId })
+          }
           className={styles.addPlaylistCandidate}
         >
           {playlist.name}

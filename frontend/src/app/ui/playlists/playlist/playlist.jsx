@@ -56,6 +56,7 @@ export default function Playlist({ listData }) {
               listId={listData.playlist.id}
               setItems={setItems}
               playlist={playlist}
+              userId={listData.playlist.user_id}
             />
           ))}
         </SortableContext>
