@@ -187,3 +187,14 @@
 .video {
   border: none;
 }
+
+.broadcaster_image_background {
+  border-radius: 100%;
+  /* background-color: #f7f7f8; */
+  width: 40px;
+  height: 40px;
+  .broadcaster_image {
+    height: 100%;
+    width: 100%;
+  }
+}

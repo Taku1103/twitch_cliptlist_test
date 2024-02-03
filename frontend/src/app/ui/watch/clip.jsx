@@ -56,6 +56,13 @@ export default function Clip({
             <div className="clear-left"></div>
           </div>
           <div className={styles.broadcaster}>
+            <div className={styles.broadcaster_image_background}>
+              <img
+                className={styles.broadcaster_image}
+                src={clipData.broadcaster_profile_image_url}
+                alt=""
+              />
+            </div>
             <div className={styles.name}>{clipData.broadcaster_name}</div>
           </div>
         </div>
