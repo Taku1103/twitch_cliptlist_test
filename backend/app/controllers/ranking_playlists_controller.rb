@@ -11,7 +11,7 @@ class RankingPlaylistsController < ApplicationController
 
   private
     def get_ranking_ids(playlist_id, before_days)
-      today = Date.parse("2024-01-31")
+      today = Date.parse("2024-02-03")
       ranking_clip = Clip.where(clip_created_at: today - before_days..)
                           .order(view_count: :desc)
                           .limit(50)

@@ -69,23 +69,33 @@ end
 
 # ダミープレイリスト
 # user_id：1はadmin
-playlist_count = 8
-playlist_total = playlist_count * (user_names.length - 1)
-2.upto(11) do |user_id|
-  playlist_count.times do |i|
-    Playlist.create(
-      name: "#{user_names[user_id - 1]}_#{i + 1}",
-      user_id: user_id,
-    )
-  end
+playlists = [
+  ["k4sen名場面", 2383], ["釈迦さんプレイリスト", 2507], ["関's Clip", 2500], ["かるびの大失敗", 1218], ["ストグラまとめ", 1653], ["VALOLANTエースの瞬間", 224], ["げまげまクリップ！", 1228], ["大会まとめ", 2456], ["ぶいすぽっ！", 1085],
+  ["大爆笑シーンだけ集めました!", 1130], ["叶の見どころクリップ", 1498], ["2024年1月クリップ", 1469], ["らっだぁ叫びシーン", 2087], ["スト6大接戦!", 306], ["ストリーマーやらかし！", 304], ["泣けるクリップ", 2675], ["コラボ特集", 1943]
+]
+playlist_total = playlists.length + 3
+
+playlist_no = 4
+playlists.each do |playlist|
+  Playlist.create(
+    name: playlist[0],
+    user_id: 2,
+  )
+  PlaylistClip.create(
+    playlist_id: playlist_no,
+    clip_id: playlist[1],
+    order_index: 1
+  )
+  playlist_no += 1
 end
+
 
 # plyalist_clipsテーブル
 # ランキング系プレイリスト
 ranking_ranking_clip_ids = [
-  [936,2032,1467,2045,2057,944,1478,2085,1492,1495,2096,542,169,597,216,2112,364,688,1510,2119,953,1240,484,2146,2150,487,151,2604,2154,2156,1540,2164,2166,1276,2636,2360,2181,104,2192,2199,154,1030,381,564,2216,2219,2222,2223,1593,1338],
-  [230,1595,1597,577,133,2366,521,751,1991,2237,466,1601,752,1603,974,1049,2381,1352,1993,1995,936,1996,2246,2247,266,1998,2394,1999,754,2398,1058,1617,60,1620,2249,2401,232,2250,1626,2007,1629,1631,2009,1634,1635,2410,938,1637,1640,1641],
-  [2363,1419,38,2233,643,1988,230,2364,1595,2234,59,125,1053,1596,295,1446,2235,1597,1185,2365,973,1989,577,1420,1348,1598,1047,1349,1990,133,2366,1048,2367,1599,2368,2236,2369,1054,1350,1447,2370,521,2371,751,892,1600,1991,2237,466,460]
+  [1227,1772,1831,1138,2238,872,2687,241,981,1160,2734,1943,158,352,1969,1988,2330,22,2026,2034,2355,1231,1002,1006,2819,2057,2359,1008,1379,2824,934,1213,768,2375],
+  [1651,2509,1652,559,618,502,1656,1658,2519,1659,963,1013,1403,479,2096,291,189,2097,1669,2100,855,2539,1672,1503,1680,1681,1683,1018,1685,1686,2109,964,1690,2111,1695,1694,419,258,2114,1699,2554,564,1235,1704,1706,2118,2121,1709,190,2123],
+  [2507,1477,46,2379,676,2087,1651,255,2508,2509,2380,69,145,1652,1653,559,318,1497,2381,1011,1232,2510,2088,618,1478,1399,1654,2511,1089,1400,152,2089,2512,1090,1655,2513,502,2382,2514,1656,1012,1095,2090,1401,1498,2515,777,2516,1657,2383]
 ]
 
 ranking_ranking_clip_ids.each_with_index do |clip_ids, playlist_id|
@@ -94,18 +104,6 @@ ranking_ranking_clip_ids.each_with_index do |clip_ids, playlist_id|
       playlist_id: playlist_id + 1,
       clip_id: clip_id,
       order_index: index + 1
-    )
-  end
-end
-
-# ダミープレイリスト
-clip_count = 5
-4.upto(playlist_total) do |playlist_id|
-  1.upto(clip_count) do |i|
-    PlaylistClip.create(
-      playlist_id: playlist_id,
-      clip_id: rand(1..2704),
-      order_index: i
     )
   end
 end
@@ -142,12 +140,76 @@ CSV.foreach('public/broadcaster_list.csv') do |row|
 end
 
 # user_favorite_playlistsテーブル
-2.upto(101) do |user_id|
-  unique_playlist_ids = (4..playlist_total).to_a.sample(30)
+2.upto(89) do |user_id|
+  unique_playlist_ids = (4..playlist_total).to_a.sample(10)
   unique_playlist_ids.each do |playlist_id|
     UserFavoritePlaylist.create(
       playlist_id: playlist_id,
       user_id: user_id
     )
   end
+end
+
+# rabbit_kun-----------------------------------------------------------------------------
+# users
+user_id = 90
+User.create(
+  id_on_twitch: 1028693034,
+  login_name: "rabbit_kun_2nd",
+  display_name: "rabbit_kun_2nd",
+  profile_image_url: "https://static-cdn.jtvnw.net/user-default-pictures-uv/75305d54-c7cc-40d1-bb9c-91fbe85943c7-profile_image-300x300.png",
+  user_created_at: "2024-01-30T07:42:51Z"
+)
+
+# plalylists
+i = 21
+playlist = [["お気に入り", 88], ["LOL", 2452], ["釈迦_名場面", 2507], ["GTAまとめ", 325]]
+playlist.each do |playlist_name|
+  Playlist.create(
+    name: playlist_name,
+    user_id: user_id,
+  )
+  PlaylistClip.create(
+    playlist_id: i,
+    clip_id: i,
+    order_index: 1
+  )
+  i += 1
+end
+
+# playlist_clips
+
+
+# user_favorite_playlists
+unique_playlist_ids = (4..playlist_total).to_a.sample(4)
+unique_playlist_ids.each do |playlist_id|
+  UserFavoritePlaylist.create(
+    playlist_id: playlist_id,
+    user_id: 90
+  )
+end
+
+# プレゼン用Playlist---------------------------------------------
+# playlists
+Playlist.create(
+  name: "2024年クリップ特選",
+  user_id: 2,
+)
+
+# user_favorite_playlists
+2.upto(89) do |user_id|
+  UserFavoritePlaylist.create(
+    playlist_id: 25,
+    user_id: user_id
+  )
+end
+
+#playlist_clips
+clip_ids = [801, 1034, 1555, 1600, 1890]
+clip_ids.each_with_index do |clip_id, index|
+  PlaylistClip.create(
+    playlist_id: 25,
+    clip_id: clip_id,
+    order_index: index + 1
+  )
 end
