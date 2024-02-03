@@ -34,8 +34,9 @@ module Api
         @playlist_clips = @playlist.clips.map do |clip|
           clip_game = clip&.game
           game_thumbnail_url = clip_game&.game_thumbnail_url
+          game_title = clip_game&.game_title
 
-          clip.attributes.merge({ game_thumbnail_url: game_thumbnail_url })
+          clip.attributes.merge({ game_title: game_title, game_thumbnail_url: game_thumbnail_url })
         end
 
         render json: {
