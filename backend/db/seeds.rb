@@ -164,14 +164,14 @@ User.create(
 # plalylists
 i = 21
 playlist = [["お気に入り", 88], ["LOL", 2452], ["釈迦_名場面", 2507], ["GTAまとめ", 325]]
-playlist.each do |playlist_name|
+playlist.each do |playlist|
   Playlist.create(
-    name: playlist_name,
+    name: playlist[0],
     user_id: user_id,
   )
   PlaylistClip.create(
     playlist_id: i,
-    clip_id: i,
+    clip_id: playlist[1],
     order_index: 1
   )
   i += 1
@@ -212,4 +212,15 @@ clip_ids.each_with_index do |clip_id, index|
     clip_id: clip_id,
     order_index: index + 1
   )
+end
+
+# ダミーデータ
+4.upto(24) do |playlist_id|
+  rand(3..7).times do
+    PlaylistClip.create(
+      playlist_id: playlist_id,
+      clip_id: rand(1..2800),
+      order_index: 1
+    )
+  end
 end
