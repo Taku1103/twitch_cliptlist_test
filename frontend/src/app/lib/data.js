@@ -59,7 +59,7 @@ export async function fetchTopPlaylistsData() {
       },
     })
     const dataBefore = await response.json()
-    const data = await { playlists: dataBefore.playlists.slice(0, 60) } // 3の倍数でないと挙動バグるので、とりあえず60個使う
+    const data = await { playlists: dataBefore.playlists.slice(0, 18) } // 3の倍数でないと挙動バグるので、とりあえず18個使う
     return data
   } catch (error) {
     console.log('TopPlaylistsDataの取得に失敗しました')
