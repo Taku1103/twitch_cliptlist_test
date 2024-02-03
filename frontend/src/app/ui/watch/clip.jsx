@@ -41,27 +41,32 @@ export default function Clip({
             />
           </div>
           <div className={styles.detail}>
-            <XShareButton clipData={clipData} />
             <AddClipToPlaylist
               clipId={clipId}
               myListsData={myListsData}
               myUserId={myUserId}
             />
+            <XShareButton clipData={clipData} />
           </div>
           <div className={styles.explanation}>
             <div className={styles.title}>{clipData.title}</div>
-            <div className={styles.viewCount}>
-              視聴回数{clipData.view_count}回
+            <div className={styles.otherInfo}>
+              <span className={styles.gameTitle}>{clipData.game_title}</span>
+              <span className={styles.viewCount}>
+                ・視聴回数{clipData.view_count}回
+              </span>
             </div>
             <div className="clear-left"></div>
           </div>
           <div className={styles.broadcaster}>
-            <div className={styles.broadcaster_image_background}>
-              <img
-                className={styles.broadcaster_image}
-                src={clipData.broadcaster_profile_image_url}
-                alt=""
-              />
+            <div className={styles.broadcaster_image_wrapper}>
+              <div className={styles.broadcaster_image_background}>
+                <img
+                  className={styles.broadcaster_image}
+                  src={clipData.broadcaster_profile_image_url}
+                  alt=""
+                />
+              </div>
             </div>
             <div className={styles.name}>{clipData.broadcaster_name}</div>
           </div>
@@ -75,14 +80,12 @@ export default function Clip({
               twitchId={twitchId}
             />
           )}
-          <div className={styles.favoriteArea}>
-            <Favorite
-              listData={listData}
-              myUserId={myUserId}
-              listId={listData.playlist.id}
-            />
-            <div className="clear-right"></div>
-          </div>
+          <Favorite
+            listData={listData}
+            myUserId={myUserId}
+            listId={listData.playlist.id}
+          />
+          <div className="clear-right"></div>
         </div>
       </div>
     </>

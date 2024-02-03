@@ -29,7 +29,7 @@ export default function Favorite({ listData, myUserId, listId }) {
 
   if (favorited) {
     return (
-      <>
+      <div className={styles.favoriteArea}>
         <div
           className={styles.favorited}
           onClick={() => applyFavorite(-1, myUserId, listId)}
@@ -42,11 +42,11 @@ export default function Favorite({ listData, myUserId, listId }) {
           {/* <div className={styles.count}>{favoritesCount}</div> */}
         </div>
         <div className="clear-right"></div>
-      </>
+      </div>
     )
   } else {
     return (
-      <>
+      <div className={styles.favoriteArea}>
         <div
           className={styles.unfavorited}
           onClick={() => applyFavorite(+1, myUserId, listId)}
@@ -59,7 +59,7 @@ export default function Favorite({ listData, myUserId, listId }) {
           {/* <div className={styles.count}>{favoritesCount}</div> */}
         </div>
         <div className="clear-right"></div>
-      </>
+      </div>
     )
   }
 }
