@@ -1,3 +1,4 @@
+import Logout from '@/app/ui/header/logout'
 import { cookies } from 'next/headers'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -23,12 +24,14 @@ export default function Header() {
         </div>
         <div className="header-right">
           <div className="header-element">
-            <Link href={`/users/${userId.value}/playlists`}>
-              マイプレイリスト
-            </Link>
+            {userId && (
+              <Link href={`/users/${userId.value}/playlists`}>
+                マイプレイリスト
+              </Link>
+            )}
           </div>
           <div className="header-element">
-            {userId && <Link href="#">ログアウト</Link>}
+            {userId && <Logout />}
             {!userId && (
               <a
                 href={`https://id.twitch.tv/oauth2/authorize?response_type=token&client_id=${process.env.CLIENT_ID}&redirect_uri=http://localhost:3000/login&scope=user:read:follows`}
