@@ -17,12 +17,12 @@
       float: right;
       .moveButton {
         height: 32px;
-        padding: 0px 10px 0px 10px;
+        padding: 0px 30px 0px 30px;
         border: none;
         cursor: pointer;
         font-size: 14px;
         font-weight: bold;
-        margin-right: 10px;
+        margin-right: 15px;
         border-radius: 5px;
         background-color: #6246ea;
         color: white;
@@ -35,7 +35,7 @@
 
     .detail {
       padding-top: 15px;
-      padding-right: 10px;
+      padding-right: 25px;
       float: right;
       .xShareButton {
         height: 32px;
@@ -44,7 +44,7 @@
         cursor: pointer;
         font-size: 14px;
         font-weight: bold;
-        margin-right: 10px;
+        margin-right: 15px;
         border-radius: 5px;
         color: var(--paragraph);
         background-color: #e7e7ea;
@@ -59,7 +59,7 @@
         border: none;
         cursor: pointer;
         font-weight: bold;
-        margin-right: 10px;
+        margin-right: 15px;
         border-radius: 5px;
         color: var(--paragraph);
         background-color: #e7e7ea;
@@ -112,14 +112,8 @@
     .playlist {
       padding: 10px 0px 10px 0px;
       background-color: var(--background);
-      border: 1px solid #eeeeee;
+      border: 1px solid #cccccc;
       border-radius: 5px;
-
-      .h2 {
-        padding: 5px 20px 30px 20px;
-        margin: 0px;
-        font-size: 18px;
-      }
 
       .eachClip {
         padding: 6px;
@@ -163,13 +157,24 @@
   background-color: lightgrey;
 }
 
+.playlistHeader {
+  .h2 {
+    padding: 8px 20px 10px 20px;
+    margin: 0px;
+    font-size: 18px;
+  }
+  .favoriteWrapper {
+    float: right;
+  }
+}
+
 .favoriteArea {
-  padding: 20px;
+  padding: 0px 10px 10px 10px;
   .favorited {
     float: right;
     .heartBackground {
-      width: 50px;
-      height: 50px;
+      width: 40px;
+      height: 40px;
       border-radius: 100%;
       cursor: pointer;
       background-color: #ffeaf4;
@@ -177,7 +182,7 @@
       justify-content: center;
       align-items: center;
       .heart {
-        font-size: 28px;
+        font-size: 24px;
         color: #f76685;
       }
     }
@@ -186,8 +191,8 @@
   .unfavorited {
     float: right;
     .heartBackground {
-      width: 50px;
-      height: 50px;
+      width: 40px;
+      height: 40px;
       border-radius: 100%;
       cursor: pointer;
       background-color: #edf2f7;
@@ -196,7 +201,7 @@
       justify-content: center;
       align-items: center;
       .heart {
-        font-size: 28px;
+        font-size: 24px;
       }
     }
     .heartBackground:hover {
