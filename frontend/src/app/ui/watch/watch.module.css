@@ -17,12 +17,12 @@
       float: right;
       .moveButton {
         height: 32px;
-        padding: 0px 10px 0px 10px;
+        padding: 0px 30px 0px 30px;
         border: none;
         cursor: pointer;
         font-size: 14px;
         font-weight: bold;
-        margin-right: 10px;
+        margin-right: 15px;
         border-radius: 5px;
         background-color: #6246ea;
         color: white;
@@ -35,7 +35,7 @@
 
     .detail {
       padding-top: 15px;
-      padding-right: 10px;
+      padding-right: 25px;
       float: right;
       .xShareButton {
         height: 32px;
@@ -44,7 +44,7 @@
         cursor: pointer;
         font-size: 14px;
         font-weight: bold;
-        margin-right: 10px;
+        margin-right: 15px;
         border-radius: 5px;
         color: var(--paragraph);
         background-color: #e7e7ea;
@@ -59,7 +59,7 @@
         border: none;
         cursor: pointer;
         font-weight: bold;
-        margin-right: 10px;
+        margin-right: 15px;
         border-radius: 5px;
         color: var(--paragraph);
         background-color: #e7e7ea;
