@@ -29,7 +29,6 @@ export default function SiebarClient({
               height={40}
               className="rounded-image"
             />
-
             <p>
               {followStreamers?.user?.display_name
                 ? followStreamers.user.display_name

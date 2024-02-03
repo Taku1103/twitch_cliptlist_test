@@ -7,6 +7,26 @@
       .top {
         display: flex;
         justify-content: center;
+        position: relative;
+        z-index: 1;
+        img {
+          height: 170px;
+        }
+        .duration {
+          height: 20px;
+          width: 30px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 12px;
+          border-radius: 4px;
+          background-color: rgba(0, 0, 0, 0.6);
+          color: white;
+          position: absolute;
+          z-index: 2;
+          bottom: 3px;
+          right: 15px;
+        }
       }
 
       .bottomWrapper {
@@ -35,7 +55,7 @@
                 line-height: 15px;
                 overflow-wrap: break-word;
               }
-              .broadcaster_and_view_count {
+              .broadcaster_name_and_view_count {
                 margin: 0px;
                 padding: 5px 0px 0px 0px;
                 font-size: 14px;

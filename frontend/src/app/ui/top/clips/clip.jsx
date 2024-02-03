@@ -11,8 +11,9 @@ export default function Clip({ clipData, listId }) {
     <Link href={`/watch?clip=${clipData.id}&list=${listId}`}>
       <div className={styles.clipBox}>
         <div className={styles.top}>
-          <div className={styles.img}>
-            <img src={clipData.thumbnail_url} height="170" />
+          <img src={clipData.thumbnail_url} />
+          <div className={styles.duration}>
+            <span>{Math.round(clipData.duration)}秒</span>
           </div>
         </div>
         <div className={styles.bottomWrapper}>
@@ -23,9 +24,8 @@ export default function Clip({ clipData, listId }) {
             <div className={styles.right}>
               <div className={styles.info}>
                 <p className={styles.title}>{clipData.title}</p>
-                <p className={styles.broadcaster_and_view_count}>
-                  {clipData.broadcaster_name} 【視聴回数:{clipData.view_count}
-                  回】
+                <p className={styles.broadcaster_name_and_view_count}>
+                  【{clipData.broadcaster_name}】 {clipData.view_count} 回視聴
                 </p>
                 <p className={styles.game_title}>{clipData.game_title}</p>
               </div>
