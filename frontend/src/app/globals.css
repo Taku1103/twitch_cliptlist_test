@@ -102,6 +102,14 @@ header {
   margin-left: 15px;
 }
 
+.logout {
+  cursor: pointer;
+}
+
+.logout:hover {
+  color: var(--link);
+}
+
 /* main */
 
 .main-wrapper {
