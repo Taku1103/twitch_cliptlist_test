@@ -22,9 +22,7 @@ export default async function Page({ searchParams }) {
   /* listIdがあるときとないときで場合分け */
   if (listId) {
     listData = await fetchPlaylistData({ listId })
-    clipData = listData.playlist_clips.find(
-      (clip) => String(clip.id) === clipId,
-    )
+    clipData = (await fetchClipData({ clipId })).clip
     index = listData.playlist_clips.findIndex(
       (clip) => String(clip.id) === clipId,
     )
@@ -33,7 +31,6 @@ export default async function Page({ searchParams }) {
     clipData = (await fetchClipData({ clipId })).clip
   }
   myListsData = await fetchPlaylists({ userId: myUserId })
-  console.log(myListsData)
   return (
     <Clip
       clipId={clipId}
