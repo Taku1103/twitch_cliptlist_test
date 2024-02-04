@@ -3,15 +3,21 @@
 
   .h2 {
     margin-top: 0px;
+    margin-bottom: 0px;
   }
   .playlists_area {
-    border-bottom: solid #ececf0;
+    border-bottom: 1px solid #ddd;
     margin-bottom: 10px;
+  }
+
+  .clip_area {
+    padding-top: 30px;
   }
 }
 
 .sortTypeWrapper {
   width: 100%;
+  padding-top: 20px;
   padding-bottom: 60px;
   .sortType {
     float: left;
