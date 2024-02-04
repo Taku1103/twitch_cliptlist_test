@@ -17,7 +17,7 @@ const Draggable = (props) => {
   return (
     <>
       <div
-        className={styles.clip}
+        className={`${styles.clip} ${styles.radius}`}
         ref={setNodeRef}
         style={style}
         {...listeners}
@@ -30,7 +30,11 @@ const Draggable = (props) => {
           <div className={styles.middle}>
             <Link href={`/watch?clip=${props.clip.id}&list=${props.listId}`}>
               <div className={styles.img}>
-                <img src={props.clip.thumbnail_url} height="60" />
+                <img
+                  className={styles.radius}
+                  src={props.clip.thumbnail_url}
+                  height="100"
+                />
               </div>
             </Link>
           </div>

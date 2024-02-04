@@ -9,11 +9,14 @@ export default function DeletePlaylist({ userId, listId }) {
   }
 
   return (
-    <div
-      className={styles.deleteAction}
+    <button
+      className={`${styles.deleteAction} ${styles.button}`}
       onClick={() => deleteAction({ userId, listId })}
     >
-      プレイリストを削除
-    </div>
+      <span className={styles.icon}>
+        <i className="fa-regular fa-trash-can"></i>
+      </span>
+      <span className={styles.char}>プレイリスト削除</span>
+    </button>
   )
 }
