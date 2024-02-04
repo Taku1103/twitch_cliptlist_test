@@ -27,7 +27,7 @@ export default function Myplaylists({ userId, listsData, favoriteListsData }) {
           className={getTabClass('playlists')}
           onClick={() => setActiveTab('playlists')}
         >
-          プレイリスト
+          作成プレイリスト
         </button>
         <button
           className={getTabClass('favorites')}
