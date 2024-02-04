@@ -251,7 +251,7 @@ li {
 /* 検索バー */
 .search-box {
   display: flex;
-  width: 50%;
+  width: 500px;
   height: 75%;
 }
 
