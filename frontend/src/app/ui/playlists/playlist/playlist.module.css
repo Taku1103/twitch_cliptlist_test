@@ -1,5 +1,6 @@
 .playlistMainWrapper {
   flex-grow: 1;
+  padding: 0 200px 0 10px;
 }
 
 .clip {
@@ -11,7 +12,8 @@
   cursor: pointer;
 
   .clipMain {
-    width: 40%;
+    width: 100%;
+    height: 100px;
     display: flex;
     align-items: center;
     float: left;
@@ -25,14 +27,14 @@
         padding: 8px 3px 3px 3px;
         margin: 0px;
         font-weight: bold;
-        font-size: 15px;
-        line-height: 15px;
+        font-size: 17px;
+        line-height: 17px;
       }
       .broadcaster {
         padding: 3px;
         margin: 0px;
-        font-size: 13px;
-        line-height: 13px;
+        font-size: 15px;
+        line-height: 15px;
       }
     }
   }
@@ -45,26 +47,19 @@
 }
 
 .clip:hover {
-  background-color: #eee;
+  background-color: #f2f2f2;
 }
 
 .remove {
   padding: 8px 10px 10px 10px;
 }
 
-.deleteAction {
-  cursor: pointer;
-  color: #bb3333;
-}
-
-.deleteAction:hover {
-  text-decoration: underline;
-}
-
 /* playlist-header ----------------------------------------------*/
 .playlistHeaderWrapper {
+  position: sticky;
+  top: 80px;
   width: 400px;
-  height: 100vh;
+  height: 90vh;
   margin-left: 24px;
   background-image: linear-gradient(
     0deg,
@@ -82,6 +77,45 @@
   display: block;
   width: 100%;
   margin-bottom: 16px;
+}
+
+.playlistThumbnailContainer {
+  width: 100%;
+  position: relative;
+  cursor: pointer;
+}
+
+.playlistThumbnailContainer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  transition: all 0.3s;
+  border-radius: 10px;
+}
+
+.playlistThumbnailContainer:hover::before {
+  opacity: 1;
+}
+
+.playlistThumbnailContainer::after {
+  content: "▶ すべて再生";
+  color: #fff;
+  font-size: 14px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transition: all 0.3s;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+}
+
+.playlistThumbnailContainer:hover::after {
+  opacity: 1;
 }
 
 .playlistNameContainer {
@@ -148,9 +182,22 @@
 .playlistAction {
   display: grid;
   grid-template-rows: 50px;
-  grid-template-columns: repeat(3, 1fr);
-  align-items: center;
-  margin-top: 12px;
+  grid-template-columns: repeat(2, 1fr);
+  margin-top: 10px;
+
+  .actionIcon {
+    width: 100%;
+    grid-row: 1 / 2;
+    font-size: 40px;
+  }
+
+  .action_1 {
+    grid-column: 1 / 2;
+  }
+
+  .action_2 {
+    grid-column: 2 / 3;
+  }
 }
 
 /* 共通 ---------------------------------------------- */
@@ -159,5 +206,39 @@
 }
 
 .radius {
-  border-radius: 16px;
+  border-radius: 10px;
+}
+
+.button {
+  height: 32px;
+  width: 95%;
+  margin: 0 auto;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 5px;
+  color: var(--paragraph);
+}
+
+.xShareButton {
+  background-color: #e7e7ea;
+}
+
+.xShareButton:hover {
+  background-color: #d7d7da;
+}
+
+.deleteAction {
+  color: #fff;
+  background-color: #ee4943;
+}
+
+.deleteAction:hover {
+  background-color: #e68c89;
+}
+
+.icon {
+  font-size: 20px;
+  padding-right: 7px;
 }
