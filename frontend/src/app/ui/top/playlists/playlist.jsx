@@ -31,9 +31,9 @@ export default function Playlist({ listData }) {
           <p className={styles.createdAt}>
             作成日:{displayDate(listData.created_at)}
           </p>
-          <p className={styles.updatedAt}>
+          {/* <p className={styles.updatedAt}>
             更新日:{displayDate(listData.updated_at)}
-          </p>
+          </p> */}
         </div>
         <div className="clear-left"></div>
       </Link>
