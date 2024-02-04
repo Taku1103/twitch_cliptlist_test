@@ -5,10 +5,16 @@ import { CSS } from '@dnd-kit/utilities'
 import Link from 'next/link'
 
 const Draggable = (props) => {
-  const { attributes, listeners, setNodeRef, transform, transition } =
-    useSortable({
-      id: props.id,
-    })
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    transition,
+    isDragging,
+  } = useSortable({
+    id: props.id,
+  })
   const style = {
     transform: CSS.Transform.toString(transform),
     transition,
@@ -17,11 +23,12 @@ const Draggable = (props) => {
   return (
     <>
       <div
-        className={`${styles.clip} ${styles.radius}`}
+        className={`${isDragging ? styles.isDragging : styles.noDragging} ${styles.clip} ${styles.radius}`}
         ref={setNodeRef}
         style={style}
         {...listeners}
         {...attributes}
+        key={props.id}
       >
         <div className={styles.clipMain}>
           <div className={styles.left}>
