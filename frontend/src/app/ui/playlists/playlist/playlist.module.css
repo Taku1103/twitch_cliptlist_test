@@ -1,6 +1,6 @@
 .playlistMainWrapper {
   flex-grow: 1;
-  padding: 0 200px 0 10px;
+  padding: 0 200px 0 40px;
 }
 
 .clip {
@@ -241,4 +241,18 @@
 .icon {
   font-size: 20px;
   padding-right: 7px;
+}
+
+.isDragging {
+  z-index: 100;
+  position: relative;
+}
+
+.isDragging:hover {
+  z-index: 100;
+  position: relative;
+}
+
+.noDragging {
+  z-index: 1;
 }
