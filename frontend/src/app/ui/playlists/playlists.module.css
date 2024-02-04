@@ -20,17 +20,17 @@
 
     .left {
       float: left;
-      height: 120px;
+      height: 140px;
       width: 260px; /* relativeのせいでimgはないものと扱われているので、ここを変更して、rightの要素の場所を調整する */
       padding-right: 20px;
       position: relative;
-      /* /* background-color: lightgreen; */
+      /* background-color: lightgreen; */
 
       .playlistImage {
         .img {
           height: 120px;
           position: absolute;
-          top: 10px;
+          top: 20px;
           z-index: 3;
         }
 
@@ -40,7 +40,7 @@
           background-color: #333;
           border: 1px solid #000000;
           position: absolute;
-          top: 0px;
+          top: 10px;
           left: 10px;
           z-index: 2;
         }
@@ -51,7 +51,7 @@
           background-color: #333;
           border: 1px solid #000000;
           position: absolute;
-          top: -10px;
+          top: 0px;
           left: 20px;
           z-index: 1;
         }
@@ -67,7 +67,7 @@
           background-color: rgba(0, 0, 0, 0.4);
           color: white;
           position: absolute;
-          bottom: -8px;
+          bottom: 2px;
           right: 50px;
           z-index: 4;
         }
@@ -98,7 +98,7 @@
       }
 
       .createdAt {
-        padding-top: 10px;
+        padding-top: 3px;
         margin: 0px;
         font-size: 14px;
         line-height: 30px;
