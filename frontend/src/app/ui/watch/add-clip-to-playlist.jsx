@@ -2,7 +2,8 @@
 
 import { addClipToPlaylist, createPlaylistAndAddClip } from '@/app/lib/action'
 import styles from '@/app/ui/watch/watch.module.css'
-// import { Button } from '@mui/material'
+import Alert from '@mui/material/Alert'
+import Snackbar from '@mui/material/Snackbar'
 import { useState } from 'react'
 import ReactModal from 'react-modal'
 
@@ -20,21 +21,50 @@ export default function AddClipToPlaylist({ clipId, myListsData, myUserId }) {
     setModalIsOpen(false)
   }
 
+  // flash message
+  const [open, setOpen] = useState(false)
+
+  const handleClick = () => {
+    setOpen(true)
+  }
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return
+    }
+
+    setOpen(false)
+  }
+
   async function add({ clipId, myListId, myUserId }) {
+    closeModal()
     const data = await addClipToPlaylist({
       clipId,
       listId: myListId,
       userId: myUserId,
     })
+    if (data) {
+      // 成功のメッセージ
+      handleClick()
+    } else {
+      // 失敗のメッセージ
+    }
   }
 
   async function create({ clipId, myUserId }) {
     const listName = prompt('プレイリスト名を入力してください', '')
+    closeModal()
     const data = await createPlaylistAndAddClip({
       clipId,
       userId: myUserId,
       listName,
     })
+    if (data) {
+      // 成功のメッセージ
+      handleClick()
+    } else {
+      // 失敗のメッセージ
+    }
   }
 
   const customStyles = {
@@ -94,6 +124,16 @@ export default function AddClipToPlaylist({ clipId, myListsData, myUserId }) {
           <span>新しいプレイリストを作成</span>
         </div>
       </ReactModal>
+      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+        <Alert
+          onClose={handleClose}
+          severity="success"
+          variant="filled"
+          sx={{ width: '100%' }}
+        >
+          プレイリストへの追加に成功しました
+        </Alert>
+      </Snackbar>
     </>
   )
 }

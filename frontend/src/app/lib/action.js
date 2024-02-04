@@ -25,8 +25,10 @@ export async function addClipToPlaylist({ clipId, listId, userId }) {
       throw new Error('playlistへのclipの追加に失敗しました')
     }
     revalidatePath(`/users/${userId}/playlists/${listId}`)
+    return true
   } catch (error) {
     console.log('playlistへのclipの追加に失敗しました')
+    return false
   }
 }
 
@@ -99,8 +101,10 @@ export async function createPlaylistAndAddClip({ userId, clipId, listName }) {
   if (listId) {
     await addClipToPlaylist({ clipId, listId })
     console.log('作成したプレイリストにクリップを追加しました')
+    return true
   } else {
     console.log('playlistの作成に失敗したので、クリップ追加処理を中断します')
+    return false
   }
 }
 
